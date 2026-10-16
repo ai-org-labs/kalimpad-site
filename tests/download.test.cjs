@@ -13,7 +13,7 @@ test('公開済みのApp Store導線とローカル画像を表示する',()=>{
  }
  assert.ok(html.includes('App Storeからダウンロード'));
 });
-test('QRの背景を抑え角を丸める',()=>{
+test('QRの背景を白にし角丸を維持する',()=>{
  const css=fs.readFileSync(path.join(root,'style.css'),'utf8');
- assert.ok(css.includes('background:#bec6d8;border-radius:12px'));
+ assert.ok(css.includes('background:#fff;border-radius:12px'));
 });
