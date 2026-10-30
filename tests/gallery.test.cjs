@@ -1,3 +1,4 @@
 const {test}=require('node:test');const a=require('node:assert/strict');const fs=require('node:fs');
 test('公開用画像とALT、直リンクが揃う',()=>{const d=JSON.parse(fs.readFileSync('gallery.json'));a.ok(d.length>=14);for(const x of d){a.ok(fs.existsSync(x.src));a.ok(x.alt);a.ok(x.title);a.ok(!JSON.stringify(x).includes('/Users/'));}});
 test('停止操作と動きを抑える設定、非表示時停止を備える',()=>{const s=fs.readFileSync('gallery.js','utf8');for(const t of ['prefers-reduced-motion','visibilitychange','focusin','pointerenter'])a.ok(s.includes(t));const h=fs.readFileSync('index.html','utf8');a.ok(h.includes('data-pause'));a.ok(h.includes('gallery.html'));a.ok(h.includes('https://apps.apple.com/app/id6818530043'));});
+test('横スクロールとドット選択を備える',()=>{const s=fs.readFileSync('gallery.js','utf8'),css=fs.readFileSync('gallery.css','utf8');a.ok(s.includes('scrollTo'));a.ok(s.includes('aria-current'));a.ok(css.includes('scroll-snap-type:x mandatory'));a.ok(css.includes('flex:0 0 100%'));});
