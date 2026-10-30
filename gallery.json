@@ -6,7 +6,8 @@
     "src": "ads/kalimpad-comic-ja.webp",
     "thumb": "ads/kalimpad-comic-ja-thumb.webp",
     "date": "2026-10-24",
-    "genre": "アメコミ"
+    "genre": "アメコミ",
+    "order": 1
   },
   {
     "id": "kalimpad-first-touch",
@@ -15,7 +16,8 @@
     "src": "ads/kalimpad-first-touch.webp",
     "thumb": "ads/kalimpad-first-touch-thumb.webp",
     "date": "2026-10-24",
-    "genre": "演奏ガイド"
+    "genre": "演奏ガイド",
+    "order": 2
   },
   {
     "id": "kalimpad-offline-journey",
@@ -24,7 +26,8 @@
     "src": "ads/kalimpad-offline-journey.webp",
     "thumb": "ads/kalimpad-offline-journey-thumb.webp",
     "date": "2026-10-25",
-    "genre": "旅の情景を描くエディトリアル広告"
+    "genre": "旅の情景を描くエディトリアル広告",
+    "order": 3
   },
   {
     "id": "kalimpad-layered-notes",
@@ -33,7 +36,8 @@
     "src": "ads/kalimpad-layered-notes.webp",
     "thumb": "ads/kalimpad-layered-notes-thumb.webp",
     "date": "2026-10-26",
-    "genre": "紙のコラージュとレコードジャケット風広告"
+    "genre": "紙のコラージュとレコードジャケット風広告",
+    "order": 4
   },
   {
     "id": "kalimpad-choose-your-sound",
@@ -42,7 +46,9 @@
     "src": "ads/kalimpad-choose-your-sound.webp",
     "thumb": "ads/kalimpad-choose-your-sound-thumb.webp",
     "date": "2026-10-27",
-    "genre": "人物主役の映画ポスター・ファッション広告"
+    "genre": "人物主役の映画ポスター・ファッション広告",
+    "order": 5,
+    "top": false
   },
   {
     "id": "kalimpad-colors",
@@ -51,7 +57,8 @@
     "src": "ads/kalimpad-colors.webp",
     "thumb": "ads/kalimpad-colors-thumb.webp",
     "date": "2026-10-28",
-    "genre": "布見本を使う雑誌広告"
+    "genre": "布見本を使う雑誌広告",
+    "order": 6
   },
   {
     "id": "kalimpad-guide",
@@ -60,7 +67,8 @@
     "src": "ads/kalimpad-guide.webp",
     "thumb": "ads/kalimpad-guide-thumb.webp",
     "date": "2026-10-28",
-    "genre": "温かい人物イラスト"
+    "genre": "温かい人物イラスト",
+    "order": 7
   },
   {
     "id": "kalimpad-ipad",
@@ -69,7 +77,8 @@
     "src": "ads/kalimpad-ipad.webp",
     "thumb": "ads/kalimpad-ipad-thumb.webp",
     "date": "2026-10-28",
-    "genre": "夜の音楽室を思わせる横長広告"
+    "genre": "夜の音楽室を思わせる横長広告",
+    "order": 8
   },
   {
     "id": "kalimpad-keyboard",
@@ -78,7 +87,8 @@
     "src": "ads/kalimpad-keyboard.webp",
     "thumb": "ads/kalimpad-keyboard-thumb.webp",
     "date": "2026-10-28",
-    "genre": "工業デザイン風の概念図"
+    "genre": "工業デザイン風の概念図",
+    "order": 9
   },
   {
     "id": "kalimpad-score",
@@ -87,7 +97,8 @@
     "src": "ads/kalimpad-score.webp",
     "thumb": "ads/kalimpad-score-thumb.webp",
     "date": "2026-10-28",
-    "genre": "粘土人形風のコミカルな3コマ"
+    "genre": "粘土人形風のコミカルな3コマ",
+    "order": 10
   },
   {
     "id": "kalimpad-bit",
@@ -96,7 +107,8 @@
     "src": "ads/kalimpad-bit.webp",
     "thumb": "ads/kalimpad-bit-thumb.webp",
     "date": "2026-10-29",
-    "genre": "ピクセルアート"
+    "genre": "ピクセルアート",
+    "order": 14
   },
   {
     "id": "kalimpad-break",
@@ -105,7 +117,8 @@
     "src": "ads/kalimpad-break.webp",
     "thumb": "ads/kalimpad-break-thumb.webp",
     "date": "2026-10-29",
-    "genre": "温かい四コマ漫画"
+    "genre": "温かい四コマ漫画",
+    "order": 15
   },
   {
     "id": "kalimpad-detour",
@@ -114,7 +127,8 @@
     "src": "ads/kalimpad-detour.webp",
     "thumb": "ads/kalimpad-detour-thumb.webp",
     "date": "2026-10-29",
-    "genre": "切り絵コラージュ"
+    "genre": "切り絵コラージュ",
+    "order": 12
   },
   {
     "id": "kalimpad-night",
@@ -123,7 +137,8 @@
     "src": "ads/kalimpad-night.webp",
     "thumb": "ads/kalimpad-night-thumb.webp",
     "date": "2026-10-29",
-    "genre": "シックな夜の人物広告"
+    "genre": "シックな夜の人物広告",
+    "order": 11
   },
   {
     "id": "kalimpad-release",
@@ -132,6 +147,7 @@
     "src": "ads/kalimpad-release.webp",
     "thumb": "ads/kalimpad-release-thumb.webp",
     "date": "2026-10-29",
-    "genre": "余白のある抽象図解"
+    "genre": "余白のある抽象図解",
+    "order": 13
   }
 ]
