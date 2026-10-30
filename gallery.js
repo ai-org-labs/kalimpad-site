@@ -12,7 +12,7 @@ if(carousel){
  stage.addEventListener('pointerdown',()=>{stopped=true;label()});
  stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();stopped=true;show(current+(e.key==='ArrowRight'?1:-1));label()}});
  new ResizeObserver(()=>stage.scrollTo({left:current*stage.clientWidth,behavior:'instant'})).observe(stage);sync();
- function label(){pause.textContent=stopped?'自動切替を再開':'自動切替を停止';}
+ function label(){pause.textContent=stopped?'▶':'Ⅱ';pause.setAttribute('aria-label',stopped?'自動切替を再開':'自動切替を停止');pause.title=stopped?'自動切替を再開':'自動切替を停止';}
  pause.addEventListener('click',()=>{stopped=!stopped;label()});
  carousel.querySelector('[data-prev]').addEventListener('click',()=>{stopped=true;show(current-1);label()});
  carousel.querySelector('[data-next]').addEventListener('click',()=>{stopped=true;show(current+1);label()});
