@@ -6,7 +6,7 @@ const root=path.join(__dirname,'..');
 test('公開済みのApp Store導線とローカル画像を表示する',()=>{
  const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
  assert.ok(!html.includes('公開準備中'));
- assert.equal((html.match(/href="https:\/\/apps.apple.com\/app\/id6818530043"/g)||[]).length,2);
+ assert.equal((html.match(/href="https:\/\/apps.apple.com\/app\/id6818530043"/g)||[]).length,7);
  for(const image of ['app-store-badge-ja.svg','app-store-qr.png']){
   assert.ok(html.includes(`src="${image}"`));
   assert.ok(fs.statSync(path.join(root,image)).size>0);

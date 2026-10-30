@@ -12,3 +12,11 @@ GitHub Pages: mainブランチのルートを公開。
 - バッジ：Apple公式 https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/ja-jp から取得し無加工で保存。表示高60px、周囲15pxの余白。
 - QR：qrcodeの誤り訂正M、余白4モジュール、8px/モジュールでローカル生成したPNG。アクセス解析や外部QRサービスなし。
 - 検証：`node --test tests/download.test.cjs`。QRはjsQRで復号し、リンク先と一致することを確認。
+
+## 広告ギャラリー（2026-10-30）
+
+- `gallery.html`：15枚の公開用画像一覧。クリックで拡大し、App Storeへ移動可能。
+- `index.html`：代表作5枚を6秒ごとに自動切替。手動送り・停止、ホバー／フォーカス／非表示時の停止、動きを抑える設定に対応。
+- `ads/`：WebP表示用と軽量サムネイル。原本PNG・制作記録はローカル制作フォルダーに保持。内部分析・プロンプト・個人情報は公開しない。
+- `gallery.json`：公開用の画像情報。追加時は画像、一覧HTML、件数、必要ならトップ選抜を同期し、ALTと公開可能な表記を確認する。
+- テスト：`node --test tests/*.cjs`、`node --check gallery.js`。ブラウザーで拡大・閉じる・自動切替・手動送り・停止を確認。
