@@ -1,0 +1,14 @@
+---
+title: kalimpad — UIと演奏入力の役割（実際の構成図から抜粋）
+---
+%% archmap: {"view":"system","nodes":{"ui":{"color":"blue"},"layout":{"color":"blue"},"surface":{"color":"purple"},"core":{"color":"orange"},"pads":{"color":"purple"}}}
+flowchart TB
+  ui[UI]
+  layout[音配列]
+  surface[PlaySurface 入力アダプタ]
+  core[演奏コア 各面に1つ]
+  pads[パッド描画]
+  ui --> layout
+  layout -->|PlaySurface Props| surface
+  surface -->|TouchInput| core
+  core -->|点灯・表示位置| pads
