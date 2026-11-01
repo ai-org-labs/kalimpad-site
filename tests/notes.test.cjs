@@ -25,6 +25,6 @@ test('実図の抜粋と範囲が明示され、公開素材に内部経路を�
  assert.match(mmd,/surface -->\|TouchInput\| core/);
  assert.match(mmd,/layout -->\|PlaySurface Props\| surface/);
  for(const file of ['notes/assets/ui-core-excerpt.mmd','notes/assets/ui-core-excerpt.svg','notes/ui-and-core.html']){
-  assert.doesNotMatch(read(file),/\/Users\/|com\.aiorglabs|ProbeSurface|遅延テスト|hardware\/|<script/i);
+  assert.doesNotMatch(read(file).replace('<script defer src="../analytics.js"></script>',''),/\/Users\/|com\.aiorglabs|ProbeSurface|遅延テスト|hardware\/|<script/i);
  }
 });
