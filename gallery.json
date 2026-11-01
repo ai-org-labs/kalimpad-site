@@ -149,5 +149,101 @@
     "date": "2026-10-29",
     "genre": "余白のある抽象図解",
     "order": 13
+  },
+  {
+    "id": "kalimpad-photo",
+    "title": "写真背景",
+    "alt": "海の写真を眺める女性と青い紙のコラージュ。「好きな景色を、楽器に。」「写真背景は kalimpad Pro」。広告イメージです。",
+    "src": "ads/kalimpad-photo.webp",
+    "thumb": "ads/kalimpad-photo-thumb.webp",
+    "date": "2026-10-30",
+    "genre": "雑誌風フォトコラージュ",
+    "order": 16,
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "kalimpad-build-note",
+    "title": "システム構成の把握",
+    "alt": "kalimpad開発ノート。ArchMapで構成を把握し、UIと内部処理の役割分担を整理して実装したという開発者の知見。改善量の数値は掲載していません。",
+    "src": "ads/kalimpad-build-note.webp",
+    "thumb": "ads/kalimpad-build-note-thumb.webp",
+    "date": "2026-10-30",
+    "genre": "開発ノート風エディトリアル",
+    "order": 17,
+    "width": 1200,
+    "height": 1200
+  },
+  {
+    "id": "kalimpad-key",
+    "title": "キー変更",
+    "alt": "キーCの音名C D E F GとキーDの音名D E F♯ G Aを並べた概念図。キー変更は無料。アプリの実画面ではありません。",
+    "src": "ads/kalimpad-key.webp",
+    "thumb": "ads/kalimpad-key-thumb.webp",
+    "date": "2026-10-30",
+    "genre": "明るい音名の比較図",
+    "order": 18,
+    "width": 1200,
+    "height": 1200
+  },
+  {
+    "id": "kalimpad-midi",
+    "title": "MIDI出力",
+    "alt": "kalimpadからMIDIを介して対応音源へ演奏情報を送る概念図。MIDI出力はPro。対応機器や設定が必要。実機検証の写真ではありません。",
+    "src": "ads/kalimpad-midi.webp",
+    "thumb": "ads/kalimpad-midi-thumb.webp",
+    "date": "2026-10-30",
+    "genre": "暗色の信号フロー図",
+    "order": 19,
+    "width": 1200,
+    "height": 1200
+  },
+  {
+    "id": "kalimpad-tone",
+    "title": "音色ごとの音づくり",
+    "alt": "クリーム色のレシピ風画像に、歪み・トーン・エフェクトの量を紹介。音色ごとの音づくりはkalimpad Pro。設定画面ではありません。",
+    "src": "ads/kalimpad-tone.webp",
+    "thumb": "ads/kalimpad-tone-thumb.webp",
+    "date": "2026-10-30",
+    "genre": "紙のレシピ風タイポグラフィ",
+    "order": 20,
+    "width": 1200,
+    "height": 1200
+  },
+  {
+    "id": "kalimpad-listen-play",
+    "title": "11音色",
+    "alt": "夕暮れの部屋で、イヤホンを着けてスマホを持つ女性のイラスト。「聴く時間を、弾く時間に。」「スマホで楽しむ、11の音色。」「11音色は無料」。実画面ではなく広告イメージ。",
+    "src": "ads/kalimpad-listen-play.webp",
+    "thumb": "ads/kalimpad-listen-play-thumb.webp",
+    "date": "2026-10-31",
+    "genre": "情緒的な雑誌広告",
+    "order": 21,
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "kalimpad-roles",
+    "title": "開発者のArchMap活用経験",
+    "alt": "開発ノート02。その処理、UIの役目？ 画面に見せることは、内部で受け持つことは、という2つの確認ポイント。kalimpadではArchMapで構成を把握して実装。実際の構成図や性能測定結果ではありません。",
+    "src": "ads/kalimpad-roles.webp",
+    "thumb": "ads/kalimpad-roles-thumb.webp",
+    "date": "2026-11-01",
+    "genre": "実装前のチェックカード",
+    "order": 22,
+    "width": 1200,
+    "height": 1200
+  },
+  {
+    "id": "kalimpad-three-notes",
+    "title": "8bit音色",
+    "alt": "白い紙を背景に青い大見出し「3音だけで、ピコピコ遊び。」。黄・橙・水色の紙の丸が音をイメージして並ぶ。「8bit音色で、短いフレーズを。」「8bit音色は無料」。実際のアプリ画面ではなく音のイメージ。",
+    "src": "ads/kalimpad-three-notes.webp",
+    "thumb": "ads/kalimpad-three-notes-thumb.webp",
+    "date": "2026-11-01",
+    "genre": "紙工作コラージュ",
+    "order": 23,
+    "width": 1254,
+    "height": 1254
   }
 ]
