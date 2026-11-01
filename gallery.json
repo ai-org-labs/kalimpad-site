@@ -255,5 +255,17 @@
     "date": "2026-11-01",
     "genre": "秋の旅行雑誌風イラスト",
     "order": 24
+  },
+  {
+    "id": "kalimpad-follow-light",
+    "title": "次の一音は、光が教えてくれる。",
+    "alt": "紺と金の舞台で、小鳥が光る六角形の足場を追う広告イメージ。『次の一音は、光が教えてくれる。』。光るパッドを追って曲に挑戦する無料の演奏ガイドを紹介。kalimpad、iPhone・iPad、App Storeで見ると記載。実画面ではありません。",
+    "src": "ads/kalimpad-follow-light.webp",
+    "thumb": "ads/kalimpad-follow-light-thumb.webp",
+    "date": "2026-11-01",
+    "genre": "舞台照明を使った幻想的な絵本広告",
+    "order": 25,
+    "width": 1122,
+    "height": 1402
   }
 ]
