@@ -315,5 +315,17 @@
     "date": "2026-10-24",
     "genre": "アメコミ",
     "order": 1
+  },
+  {
+    "id": "kalimpad-chord-ribbons",
+    "title": "ひとつ鳴らして、もうひとつ重ねる。",
+    "alt": "ニット姿の女性がスマートフォンに2本の指を伸ばす水彩画。金と紫の音のリボンが重なる。複数の指で和音を楽しむ無料機能を紹介。演奏表現はイメージと明記。",
+    "src": "ads/kalimpad-chord-ribbons.webp",
+    "thumb": "ads/kalimpad-chord-ribbons-thumb.webp",
+    "date": "2026-11-02",
+    "genre": "水彩の人物と音のリボン",
+    "order": 30,
+    "width": 1120,
+    "height": 1400
   }
 ]
