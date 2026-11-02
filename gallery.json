@@ -339,5 +339,17 @@
     "order": 31,
     "width": 1254,
     "height": 1254
+  },
+  {
+    "id": "kalimpad-publish-check",
+    "title": "AIへの依頼に、完了条件を。",
+    "alt": "紺色の開発ノートカード。AIへの依頼に、完了条件を。変えるもの、維持するもの、完了の証拠の3項目。サイト更新でAIに渡した条件と確認の実例を本文リンクで案内。",
+    "src": "ads/kalimpad-publish-check.webp",
+    "thumb": "ads/kalimpad-publish-check-thumb.webp",
+    "date": "2026-11-03",
+    "genre": "実務カードのタイポグラフィ",
+    "order": 32,
+    "width": 1200,
+    "height": 1200
   }
 ]
