@@ -1,0 +1,2 @@
+const {test}=require('node:test'),a=require('node:assert/strict'),fs=require('node:fs');
+test('AI更新記事は確認範囲と共通導線を維持する',()=>{const h=fs.readFileSync('notes/ai-publish-check.html','utf8');for(const s of ['notes-header','analytics.js','analytics.css','analytics-settings','依頼文の例','人が決めたこと','16件','app/id6818530043'])a.ok(h.includes(s),s);a.ok(fs.readFileSync('dev-notes.html','utf8').indexOf('notes/ai-publish-check.html')<fs.readFileSync('dev-notes.html','utf8').indexOf('notes/ui-and-core.html'));});
