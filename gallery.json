@@ -327,5 +327,17 @@
     "order": 30,
     "width": 1120,
     "height": 1400
+  },
+  {
+    "id": "kalimpad-photo-moon",
+    "title": "好きな景色を、演奏の背景に。",
+    "alt": "月夜の海の写真、布張りのアルバム、銀色のペンに透明な六角形を重ねた広告。写真背景はkalimpad Pro、買い切りのアプリ内購入と大きく明記。背景設定のイメージであり実画面ではない。",
+    "src": "ads/kalimpad-photo-moon.webp",
+    "thumb": "ads/kalimpad-photo-moon-thumb.webp",
+    "date": "2026-11-02",
+    "genre": "写真集の静物を使う雑誌広告",
+    "order": 31,
+    "width": 1254,
+    "height": 1254
   }
 ]
