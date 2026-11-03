@@ -375,5 +375,17 @@
     "order": 34,
     "width": 1254,
     "height": 1254
+  },
+  {
+    "id": "kalimpad-score-seed",
+    "title": "思いついた音を、ひとつ残そう。",
+    "alt": "音符のキャラクターがパッドを弾き、スコアを箱に保存し、鉛筆で編集する3場面の漫画。思いついた音を、ひとつ残そう。自作スコアは1つ無料、追加の作成・編集はPro。機能のイメージで実画面ではないと明記。",
+    "src": "ads/kalimpad-score-seed.webp",
+    "thumb": "ads/kalimpad-score-seed-thumb.webp",
+    "date": "2026-11-02",
+    "genre": "小さな漫画の三段展開",
+    "order": 35,
+    "width": 1120,
+    "height": 1400
   }
 ]

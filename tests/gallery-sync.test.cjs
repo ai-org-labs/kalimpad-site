@@ -12,3 +12,5 @@ test('公開画像の最新登録と静的フォールバックが一致する',
  assert.ok(grid.includes(items.length+' VISUALS'));
  for(const x of items){assert.ok(fs.existsSync(x.src));assert.ok(fs.existsSync(x.thumb));}
 });
+
+test('公開済みスコア作成画像を一覧へ含む',()=>{const items=JSON.parse(fs.readFileSync('gallery.json','utf8'));assert.ok(items.some(x=>x.id==='kalimpad-score-seed'));});
