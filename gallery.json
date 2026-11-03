@@ -351,5 +351,17 @@
     "order": 32,
     "width": 1200,
     "height": 1200
+  },
+  {
+    "id": "kalimpad-pad-size",
+    "title": "指に合わせて、パッドの大きさを。",
+    "alt": "大きな六角形のパッド、小さな六角形、指先と寸法矢印でサイズ調整を示す概念図。無料の機能と明記。実際の設定画面や操作手順ではない。",
+    "src": "ads/kalimpad-pad-size.webp",
+    "thumb": "ads/kalimpad-pad-size-thumb.webp",
+    "date": "2026-11-02",
+    "genre": "余白の大きい道具の概念図",
+    "order": 33,
+    "width": 1400,
+    "height": 933
   }
 ]
