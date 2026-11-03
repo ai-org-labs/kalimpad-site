@@ -363,5 +363,17 @@
     "order": 33,
     "width": 1400,
     "height": 933
+  },
+  {
+    "id": "kalimpad-first-note",
+    "title": "スマホで、ぽろん。",
+    "alt": "スマホに指で触れると金色の音符が浮かぶ、柔らかい紙の質感のイラスト。「スマホで、ぽろん。」「指で触れると、カリンバの音。」と案内。iPhone・iPadの楽器アプリkalimpad、カリンバ音色は無料。演奏のイメージで実際のアプリ画面ではない。",
+    "src": "ads/kalimpad-first-note.webp",
+    "thumb": "ads/kalimpad-first-note-thumb.webp",
+    "date": "2026-11-03",
+    "genre": "柔らかな紙の質感の演奏イラスト",
+    "order": 34,
+    "width": 1254,
+    "height": 1254
   }
 ]
