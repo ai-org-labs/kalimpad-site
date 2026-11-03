@@ -387,5 +387,17 @@
     "order": 35,
     "width": 1120,
     "height": 1400
+  },
+  {
+    "id": "kalimpad-vibrato-wave",
+    "title": "一音に、ゆらぎを。",
+    "alt": "珊瑚色と紺色のレトロなポスター。一本の波形と音符を主役に、パッドにビブラートを加えられる無料機能を紹介。音のイメージであり実測波形ではない。",
+    "src": "ads/kalimpad-vibrato-wave.webp",
+    "thumb": "ads/kalimpad-vibrato-wave-thumb.webp",
+    "date": "2026-11-02",
+    "genre": "レトロな音の実験室ポスター",
+    "order": 36,
+    "width": 1254,
+    "height": 1254
   }
 ]
