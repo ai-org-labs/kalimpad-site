@@ -435,5 +435,17 @@
     "order": 39,
     "width": 1400,
     "height": 933
+  },
+  {
+    "id": "kalimpad-evening-box",
+    "title": "夜の一曲を、指先で。",
+    "alt": "女性が灯りの下で六角形のスマホ画面に指を触れる水彩画。オルゴール音色は無料、演奏・画面はイメージと注記。",
+    "src": "ads/kalimpad-evening-box.webp",
+    "thumb": "ads/kalimpad-evening-box-thumb.webp",
+    "date": "2026-11-04",
+    "genre": "水彩の人物雑誌広告",
+    "order": 40,
+    "width": 1254,
+    "height": 1254
   }
 ]
