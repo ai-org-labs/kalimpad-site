@@ -411,5 +411,17 @@
     "order": 37,
     "width": 1400,
     "height": 1100
+  },
+  {
+    "id": "kalimpad-sound-walk",
+    "title": "指をすべらせて、音の散歩。",
+    "alt": "青緑のガッシュ画風ポスター。大きなスマートフォンの六角形に指をすべらせ、金色の音符が流れる演奏イメージ。指をすべらせて、音の散歩。スマホで弾く楽器アプリkalimpad。なぞる演奏は無料、iPhone・iPad対応、アプリ内購入あり。演奏・画面はイメージと注記。",
+    "src": "ads/kalimpad-sound-walk.webp",
+    "thumb": "ads/kalimpad-sound-walk-thumb.webp",
+    "date": "2026-11-04",
+    "genre": "大胆なガッシュ画の演奏イラスト",
+    "order": 38,
+    "width": 1400,
+    "height": 933
   }
 ]
