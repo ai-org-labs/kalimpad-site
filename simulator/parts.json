@@ -8,7 +8,8 @@
       "mpnOrValue": "Seeed 113991114",
       "status": "missing_model",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U2",
@@ -22,7 +23,8 @@
         83.94999969750643,
         11.344999985098838
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U3",
@@ -36,7 +38,8 @@
         83.94999969750643,
         11.344999985098838
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C21",
@@ -50,7 +53,8 @@
         75.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C22",
@@ -64,7 +68,8 @@
         75.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R21",
@@ -78,7 +83,8 @@
         88.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R22",
@@ -92,7 +98,8 @@
         93.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R23",
@@ -106,7 +113,8 @@
         90.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R100",
@@ -120,7 +128,8 @@
         59.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R101",
@@ -134,7 +143,8 @@
         59.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R102",
@@ -148,7 +158,8 @@
         59.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R103",
@@ -162,7 +173,8 @@
         59.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R104",
@@ -176,7 +188,8 @@
         59.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R105",
@@ -190,7 +203,8 @@
         59.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R106",
@@ -204,7 +218,8 @@
         59.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R107",
@@ -218,7 +233,8 @@
         55.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R108",
@@ -232,7 +248,8 @@
         55.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R109",
@@ -246,7 +263,8 @@
         55.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R110",
@@ -260,7 +278,8 @@
         55.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R111",
@@ -274,7 +293,8 @@
         55.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R112",
@@ -288,7 +308,8 @@
         55.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "J4",
@@ -302,7 +323,8 @@
         45.00000004507601,
         10.595000094994903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "J5",
@@ -316,7 +338,8 @@
         12.75000005401671,
         14.595000052154063
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U6",
@@ -330,7 +353,8 @@
         49.44999998155981,
         10.14500004451722
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R24",
@@ -344,7 +368,8 @@
         52.399999989895136,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R25",
@@ -358,7 +383,8 @@
         45.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C23",
@@ -372,21 +398,56 @@
         53.399999989895136,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "J1",
       "mpnOrValue": "HRO TYPE-C-31-M-12",
       "status": "missing_model",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": 3.36,
+      "dimensionEvidence": {
+        "ref": "J1",
+        "orderableMpn": "TYPE-C-31-M-12",
+        "bodyMaximumMm": [
+          9.09,
+          7.5,
+          3.36
+        ],
+        "solderAllowanceMm": 0.15,
+        "source": {
+          "url": "https://datasheet.lcsc.com/datasheet/pdf/9e56b777c022540fcce7c7f67825f55e.pdf",
+          "drawing": "HRO TYPE-C-31-M-12、2020-12-08。8.94/7.35の一般公差±0.15、3.26の一般公差±0.10。基板下の固定脚は別評価。",
+          "sha256": "6ae33d50ac47820114661138dc4e4659f40fdc5d4f485b46685dfec338da1a9e"
+        },
+        "geometryKind": "maximum_dimension_envelope",
+        "assembly": "主基板へ業者実装。固定脚4本もはんだ付け。ケースに挿抜荷重の受けを設ける。"
+      }
     },
     {
       "ref": "U8",
       "mpnOrValue": "TUSB320LAIRWBR",
       "status": "missing_model",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": 0.4,
+      "dimensionEvidence": {
+        "ref": "U8",
+        "orderableMpn": "TUSB320LAIRWBR",
+        "bodyMaximumMm": [
+          1.65,
+          1.65,
+          0.4
+        ],
+        "solderAllowanceMm": 0.15,
+        "source": {
+          "url": "https://www.ti.com/lit/ds/symlink/tusb320lai.pdf",
+          "drawing": "RWB0012A、図面4221631/B、2017-07、PDF35ページ",
+          "sha256": "62f7b3f65338e25ebd6fd46ef04474ba806b06b1cc04bc0b3d7b8191b01ca87d"
+        },
+        "geometryKind": "maximum_dimension_envelope",
+        "assembly": "主基板へ業者はんだ実装。回転・端子1は実装座標ファイルに従う。"
+      }
     },
     {
       "ref": "U9",
@@ -400,7 +461,8 @@
         101.44999998155981,
         10.14500004451722
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U10",
@@ -414,7 +476,8 @@
         105.44999998155981,
         10.14500004451722
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R81",
@@ -428,7 +491,8 @@
         105.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R82",
@@ -442,7 +506,8 @@
         109.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C81",
@@ -456,7 +521,8 @@
         113.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C91",
@@ -470,7 +536,8 @@
         100.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C92",
@@ -484,7 +551,8 @@
         95.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C93",
@@ -498,7 +566,8 @@
         99.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U1",
@@ -512,14 +581,16 @@
         103.44999998155981,
         10.14500004451722
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "SW1",
       "mpnOrValue": "JS102011SAQN",
       "status": "missing_model",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R3",
@@ -533,7 +604,8 @@
         102.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R4",
@@ -547,7 +619,8 @@
         97.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R5",
@@ -561,7 +634,8 @@
         106.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C1",
@@ -575,7 +649,8 @@
         103.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C2",
@@ -589,7 +664,8 @@
         93.62499998603016,
         9.844999972060323
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U7",
@@ -603,7 +679,8 @@
         93.00000004749745,
         9.694999994039536
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R6",
@@ -617,21 +694,56 @@
         92.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U5",
       "mpnOrValue": "TPS62162DSGR",
       "status": "missing_model",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": 0.8,
+      "dimensionEvidence": {
+        "ref": "U5",
+        "orderableMpn": "TPS62162DSGR",
+        "bodyMaximumMm": [
+          2.1,
+          2.1,
+          0.8
+        ],
+        "solderAllowanceMm": 0.15,
+        "source": {
+          "url": "https://www.ti.com/lit/ds/symlink/tps62162.pdf",
+          "drawing": "DSG0008A、図面4218900/E、2022-08、PDF39ページ",
+          "sha256": "abc824ca04ee985ede3a513172ccdd2a42c8e1fdcfc3af5acdbe2c1af31aaa72"
+        },
+        "geometryKind": "maximum_dimension_envelope",
+        "assembly": "主基板へ業者はんだ実装。回転・端子1は実装座標ファイルに従う。"
+      }
     },
     {
       "ref": "L1",
       "mpnOrValue": "XFL4020-222MEC / 2.2uH",
       "status": "missing_model",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": 2.1,
+      "dimensionEvidence": {
+        "ref": "L1",
+        "orderableMpn": "XFL4020-222MEC",
+        "bodyMaximumMm": [
+          4.3,
+          4.3,
+          2.1
+        ],
+        "solderAllowanceMm": 0.15,
+        "source": {
+          "url": "https://www.coilcraft.com/en-us/products/power/high-voltage-inductors/xfl/xfl4020/",
+          "drawing": "Document745-3、2026-03-10。4.0±0.3mm、2.10mm max。MEC錫銀銅端子を指定",
+          "sha256": "6dca915ac1daa47210f7708a7540221ffef4f34a88a8621c94bd50cdf48647e6"
+        },
+        "geometryKind": "maximum_dimension_envelope",
+        "assembly": "主基板へ業者はんだ実装。回転・端子1は実装座標ファイルに従う。"
+      }
     },
     {
       "ref": "C51",
@@ -645,7 +757,8 @@
         76.62499998603016,
         9.844999972060323
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C52",
@@ -659,7 +772,8 @@
         73.62499998603016,
         9.844999972060323
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U4",
@@ -673,7 +787,8 @@
         27.499999944120646,
         9.364999984186143
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C41",
@@ -687,7 +802,8 @@
         30.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C42",
@@ -701,7 +817,8 @@
         33.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C43",
@@ -715,7 +832,8 @@
         29.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C44",
@@ -729,7 +847,8 @@
         20.399999989895136,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C45",
@@ -743,7 +862,8 @@
         20.399999989895136,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C46",
@@ -757,7 +877,8 @@
         17.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C49",
@@ -771,7 +892,8 @@
         14.624999986030161,
         9.844999972060323
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C50",
@@ -785,7 +907,8 @@
         15.624999986030161,
         9.844999972060323
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C47",
@@ -799,7 +922,8 @@
         30.299999982118607,
         14.394999926239251
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C48",
@@ -813,14 +937,16 @@
         30.299999982118607,
         14.394999926239251
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "J2",
       "mpnOrValue": "SJ-3523-SMT",
       "status": "missing_model",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "J3",
@@ -834,14 +960,32 @@
         13.75000005401671,
         14.595000052154063
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "Y1",
       "mpnOrValue": "ASE-24.000MHZ-LC-T",
       "status": "missing_model",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": 1.2,
+      "dimensionEvidence": {
+        "ref": "Y1",
+        "orderableMpn": "ASE-24.000MHZ-L-C-T",
+        "bodyMaximumMm": [
+          3.4,
+          2.7,
+          1.2
+        ],
+        "solderAllowanceMm": 0.15,
+        "source": {
+          "url": "https://abracon.com/Oscillators/ASEseries.pdf",
+          "drawing": "2022-02-18、PDF5ページ。3.2±0.2、2.5±0.2、1.2max",
+          "sha256": "5f5a3070e85cac34ace32dc6dfbec8066f5b09e63e19ca7084fb208296e261f1"
+        },
+        "geometryKind": "maximum_dimension_envelope",
+        "assembly": "主基板へ業者はんだ実装。回転・端子1は実装座標ファイルに従う。"
+      }
     },
     {
       "ref": "C40",
@@ -855,7 +999,8 @@
         33.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R40",
@@ -869,7 +1014,8 @@
         28.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R41",
@@ -883,7 +1029,8 @@
         37.399999989895136,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R42",
@@ -897,7 +1044,8 @@
         37.399999989895136,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R43",
@@ -911,56 +1059,64 @@
         42.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "TP1",
       "mpnOrValue": "GND",
       "status": "no_body_required",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "TP2",
       "mpnOrValue": "VBUS_IN",
       "status": "no_body_required",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "TP3",
       "mpnOrValue": "SYS5V",
       "status": "no_body_required",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "TP4",
       "mpnOrValue": "V3V3_LOGIC",
       "status": "no_body_required",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "TP5",
       "mpnOrValue": "V3V3_AUDIO",
       "status": "no_body_required",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "TP6",
       "mpnOrValue": "OC_FAULT",
       "status": "no_body_required",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "TP7",
       "mpnOrValue": "MCP_RESET",
       "status": "no_body_required",
       "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "J6",
@@ -974,7 +1130,8 @@
         90.27000000793487,
         17.134999835193156
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U13",
@@ -988,7 +1145,8 @@
         91.44999998155981,
         10.14500004451722
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C130",
@@ -1002,7 +1160,8 @@
         93.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R130",
@@ -1016,7 +1175,8 @@
         93.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U11",
@@ -1030,7 +1190,8 @@
         51.500000013038516,
         9.94500003501773
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C110",
@@ -1044,7 +1205,8 @@
         50.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C111",
@@ -1058,7 +1220,8 @@
         50.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R1100",
@@ -1072,7 +1235,8 @@
         47.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R1101",
@@ -1086,7 +1250,8 @@
         47.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "U12",
@@ -1100,7 +1265,8 @@
         35.499999944120646,
         9.694999994039536
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C120",
@@ -1114,7 +1280,8 @@
         36.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "C121",
@@ -1128,7 +1295,8 @@
         36.39999998989515,
         9.3949999797903
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R132",
@@ -1142,7 +1310,8 @@
         32.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     },
     {
       "ref": "R133",
@@ -1156,7 +1325,8 @@
         29.39999998989515,
         9.044999992270023
       ],
-      "guaranteedMaximumHeightMm": null
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     }
   ],
   "reservations": [
@@ -1177,30 +1347,32 @@
     {
       "id": "J1",
       "at": [
-        29.655,
-        116.055,
+        30.455,
+        117.6,
         8.6
       ],
       "size": [
-        10.689999999999998,
-        9.469999999999999,
-        4
+        9.09,
+        7.5,
+        3.51
       ],
-      "status": "仮の収納予約。保証最大高さではない"
+      "dimensionVerified": true,
+      "status": "メーカー最大外形＋はんだ高さ0.15mm。精細な外観モデルではない"
     },
     {
       "id": "U8",
       "at": [
-        23.57499999999999,
-        107.575,
+        24.175,
+        108.175,
         8.6
       ],
       "size": [
-        2.8500000000000227,
-        2.8499999999999943,
-        1
+        1.65,
+        1.65,
+        0.55
       ],
-      "status": "仮の収納予約。保証最大高さではない"
+      "dimensionVerified": true,
+      "status": "メーカー最大外形＋はんだ高さ0.15mm。精細な外観モデルではない"
     },
     {
       "id": "SW1",
@@ -1219,30 +1391,32 @@
     {
       "id": "U5",
       "at": [
-        48.474999999999994,
-        74.725,
+        48.95,
+        74.95,
         8.6
       ],
       "size": [
-        3.0500000000000114,
-        2.5500000000000114,
-        1.5
+        2.1,
+        2.1,
+        0.95
       ],
-      "status": "仮の収納予約。保証最大高さではない"
+      "dimensionVerified": true,
+      "status": "メーカー最大外形＋はんだ高さ0.15mm。精細な外観モデルではない"
     },
     {
       "id": "L1",
       "at": [
-        51.57499999999999,
-        75.075,
+        51.85,
+        75.35,
         8.6
       ],
       "size": [
-        4.850000000000023,
-        4.849999999999994,
-        2.1
+        4.3,
+        4.3,
+        2.25
       ],
-      "status": "仮の収納予約。保証最大高さではない"
+      "dimensionVerified": true,
+      "status": "メーカー最大外形＋はんだ高さ0.15mm。精細な外観モデルではない"
     },
     {
       "id": "J2",
@@ -1261,16 +1435,17 @@
     {
       "id": "Y1",
       "at": [
-        17.875,
-        27.224999999999994,
+        18.3,
+        27.65,
         8.6
       ],
       "size": [
-        4.25,
-        3.5500000000000114,
-        1.5
+        3.4,
+        2.7,
+        1.35
       ],
-      "status": "仮の収納予約。保証最大高さではない"
+      "dimensionVerified": true,
+      "status": "メーカー最大外形＋はんだ高さ0.15mm。精細な外観モデルではない"
     },
     {
       "id": "OLED",
@@ -1469,6 +1644,13 @@
     "Y1"
   ],
   "cadModelCount": 75,
+  "dimensionVerifiedRefs": [
+    "J1",
+    "L1",
+    "U5",
+    "U8",
+    "Y1"
+  ],
   "limitations": [
     "CAD形状はメーカー保証最大寸法ではない。公差・はんだ厚を含む確定高さは未完成",
     "XIAO・OLED等の未確認高さを含むため、厚み短縮は未決定",
