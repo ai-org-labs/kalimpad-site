@@ -1,0 +1,3976 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>kalimpad — 8キー動作を試す</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#172b39;background:#f3f5f6;font-size:15px;--root:#7a5af5;--scale:#86d6f2;--on:#34d27b}*{box-sizing:border-box}body{margin:0}main{max-width:1120px;margin:auto;padding:28px}h1{font-size:26px;margin:8px 0}h2{font-size:17px;margin:0 0 12px}p{line-height:1.7}header p{max-width:760px;margin:8px 0 22px;color:#526373}.eyebrow{font-size:12px;letter-spacing:.15em;color:#50697c}.layout{display:grid;grid-template-columns:300px 1fr;gap:32px}.panel{background:#fff;border:1px solid #dce3e7;border-radius:16px;padding:20px;margin-bottom:16px}.device{position:relative;width:240px;height:581.54px;background:#182734;border:1px solid #374c5a;border-radius:22px;box-shadow:0 14px 26px #20304020;margin:14px auto 20px}.oled{position:absolute;top:20px;left:20px;right:20px;height:65px;color:#def0e6;background:#0b1519;border-radius:5px;padding:10px;font-family:monospace;font-size:13px;line-height:1.5;white-space:pre}.pad{position:absolute;transform:translate(-50%,-50%);width:72px;height:64px;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);border:0;background:var(--scale);color:#0e2436;touch-action:none;user-select:none;padding:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;font:inherit}.pad.root{background:var(--root);color:#fff}.pad.on{background:var(--on);color:#05301a}.pad.off{background:#40505b;color:#b4c2cb}.pad small{font-size:10px;margin-top:2px}.pad:focus-visible{outline:0;filter:brightness(1.35)}.gaplight{position:absolute;width:70px;height:20px;transform:translate(-50%,-50%);background:var(--scale);filter:blur(10px);opacity:.4;pointer-events:none}.gaplight.root{background:var(--root)}.gaplight.on{background:var(--on);opacity:.9}.gaplight.off{opacity:0}.row{display:flex;flex-wrap:wrap;align-items:center;gap:8px}button,select{font:inherit}button{border:1px solid #c8d3da;border-radius:8px;padding:10px 12px;min-height:42px;background:#fff;color:#203746;cursor:pointer;touch-action:manipulation}button:hover{background:#eef3f6}button:focus-visible{outline:3px solid #117b90;outline-offset:3px}button[aria-pressed=true],button.down{background:#1c5366;color:#fff}.controls{justify-content:center}.controls button{touch-action:none;user-select:none}.caption{color:#5c6d7b;font-size:12px;line-height:1.6}.status{font-size:13px;padding:4px 8px;border-radius:5px;background:#edf3f7;color:#264557}.flow{display:grid;grid-template-columns:1fr;gap:8px}.stage{display:grid;grid-template-columns:32px 1fr;gap:10px;border-left:3px solid #d5e0e5;padding:10px 12px;background:#f5f7f8;transition:background .1s}.stage.active{border-color:#1d7c8e;background:#dff1ee}.stage b{font-weight:600}.stage span{font-size:13px;color:#526373}.stage small{display:block;margin-top:3px;color:#526373}.stepnum{font-size:12px;align-self:center;color:#647984}.live{min-height:55px;font-size:14px;line-height:1.6;margin-top:12px}.log{font-family:monospace;font-size:12px;line-height:1.6;max-height:180px;overflow:auto;padding-left:22px}.log li{padding:4px 0;border-bottom:1px solid #edf0f2}.checks{font-size:14px;line-height:1.8}.checks label{display:block;margin:9px 0}.checks input{width:18px;height:18px;vertical-align:middle;margin-right:8px}.toolbar{justify-content:space-between}.subtle{font-size:13px;color:#526373}.legend{justify-content:center;font-size:12px}.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px}details summary{cursor:pointer;font-weight:600}details p{font-size:13px}.switch{display:flex;gap:12px;justify-content:center;align-items:center}.explain{background:#edf3f7;padding:10px 14px;border-radius:8px;font-size:13px}.test-tools{margin-top:14px}a{color:#116878}@media(max-width:700px){main{padding:18px}.layout{grid-template-columns:1fr;gap:18px}.device{margin:auto}.controls{margin-top:12px}h1{font-size:23px}.left{display:flex;flex-direction:column;align-items:center}.left .panel{width:100%}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* 本体内で全通常操作を完結。寸法比は適合済み52×126プレートを使用。 */
+.layout{grid-template-columns:340px 1fr;gap:28px}
+.device{width:300px;height:726.92px;border-radius:24px;background:linear-gradient(110deg,#223644,#16232d);margin:14px auto 20px;box-shadow:6px 10px 0 #101b23,12px 20px 28px #20304020}
+.device-brand{position:absolute;top:10px;left:24px;color:#edf4f6;font-size:12px;letter-spacing:.12em}.device-brand span{color:#95adbb;font-size:9px}
+.hold-toggle{position:absolute;right:65px;top:8px;font-size:11px;color:#c7d8df;display:flex;align-items:center;gap:3px;cursor:pointer}.hold-toggle input{accent-color:#86d6f2}
+.listen-toggle{position:absolute;right:15px;top:8px;font-size:11px;color:#c7d8df;display:flex;align-items:center;gap:3px;cursor:pointer}.listen-toggle input{accent-color:#86d6f2}
+.oled{top:37px;left:42px;right:20px;height:45px;padding:5px 10px;font-size:12px;line-height:17px;border:1px solid #36515b}
+.power-switch{position:absolute;left:8px;top:38px;width:28px;min-height:44px;padding:0;background:#354957;color:#d3e2e9;border-color:#5d7380;border-radius:6px;font-size:20px;z-index:2}
+.controls{position:absolute;top:94px;left:13px;right:13px;display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.controls button{padding:0;min-width:0;min-height:44px;background:#344957;color:#e6f0f5;border:1px solid #607783;font-size:11px;border-radius:7px;box-shadow:0 3px 0 #0e1a22}
+.controls button:hover{background:#476472}.controls button.down{background:#8dd9e5;color:#142e3a;transform:translateY(2px);box-shadow:0 1px 0 #0e1a22}
+.device-state{position:absolute;top:149px;left:16px;right:16px;text-align:center;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 8px;color:#c0d0d9;font-size:11px;pointer-events:none}.device-state .status{padding:2px 6px;font-size:10px;background:#304652;color:#c6e5e3}#range{display:block;width:100%;color:#8eacbc}
+.pad{width:92px;height:80px;filter:drop-shadow(0 3px 1px #09141d);font-size:17px}.pad:hover{background:var(--scale);filter:brightness(1.08)}.pad.root:hover{background:var(--root)}.pad.on:hover{background:var(--on)}.pad.off:hover{background:#40505b}.pad small{font-size:10px}
+.gaplight{width:50px;height:15px;filter:blur(8px)}
+.device-ports{position:absolute;bottom:12px;left:22px;right:22px;display:flex;align-items:center;justify-content:space-between;color:#819dac;font-size:9px;letter-spacing:.06em;pointer-events:none}.speaker-grille{font-size:25px;line-height:24px}.speaker-grille.selected,#headphone-port.selected{color:#a9eee2}.usb-port{padding:3px 12px;border:2px solid #627782;border-radius:7px;background:#0a141b;color:#8ea5b3}
+.operation-help,#audio-status{max-width:320px;margin:12px auto}.legend{margin-top:22px}
+@media(max-width:700px){.layout{grid-template-columns:1fr}.device{flex:none;margin:14px auto 20px}.controls{margin-top:0}.left{width:100%;min-width:0}}
+@media(max-width:350px){main{padding:10px}.device{width:280px;height:678.46px}.pad{width:85px;height:74px}.device-state{top:143px}.controls{top:91px}.device-ports{bottom:7px}}
+
+/* B案：前面・側面・端面を同じ外形から構成。寸法と留保はexterior.json。 */
+.layout{grid-template-columns:400px 1fr;gap:24px}.model-stage{width:400px;height:810px;display:flex;align-items:center;justify-content:center;perspective:1600px;overflow:visible}
+.device{width:300px;height:690.85px;flex:none;margin:0;transform-style:preserve-3d;background:none;border:0;border-radius:0;box-shadow:none;position:relative;transition:transform .35s;--depth:178.52px}
+.body-face{position:absolute;backface-visibility:hidden;transform-style:preserve-3d;background:#263b47;border:1px solid #52707b}
+.front-face{inset:0;border-radius:18px;background:linear-gradient(120deg,#2d4652,#172932)}
+.right-face{left:100%;top:0;width:var(--depth);height:100%;transform-origin:left center;transform:rotateY(90deg);background:#1c303c}
+.left-face{left:0;top:0;width:var(--depth);height:100%;transform-origin:left center;transform:translateZ(calc(-1 * var(--depth))) rotateY(-90deg)}
+.top-face{left:0;top:0;width:100%;height:var(--depth);transform-origin:center top;transform:translateZ(calc(-1 * var(--depth))) rotateX(90deg);background:#304854}
+.bottom-face{left:0;top:100%;width:100%;height:var(--depth);transform-origin:center top;transform:rotateX(-90deg)}
+.back-face{inset:0;transform:translateZ(calc(-1 * var(--depth))) rotateY(180deg);border-radius:18px;background:#203743}
+.controls{inset:0;display:block;pointer-events:none;margin:0}.controls button{position:absolute;pointer-events:auto;border-radius:50%;min-height:0;min-width:0;padding:0;font-size:8px;box-shadow:0 3px 1px #08171e;background:#8b9ea6;color:#102830;border:1px solid #bdccd0;aspect-ratio:1}
+.controls button.down{transform:translate(-50%,-50%) translateZ(-1px)!important;background:#c3e9e5}
+.oled{right:auto;bottom:auto;font-size:12px;line-height:18px;padding:12px 7px}
+.device-state{top:88px;left:10px;right:10px;font-size:9px;gap:2px 5px}.device-state .status{font-size:9px}#range{font-size:9px}
+.pad{width:97.58px;height:84.5px;font-size:16px}.device:not(.show-labels) .pad>*{visibility:hidden}
+.right-face .power-switch{position:absolute;transform:translate(-50%,-50%);width:16px;height:42px;min-height:0;min-width:0;padding:0;border:2px solid #435c67;background:#081820;border-radius:4px;font-size:0;color:transparent;box-shadow:inset 0 2px 5px #000}
+.power-switch:after{content:"";position:absolute;left:2px;right:2px;top:3px;height:14px;background:#a2b3ba;border-radius:2px}.power-switch[aria-pressed=true]:after{top:21px;background:#9de4d6}.power-legend{position:absolute;left:61%;top:14%;font-size:9px;color:#a9bcc5}
+.port-usb,.port-phones{position:absolute;transform:translate(-50%,-50%);background:#071217;border:2px solid #82969f;box-shadow:0 0 0 2px #0d1e27}
+.port-usb{width:52.82px;height:21.13px;border-radius:9px}.port-usb i{position:absolute;left:9px;right:9px;top:7px;height:4px;background:#455c68}.port-phones{width:31.69px;height:31.69px;border-radius:50%}
+.plug{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateZ(6px);background:#56646a;border:1px solid #9daab0;box-shadow:0 8px 12px #0008}.show-cables .plug{display:block}.usb-plug{width:63px;height:37px;border-radius:5px}.phones-plug{width:35px;height:35px;border-radius:50%}.plug:after{content:"";display:block;position:absolute;left:50%;top:100%;width:9px;height:100px;border-radius:5px;background:#222c32;transform:translateX(-50%)}
+.back-speaker{position:absolute;transform:translate(-50%,-50%);width:158.45px;height:105.63px;border-radius:12px;background:repeating-linear-gradient(90deg,#101e25 0 3px,#344b58 3px 8px);border:1px solid #49616e}.back-speaker.selected{border-color:#99d9d0}
+.grip-zone{display:none;position:absolute;left:0;right:0;top:27.83%;height:58.1%;background:repeating-linear-gradient(45deg,#f2b44f44 0 8px,#e4b65415 8px 16px);border:1px dashed #d6aa64;pointer-events:none}.show-grip .grip-zone{display:block}.back-grip{left:0;right:auto;width:30%}
+.review-toolbar{font-size:12px}.review-toolbar label{display:flex;align-items:center;gap:3px}.view-buttons{gap:5px;margin-bottom:10px}.view-buttons button{font-size:12px;padding:5px 8px;min-height:34px}.view-caption{font-size:13px;line-height:1.7;margin:0 0 10px;max-width:390px;min-height:66px}.device-brand{font-size:9px;left:18px;top:10px}.listen-toggle,.hold-toggle{font-size:9px;top:5px}
+@media(max-width:700px){.layout{grid-template-columns:1fr}.model-stage{width:350px;height:750px;transform:scale(.88);transform-origin:center center;margin:-35px 0}.device{width:300px;height:690.85px}.left{overflow:visible}.review-toolbar{max-width:350px}.view-caption{max-width:350px}.controls{inset:0}.device-state{top:88px}}
+
+.plug{width:var(--pw);height:var(--ph);transform:translate(-50%,-50%);transform-style:preserve-3d;background:transparent;border:0;box-shadow:none}.plug:after{content:none}
+.plug-end,.plug-top,.plug-bottom,.plug-left,.plug-right{position:absolute;display:block;background:#52616a;border:1px solid #85959c;transform-style:preserve-3d;backface-visibility:visible}
+.port-usb .plug-end,.plug-end{inset:0;width:var(--pw);height:var(--ph);transform:translateZ(var(--pl));border-radius:4px;background:#35444c}
+.plug-top{width:var(--pw);height:var(--pl);left:0;top:0;transform-origin:center top;transform:rotateX(90deg)}.plug-bottom{width:var(--pw);height:var(--pl);left:0;top:100%;transform-origin:center top;transform:rotateX(90deg)}
+.plug-left{width:var(--pl);height:var(--ph);left:0;top:0;transform-origin:left center;transform:rotateY(-90deg)}.plug-right{width:var(--pl);height:var(--ph);left:100%;top:0;transform-origin:left center;transform:rotateY(-90deg)}
+.cord{position:absolute;left:calc(50% - 5px);top:50%;width:10px;height:110px;background:#25333b;border-radius:5px;transform-origin:center top;transform:rotateX(90deg)}
+
+.device{transform-origin:50% 50% calc(-.5 * var(--depth))}.port-usb,.port-phones{transform-style:preserve-3d}.device-state{top:100px}
+
+#display-frame{position:absolute;background:#14262f;border:1px solid #45606c;border-radius:4px}.oled{top:27.66%!important;left:18.91%!important;right:auto!important;width:62.18%!important;height:44.67%!important;padding:2px 0!important;font-size:10px;line-height:12px;border:0;border-radius:0;background:#061318;color:#e5f5f3;overflow:hidden}
+
+.simulation-tools{margin-bottom:8px}.simulation-tools .hold-toggle,.simulation-tools .listen-toggle{position:static;color:#344d5b;font-size:12px}.device-state{position:static;color:#385563;max-width:350px;margin:0 auto 12px;pointer-events:auto}.device-state .status{color:#314e5b;background:#e0ebef}#range{color:#55717f}
+.case-screw{position:absolute;transform:translate(-50%,-50%);width:23px;height:23px;border-radius:50%;background:#13242b;border:1px solid #8e9ca3;color:#a4b1b7;text-align:center;font-size:18px;line-height:21px}.structure-image{width:100%;height:auto}
+.model-stage{height:600px}.pad{font-size:13px;padding:3px}.pad small{font-size:8px}.oled{font-size:8px;line-height:9px;padding:1px 0!important}.case-screw{width:15px;height:15px;font-size:12px;line-height:13px}.hardware-frame{width:100%;height:650px;border:1px solid #dce3e7;border-radius:10px}.a2-status{font-size:12px;color:#526373}.controls button{font-size:7px}.port-usb i{left:20%;right:20%;top:40%;height:3px}
+@media(max-width:700px){.model-stage{height:580px;margin:-20px 0}.hardware-frame{height:640px}}
+</style>
+<main id="simulator">
+<header><div class="eyebrow">KALIMPAD / HARDWARE A2</div><h1>押す。鳴る。光る。</h1><p>操作とA2基板の内部3Dを並べて確認できます。USB・イヤホンは上端、電源は右側面。外形80.8×130.8×37.8mmは収納予約です。演奏面・ケース開口・部品の高さには未確定部分があります。</p></header>
+<div class="layout"><section class="left" aria-label="デバイスの操作">
+<div class="review-toolbar"><div class="row simulation-tools"><label class="hold-toggle" title="マウス用：演奏キーとOCTをクリックで保持、再クリックで離します。実機のボタンではありません"><input id="hold-input" type="checkbox">保持</label><label class="listen-toggle" title="ブラウザーの試聴。実機の追加スイッチではありません"><input id="listen" type="checkbox">試聴</label></div><div class="row view-buttons" aria-label="見る方向"><button data-view="front">正面</button><button data-view="angle">立体</button><button data-view="top">上端 USB・イヤホン</button><button data-view="right">右側 電源</button><button data-view="bottom">下端</button><button data-view="back">背面</button></div><div class="row"><label><input id="show-cables" type="checkbox">仮のケーブル</label><label><input id="show-grip" type="checkbox">握り範囲の目安</label><label><input id="show-labels" type="checkbox" checked>音名の補助表示</label></div></div>
+<div class="model-stage"><div class="device show-labels" id="device" aria-label="8キー試作機の操作モデル">
+<div id="front-face" class="body-face front-face"><div class="device-brand">kalimpad <span>POC · 8</span></div>
+
+
+
+<div id="display-frame"><div class="oled" id="oled" aria-label="本体画面">POWER OFF</div></div>
+<div class="controls" id="controls" aria-label="本体の5操作ボタン">
+<button data-input="mode" title="調整する項目を選ぶ">MODE</button><button data-input="minus" aria-label="値を下げる">−</button><button data-input="plus" aria-label="値を上げる">＋</button><button data-input="octaveMinus" title="離すと1オクターブ下げる">OCT−</button><button data-input="octavePlus" title="離すと1オクターブ上げる">OCT＋</button>
+</div>
+
+</div>
+<div class="body-face right-face"><div class="grip-zone"></div><button id="power" class="power-switch" aria-label="電源を入れる" aria-pressed="false" title="側面の電源スイッチ">⏻</button><span class="power-legend">OFF　ON</span></div>
+<div class="body-face left-face"><div class="grip-zone"></div></div>
+<div class="body-face top-face"><div id="usb-port" class="port-usb" role="img" aria-label="上端のUSB-C給電口"><i></i><span class="plug usb-plug"></span></div><div id="headphone-port" class="port-phones" role="img" aria-label="上端の3.5mmイヤホン端子"><span class="plug phones-plug"></span></div></div>
+<div class="body-face bottom-face"></div>
+<div class="body-face back-face"><div id="speaker" class="back-speaker" aria-label="背面スピーカーの開口案"></div><div class="back-grip grip-zone"></div></div>
+</div></div><p id="view-caption" class="view-caption"></p><div class="device-state"><span id="phase" class="status">電源OFF</span><span id="setting-help">側面の⏻で起動</span><span id="range"></span></div>
+<div class="row legend"><span><i class="dot" style="background:var(--root)"></i>ルート</span><span><i class="dot" style="background:var(--scale)"></i>音階</span><span><i class="dot" style="background:var(--on)"></i>押下</span></div>
+<p class="caption operation-help">右側面の電源をクリックして起動し、正面に戻して演奏。本体のMODEで項目を選び、−／＋で変更。OCTは離すと変更、両方を1秒押すと全音停止。マウスで和音・両押しを試す場合はモデル上の操作欄の「保持」をONにし、キーを順にクリック。再クリックか保持OFFで離します。</p>
+<p id="audio-status" class="caption">モデル上の操作欄の「試聴」で音をON。簡易音源です。</p>
+</section><section aria-label="内部の動作とユーザーテスト">
+<div class="panel"><h2>A2 内部3D</h2><p class="a2-status">実配線済みKiCadから75部品を表示。橙は8部品・画面・スピーカー等の仮予約です。キーを押すと関連部品が緑になります。電気回路の計算ではありません。</p><iframe id="hardware-view" class="hardware-frame" title="A2基板と内部構造、操作連動表示" src="internal.html"></iframe><p class="caption"><a href="internal.html" target="_blank">3Dを大きく開く</a> · <a href="board-front.svg" target="_blank">表面の銅配線</a> · <a href="board-back.svg" target="_blank">裏面の銅配線</a> · <a href="notes.html">設計と残件</a></p></div><div class="panel"><div class="row toolbar"><h2>どこが動く？</h2><span class="subtle">直近の操作を表示</span></div><div class="flow">
+<div class="stage" data-node="power"><div class="stepnum">給電</div><div><b>電源 → 全部品</b><small>側面スイッチ → TPS2553 → 5Vと2系統の3.3V</small></div></div>
+<div class="stage" data-node="input"><div class="stepnum">01</div><div><b>接点を読む</b><small id="input-detail">スイッチ → MCP23017 → 制御I2C GPIO5/6</small></div></div>
+<div class="stage" data-node="controller"><div class="stepnum">02</div><div><b>音を決める</b><small id="controller-detail">XIAO ESP32S3：キー＋オクターブ＋位置 → 音高</small></div></div>
+<div class="stage" data-node="audio"><div class="stepnum">03</div><div><b>音を出す</b><small id="output-detail">XIAOの音データ → WM8960 → スピーカー</small></div></div>
+<div class="stage" data-node="led"><div class="stepnum">04</div><div><b>キーと隙間を光らせる</b><small id="led-detail">GPIO2 → 電圧変換 → 8個のRGB LED</small></div></div>
+<div class="stage" data-node="display"><div class="stepnum">表示</div><div><b>設定を画面へ</b><small>共通CTRL I2C GPIO5/6 → J5 → OLED。音声設定はU11で別電源側へ渡します。GPIO43/44はUART保守用です。</small></div></div>
+</div><div id="live" class="live" role="status" aria-live="polite">まず電源を入れて、左下のドを押してください。</div></div>
+<div class="panel"><h2>試してみる</h2><div class="checks" id="checks">
+<label><input type="checkbox" data-check="single">左下ドを押す。音名・入力端子・点灯を確認する</label>
+<label><input type="checkbox" data-check="chord">PCの A・S・D を一緒に押して和音にする</label>
+<label><input type="checkbox" data-check="transpose">Aを保持したまま＋。一度離すまで再発音しない</label>
+<label><input type="checkbox" data-check="root">電源を入れ直し、MODEを1回→＋。C4がR1に移り、左下がB3、R1がルート色になる</label>
+<label><input type="checkbox" data-check="panic">音を出し、Z・Xを1秒同時押し。移調せず停止する</label>
+<label><input type="checkbox" data-check="power">電源OFFで停止。ONに戻すとC4で起動する</label>
+</div><div class="row"><button id="export">テスト記録を保存</button><span class="caption">チェックは自分で確認した項目です。</span></div></div>
+<details class="panel"><summary>キー操作・再現範囲・故障を試す</summary>
+<p>左列は下から A・S・D・F、右列は J・K・L・;。MODE=M、−=マイナス、＋=イコール、OCT−=Z、OCT＋=X。タッチ画面では複数指にも対応。マウスはキーを押している間だけ押下します。</p>
+<p>このモデルは既存アプリと同じ移調・音名処理を使います。音色はカリンバ／シンセの操作案を試し、試聴は簡易波形です。イヤホン選択は機器内の切替の表示だけで、PCの出力先は変更しません。起動800ms・設定変更600msは見やすくした仮の待ち時間。LEDのにじみも光学計算ではありません。</p>
+<p>キー変更は調を、OCTは基準音の高さを変更します。ROOTはその基準音を置く場所を変更し、音域を低音側／高音側へ振り分けます。色も新しいルート位置に追従します。物理キーに表示した音名は説明用で、実物のキーへの表示機能ではありません。</p>
+<div class="row test-tools"><button id="fault" aria-pressed="false">入力通信を途絶させる</button><span class="caption">復旧後は電源を入れ直す。</span></div>
+</details>
+<details class="panel" open><summary>操作履歴</summary><ol class="log" id="log"></ol></details>
+</section></div></main>
+<script>(()=>{const modules={"device/simulator/browser.ts":function(module,exports,require){
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const exterior_json_1 = __importDefault(require("device/simulator/exterior.json"));
+const hardware_1 = require("device/simulator/hardware.ts");
+const exterior_1 = require("device/simulator/exterior.ts");
+const model_1 = require("device/simulator/model.ts");
+const spelling_1 = require("src/domain/spelling.ts");
+const layout_8key_left_C_json_1 = __importDefault(require("hardware/poc-01/mechanical/layout-8key-left-C.json"));
+const m = new model_1.DeviceModel();
+const $ = (id) => document.getElementById(id);
+const now = () => performance.now();
+const bindings = { KeyA: 'L1', KeyS: 'L2', KeyD: 'L3', KeyF: 'L4', KeyJ: 'R1', KeyK: 'R2', KeyL: 'R3', Semicolon: 'R4', KeyM: 'mode', Minus: 'minus', Equal: 'plus', KeyZ: 'octaveMinus', KeyX: 'octavePlus' };
+const labels = ['キー', 'ルート位置', '音色', '音量', '余韻', '出力先'];
+const sources = new Map();
+let connected = true, lastSequence = 0, context = null, master = null;
+const voices = new Set();
+function stopAudio() { if (!context)
+    return; for (const v of voices) {
+    v.gain.gain.cancelScheduledValues(context.currentTime);
+    v.gain.gain.setTargetAtTime(0, context.currentTime, .004);
+    v.osc.stop(context.currentTime + .03);
+} voices.clear(); }
+function play(key, midi) {
+    if (!$('listen').checked || !context || context.state !== 'running' || !master)
+        return;
+    const t = context.currentTime, osc = context.createOscillator(), gain = context.createGain(), hold = m.settings.timbre === 1;
+    osc.type = 'sine';
+    osc.frequency.value = 440 * Math.pow(2, (midi - 69) / 12);
+    osc.connect(gain).connect(master);
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(.15, t + .008);
+    const voice = { osc, gain, key, hold };
+    voices.add(voice);
+    osc.onended = () => { voices.delete(voice); gain.disconnect(); osc.disconnect(); };
+    osc.start();
+    if (!hold) {
+        const length = 2.8 * m.settings.noteLength / 100;
+        gain.gain.exponentialRampToValueAtTime(.0001, t + length);
+        osc.stop(t + length + .02);
+    }
+}
+function releaseAudio(key) { if (!context)
+    return; for (const v of voices) {
+    if (v.key === key && v.hold) {
+        v.gain.gain.cancelScheduledValues(context.currentTime);
+        v.gain.gain.setTargetAtTime(0, context.currentTime, .07);
+        v.osc.stop(context.currentTime + .45);
+        v.hold = false;
+    }
+} }
+function input(id, source, down) { m.tick(now()); const set = sources.get(id) || new Set(); down ? set.add(source) : set.delete(source); sources.set(id, set); m.input(id, set.size > 0, now()); }
+for (const key of layout_8key_left_C_json_1.default.keys) {
+    const x = 100 * (key.x + exterior_json_1.default.body.originOffset) / exterior_json_1.default.body.width, y = 100 * (128.4 - key.y) / 130.8;
+    const glow = document.createElement('div');
+    glow.className = 'gaplight';
+    glow.id = 'glow-' + key.id;
+    glow.style.left = x + '%';
+    glow.style.top = (y + 100 * 4.7 / 130.8) + '%';
+    $('front-face').append(glow);
+    const b = document.createElement('button');
+    b.className = 'pad';
+    b.dataset.input = key.id;
+    b.id = 'pad-' + key.id;
+    b.style.left = x + '%';
+    b.style.top = y + '%';
+    b.style.width = 18.475 / exterior_json_1.default.body.width * 100 + '%';
+    b.style.height = 16 / exterior_json_1.default.body.length * 100 + '%';
+    b.innerHTML = '<strong></strong><small></small>';
+    $('front-face').append(b);
+}
+for (const button of document.querySelectorAll('[data-input]')) {
+    const id = button.dataset.input;
+    button.addEventListener('pointerdown', e => { if (e.button !== 0)
+        return; e.preventDefault(); button.focus(); if (e.pointerType === 'mouse' && $('hold-input').checked && (model_1.keyIds.includes(id) || id.startsWith('octave'))) {
+        input(id, 'held', !sources.get(id)?.has('held'));
+        return;
+    } button.setPointerCapture(e.pointerId); input(id, 'p' + e.pointerId, true); });
+    const up = (e) => input(id, 'p' + e.pointerId, false);
+    button.addEventListener('pointerup', up);
+    button.addEventListener('lostpointercapture', up);
+    button.addEventListener('pointercancel', () => { sources.clear(); m.cancel(now()); });
+    button.addEventListener('keydown', e => { if ((e.code === 'Space' || e.code === 'Enter') && !e.repeat) {
+        e.preventDefault();
+        input(id, 'focused', true);
+    } });
+    button.addEventListener('keyup', e => { if (e.code === 'Space' || e.code === 'Enter') {
+        e.preventDefault();
+        input(id, 'focused', false);
+    } });
+}
+window.addEventListener('keydown', e => { const id = bindings[e.code]; if (!id || e.repeat || e.metaKey || e.ctrlKey || e.altKey)
+    return; if (e.target.matches('textarea,input:not([type=checkbox]):not([type=radio]),select'))
+    return; e.preventDefault(); input(id, 'k' + e.code, true); });
+window.addEventListener('keyup', e => { const id = bindings[e.code]; if (id) {
+    e.preventDefault();
+    input(id, 'k' + e.code, false);
+} });
+window.addEventListener('blur', () => { sources.clear(); m.cancel(now()); stopAudio(); });
+document.addEventListener('visibilitychange', () => { if (document.hidden) {
+    sources.clear();
+    m.cancel(now());
+    stopAudio();
+} });
+$('hold-input').onchange = () => { if (!$('hold-input').checked)
+    for (const id of sources.keys())
+        input(id, 'held', false); };
+$('power').onclick = () => m.power(m.phase === 'Off', now());
+$('fault').onclick = () => { connected = !connected; m.connection(connected, now()); $('fault').setAttribute('aria-pressed', String(!connected)); $('fault').textContent = connected ? '入力通信を途絶させる' : '入力通信を復旧する'; };
+$('listen').onchange = async () => {
+    if (!$('listen').checked) {
+        stopAudio();
+        $('audio-status').textContent = '音はOFF。動きは引き続き試せます。';
+        return;
+    }
+    try {
+        if (!context) {
+            context = new AudioContext();
+            master = context.createGain();
+            master.gain.value = m.settings.volume / 100;
+            master.connect(context.destination);
+        }
+        await context.resume();
+        $('audio-status').textContent = '簡易波形で音高を試聴中。完成品の音質ではありません。';
+    }
+    catch {
+        $('audio-status').textContent = 'この環境では試聴を開始できません。画面上の動作確認は使えます。';
+        $('listen').checked = false;
+    }
+};
+$('export').onclick = () => { const checked = Array.from(document.querySelectorAll('[data-check]')).filter(x => x.checked).map(x => x.dataset.check); const data = { createdAt: new Date().toISOString(), kind: '操作モデルの手動確認。実機受入ではない', checked, settings: m.settings, events: m.events }; const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })); const a = document.createElement('a'); a.href = url; a.download = 'kalimpad-user-test.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); };
+let sentState = '';
+const frame = $('hardware-view');
+frame.addEventListener('load', () => { sentState = ''; });
+window.addEventListener('message', e => {
+    if (e.source !== frame.contentWindow)
+        return;
+    if (e.data?.type === 'kalimpad-a2-ready')
+        sentState = '';
+    if (e.data?.type === 'kalimpad-a2-key' && typeof e.data.code === 'string' && typeof e.data.down === 'boolean') {
+        const id = bindings[e.data.code];
+        if (id)
+            input(id, 'frame-' + e.data.code, e.data.down);
+    }
+    if (e.data?.type === 'kalimpad-a2-cancel') {
+        sources.clear();
+        m.cancel(now());
+        stopAudio();
+    }
+});
+function render() {
+    m.tick(now());
+    $('power').setAttribute('aria-label', m.phase === 'Off' ? '電源を入れる' : '電源を切る');
+    $('power').setAttribute('aria-pressed', String(m.phase !== 'Off'));
+    $('phase').textContent = ({ Off: '電源OFF', Preparing: '準備中', Ready: '演奏できます', Fault: '入力異常' })[m.phase];
+    const rootId = m.notes().find(n => n.midi === 12 * (m.settings.octave + 1) + (0, spelling_1.keyPc)(m.settings.keyIndex)).id;
+    const values = [(0, spelling_1.keyName)(m.settings.keyIndex), rootId, m.settings.timbre ? 'SYNTH' : 'KALIMBA', m.settings.volume + '%', m.settings.noteLength + '%', m.settings.output === 'speaker' ? 'SPK' : 'PHONE'];
+    const english = ['KEY', 'ROOT', 'TONE', 'VOL', 'TAIL', 'OUT'];
+    $('oled').textContent = m.phase === 'Off' ? 'POWER OFF' : `${(0, spelling_1.keyName)(m.settings.keyIndex)}${m.settings.octave}  ${values[2]}\n${m.phase === 'Fault' ? 'FAULT / RESTART' : m.phase === 'Preparing' ? 'PREPARING...' : english[m.mode] + ' ' + values[m.mode]}`;
+    $('setting-help').textContent = m.phase === 'Off' ? '⏻で起動 → MODEで項目選択' : `${labels[m.mode]} · − / ＋で変更`;
+    const pitches = m.notes().slice().sort((a, b) => a.midi - b.midi);
+    $('range').textContent = m.phase === 'Off' ? 'USB給電 · 8キー' : `音域 ${pitches[0].name} — ${pitches[pitches.length - 1].name}`;
+    $('speaker').classList.toggle('selected', m.phase !== 'Off' && m.settings.output === 'speaker');
+    $('headphone-port').classList.toggle('selected', m.phase !== 'Off' && m.settings.output === 'headphones');
+    $('oled').setAttribute('aria-label', m.phase === 'Off' ? '電源OFF' : `${labels[m.mode]} ${values[m.mode]}`);
+    for (const n of m.notes()) {
+        const b = $('pad-' + n.id), kind = m.phase === 'Off' ? 'off' : n.pressed ? 'on' : n.root ? 'root' : '';
+        b.className = 'pad ' + kind;
+        $('glow-' + n.id).className = 'gaplight ' + kind;
+        b.setAttribute('aria-pressed', String(n.pressed));
+        b.setAttribute('aria-label', `${n.id} ${n.name}${n.root ? ' ルート' : ''}`);
+        b.querySelector('strong').textContent = n.name;
+        b.querySelector('small').textContent = n.id + ' / ' + ({ L1: 'A', L2: 'S', L3: 'D', L4: 'F', R1: 'J', R2: 'K', R3: 'L', R4: ';' }[n.id]);
+    }
+    for (const b of document.querySelectorAll('#controls [data-input]'))
+        b.classList.toggle('down', m.contacts.get(b.dataset.input).stable);
+    if (master && context)
+        master.gain.setTargetAtTime(m.settings.volume / 100, context.currentTime, .02);
+    $('led-detail').textContent = `GPIO2 → U6 SN74LV1T125 → RGB LED。ルート：${m.notes().filter(n => n.root).map(n => n.id).join('・')}`;
+    $('output-detail').textContent = `GPIO9の音データ → U12 → WM8960 → ${m.settings.output === 'speaker' ? 'スピーカー' : 'イヤホン'}（クロックはWM8960側）`;
+    const pending = m.events.filter(e => e.seq > lastSequence);
+    for (const e of pending) {
+        if (e.type === 'noteOn')
+            play(e.key, e.midi);
+        if (e.type === 'noteOff')
+            releaseAudio(e.key);
+        if (e.type === 'stop')
+            stopAudio();
+    }
+    if (pending.length) {
+        lastSequence = pending[pending.length - 1].seq;
+        const e = pending[pending.length - 1];
+        $('live').textContent = e.text;
+        const activated = new Set(pending.flatMap(x => x.nodes));
+        for (const stage of document.querySelectorAll('[data-node]'))
+            stage.classList.toggle('active', activated.has(stage.dataset.node));
+        const keyEvent = [...pending].reverse().find(x => x.key);
+        if (keyEvent) {
+            const n = m.notes().find(x => x.id === keyEvent.key);
+            $('input-detail').textContent = `${(0, hardware_1.keyPath)(n.id)}（${n.input}）`;
+            $('controller-detail').textContent = `${(0, spelling_1.keyName)(m.settings.keyIndex)}${m.settings.octave}の設定：${n.id} = ${n.name} / MIDI ${n.midi}`;
+            $('led-detail').textContent = `GPIO2 → U6 SN74LV1T125 → LED ${n.led + 1}（${n.id}）。ルートは${m.notes().filter(n => n.root).map(n => n.id).join("・")}`;
+        }
+        $('log').replaceChildren(...[...m.events].reverse().slice(0, 25).map(e => { const li = document.createElement('li'); li.textContent = `${(e.at / 1000).toFixed(2)}s  ${e.text}`; return li; }));
+    }
+    const state = (0, hardware_1.hardwareState)(m), signature = JSON.stringify(state);
+    if (signature !== sentState) {
+        frame.contentWindow?.postMessage(state, '*');
+        sentState = signature;
+    }
+    requestAnimationFrame(render);
+}
+(0, exterior_1.setupExterior)();
+render();
+
+},"device/simulator/exterior.json":function(module,exports,require){
+module.exports={
+  "revision": "A2-exterior-02",
+  "status": "A2実装座標とME-005外形予約に同期した操作案。開口・高さ・完成ケースは未確定",
+  "manufacturingApproved": false,
+  "body": {
+    "width": 80.8,
+    "length": 130.8,
+    "depth": 37.8,
+    "originOffset": 14.4,
+    "depthStatus": "37.8mmはME-005の予約。全体3D受入前"
+  },
+  "controls": {
+    "ids": [
+      "mode",
+      "minus",
+      "plus",
+      "octaveMinus",
+      "octavePlus"
+    ],
+    "x": [
+      6,
+      16,
+      26,
+      36,
+      46
+    ],
+    "y": 101,
+    "diameter": 6,
+    "protrusion": 1,
+    "status": "キャップの設計案"
+  },
+  "display": {
+    "x": 8,
+    "y": 110,
+    "width": 36,
+    "length": 12.5,
+    "activeAreaReferenceMm": [
+      22.384,
+      5.584
+    ],
+    "source": "https://m.media-amazon.com/images/I/A1UehglzgsL.pdf",
+    "status": "Waveshareメーカー資料の有効領域を参考表示。購入版の窓位置・固定は未確定"
+  },
+  "usb": {
+    "face": "top",
+    "x": 35,
+    "z": 10.6,
+    "openingWidth": 10,
+    "openingHeight": 4,
+    "status": "J1のA2実装X座標。開口径・高さは仮予約、保証寸法ではない"
+  },
+  "phones": {
+    "face": "top",
+    "x": 49,
+    "z": 12.1,
+    "openingDiameter": 6,
+    "status": "J2のA2実装X座標。開口径・高さは仮予約、保証寸法ではない"
+  },
+  "power": {
+    "face": "right",
+    "y": 108,
+    "z": 10.6,
+    "length": 8,
+    "height": 3,
+    "status": "A2 SW1の基板Y座標に同期。高さと筐体の凹みは予約"
+  },
+  "speaker": {
+    "face": "back",
+    "x": 26,
+    "y": 86,
+    "width": 30,
+    "length": 20,
+    "status": "A2積層のスピーカー予約中心。背面開口・音の出口は未設計"
+  },
+  "grip": {
+    "yMin": 16,
+    "yMax": 92,
+    "status": "仮の握り範囲。個人の手の大きさ・持ち方は未測定"
+  },
+  "cable": {
+    "usbPlugWidth": 12,
+    "usbPlugHeight": 7,
+    "usbPlugLength": 18,
+    "phonesPlugLength": 22,
+    "measured": false,
+    "status": "比較用の仮プラグ。購入ケーブルの寸法ではない"
+  }
+}
+;
+},"device/simulator/hardware.ts":function(module,exports,require){
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.keyPath = keyPath;
+exports.hardwareState = hardwareState;
+const hardware_a2_json_1 = __importDefault(require("device/simulator/hardware-a2.json"));
+function keyPath(id) {
+    const nodes = hardware_a2_json_1.default.nets[`KEY_${id}`] || [];
+    return `${id} → ${nodes.filter(p => p.startsWith('J4.')).join(' / ')} → ${nodes.filter(p => p.startsWith('U2.')).join(' / ')} → CTRL I2C → XIAO`;
+}
+function hardwareState(model) {
+    const keys = model.notes(), on = model.phase !== 'Off', playing = keys.some(k => k.pressed);
+    const refs = on ? ['M1', 'J5'] : [];
+    if (playing)
+        refs.push('J4', 'U2', 'U12', 'U4', 'U6', model.settings.output === 'speaker' ? 'J3' : 'J2');
+    return { type: 'kalimpad-a2-state', on, keys: keys.map(({ id, root, pressed }) => ({ id, root, pressed })), refs,
+        text: !on ? '電源OFF。形状はA2、橙色は未確定の収納予約。' : playing ? `${keys.filter(k => k.pressed).map(k => k.name).join(' + ')}：入力J4/U2 → XIAO → 音声U12/U4・LED U6。緑は設計上の関係を示し、電流の計算ではありません。` : '演奏待機。画面はM1 → 共通CTRL I2C → J5。キーを押すと入力・音声・LEDの関連部品を強調します。' };
+}
+
+},"device/simulator/hardware-a2.json":function(module,exports,require){
+module.exports={
+  "revision": "A2",
+  "nets": {
+    "AUDIO_OE_N": [
+      "M1.1",
+      "R132.2",
+      "U12.14",
+      "U12.15"
+    ],
+    "AUDIO_SCL": [
+      "R1100.2",
+      "U11.7",
+      "U4.17"
+    ],
+    "AUDIO_SDA": [
+      "R1101.2",
+      "U11.6",
+      "U4.18"
+    ],
+    "BCLK_AUDIO_FILT": [
+      "R41.2",
+      "U12.13"
+    ],
+    "BCLK_CODEC": [
+      "R41.1",
+      "U4.12"
+    ],
+    "BTN_1": [
+      "J4.15",
+      "R108.2",
+      "U2.25"
+    ],
+    "BTN_2": [
+      "J4.16",
+      "R109.2",
+      "U2.26"
+    ],
+    "BTN_3": [
+      "J4.17",
+      "R110.2",
+      "U2.27"
+    ],
+    "BTN_4": [
+      "J4.18",
+      "R111.2",
+      "U2.5"
+    ],
+    "BTN_5": [
+      "J4.19",
+      "R112.2",
+      "U2.6"
+    ],
+    "BUCK_SW": [
+      "L1.1",
+      "U5.7"
+    ],
+    "CC_CURRENT_N": [
+      "R82.2",
+      "U10.2",
+      "U8.7"
+    ],
+    "CTRL_SCL": [
+      "J5.1",
+      "M1.6",
+      "R23.2",
+      "U11.2",
+      "U2.12",
+      "U3.12"
+    ],
+    "CTRL_SDA": [
+      "J5.2",
+      "M1.5",
+      "R22.2",
+      "U11.3",
+      "U2.13",
+      "U3.13"
+    ],
+    "DACDATA_CODEC": [
+      "R43.2",
+      "U4.14"
+    ],
+    "DACDATA_LINK": [
+      "R43.1",
+      "U12.11"
+    ],
+    "DIODE_STATUS": [
+      "R6.1",
+      "U7.5"
+    ],
+    "FUTURE_L1": [
+      "J4.20",
+      "U3.21"
+    ],
+    "FUTURE_L2": [
+      "J4.21",
+      "U3.22"
+    ],
+    "FUTURE_L3": [
+      "J4.22",
+      "U3.23"
+    ],
+    "FUTURE_L4": [
+      "J4.23",
+      "U3.24"
+    ],
+    "FUTURE_R1": [
+      "J4.24",
+      "U3.1"
+    ],
+    "FUTURE_R2": [
+      "J4.25",
+      "U3.2"
+    ],
+    "FUTURE_R3": [
+      "J4.26",
+      "U3.3"
+    ],
+    "FUTURE_R4": [
+      "J4.27",
+      "U3.4"
+    ],
+    "GND": [
+      "C1.2",
+      "C110.2",
+      "C111.2",
+      "C120.2",
+      "C121.2",
+      "C130.2",
+      "C2.2",
+      "C21.2",
+      "C22.2",
+      "C23.2",
+      "C40.2",
+      "C41.2",
+      "C42.2",
+      "C43.2",
+      "C44.2",
+      "C45.2",
+      "C46.2",
+      "C49.2",
+      "C50.2",
+      "C51.2",
+      "C52.2",
+      "C81.2",
+      "C91.2",
+      "C92.2",
+      "C93.2",
+      "J1.A1",
+      "J1.A12",
+      "J1.B1",
+      "J1.B12",
+      "J1.SH",
+      "J2.S",
+      "J4.1",
+      "J4.29",
+      "J4.30",
+      "J4.4",
+      "J4.6",
+      "J5.3",
+      "J6.1",
+      "M1.13",
+      "R133.2",
+      "R24.2",
+      "R3.2",
+      "R4.2",
+      "R6.2",
+      "SW1.3",
+      "TP1.1",
+      "U1.2",
+      "U10.3",
+      "U11.4",
+      "U12.2",
+      "U12.8",
+      "U12.9",
+      "U13.1",
+      "U13.3",
+      "U2.10",
+      "U2.15",
+      "U2.16",
+      "U2.17",
+      "U3.10",
+      "U3.16",
+      "U3.17",
+      "U4.20",
+      "U4.24",
+      "U4.28",
+      "U4.33",
+      "U4.9",
+      "U5.1",
+      "U5.4",
+      "U5.5",
+      "U5.9",
+      "U6.1",
+      "U6.3",
+      "U7.2",
+      "U8.10",
+      "U8.11",
+      "U8.3",
+      "U9.2",
+      "Y1.2"
+    ],
+    "HP_L": [
+      "C47.1",
+      "U4.31"
+    ],
+    "HP_R": [
+      "C48.1",
+      "U4.29"
+    ],
+    "I2S_BCLK": [
+      "M1.9",
+      "U12.4"
+    ],
+    "I2S_DOUT": [
+      "M1.11",
+      "U12.6"
+    ],
+    "I2S_LRCLK": [
+      "M1.10",
+      "U12.5"
+    ],
+    "ILIM": [
+      "R4.1",
+      "U1.5"
+    ],
+    "JACK_L": [
+      "C47.2",
+      "J2.T"
+    ],
+    "JACK_R": [
+      "C48.2",
+      "J2.R"
+    ],
+    "KEY_L1": [
+      "J4.7",
+      "R100.2",
+      "U2.21"
+    ],
+    "KEY_L2": [
+      "J4.8",
+      "R101.2",
+      "U2.22"
+    ],
+    "KEY_L3": [
+      "J4.9",
+      "R102.2",
+      "U2.23"
+    ],
+    "KEY_L4": [
+      "J4.10",
+      "R103.2",
+      "U2.24"
+    ],
+    "KEY_R1": [
+      "J4.11",
+      "R104.2",
+      "U2.1"
+    ],
+    "KEY_R2": [
+      "J4.12",
+      "R105.2",
+      "U2.2"
+    ],
+    "KEY_R3": [
+      "J4.13",
+      "R106.2",
+      "U2.3"
+    ],
+    "KEY_R4": [
+      "J4.14",
+      "R107.2",
+      "U2.4"
+    ],
+    "LED_DATA": [
+      "J4.5",
+      "R25.2"
+    ],
+    "LRCLK_AUDIO_FILT": [
+      "R42.2",
+      "U12.12"
+    ],
+    "LRCLK_CODEC": [
+      "R42.1",
+      "U4.13"
+    ],
+    "MCLK": [
+      "R40.2",
+      "U4.11"
+    ],
+    "MCLK_OSC": [
+      "R40.1",
+      "Y1.3"
+    ],
+    "MCP_RESET": [
+      "R21.2",
+      "TP7.1",
+      "U2.18",
+      "U3.18"
+    ],
+    "OC_FAULT": [
+      "R5.2",
+      "TP6.1",
+      "U1.4"
+    ],
+    "POWER_EN": [
+      "R3.1",
+      "SW1.2",
+      "U1.3"
+    ],
+    "RGB_3V3": [
+      "M1.2",
+      "R24.1",
+      "U6.2"
+    ],
+    "RGB_5V": [
+      "R25.1",
+      "U6.4"
+    ],
+    "SPK_N": [
+      "J3.2",
+      "U4.23"
+    ],
+    "SPK_P": [
+      "J3.1",
+      "U4.25"
+    ],
+    "SYS5V": [
+      "C23.1",
+      "C51.1",
+      "J4.2",
+      "J4.3",
+      "M1.14",
+      "TP3.1",
+      "U5.2",
+      "U5.3",
+      "U6.5",
+      "U7.3",
+      "U7.6"
+    ],
+    "UART_RX": [
+      "M1.8",
+      "U13.4"
+    ],
+    "UART_RX_IN": [
+      "J6.3",
+      "U13.2"
+    ],
+    "UART_TX": [
+      "M1.7",
+      "R130.1"
+    ],
+    "UART_TX_OUT": [
+      "J6.2",
+      "R130.2"
+    ],
+    "UNUSED_I2S_IN": [
+      "R133.1",
+      "U12.7"
+    ],
+    "USB_CC1": [
+      "J1.A5",
+      "U8.1"
+    ],
+    "USB_CC2": [
+      "J1.B5",
+      "U8.2"
+    ],
+    "USB_POWER_OK": [
+      "SW1.1",
+      "U10.4"
+    ],
+    "V3V3_AUDIO": [
+      "C111.1",
+      "C121.1",
+      "C40.1",
+      "C41.1",
+      "C42.1",
+      "C43.1",
+      "C44.1",
+      "C45.1",
+      "C50.1",
+      "C52.1",
+      "L1.2",
+      "R1100.1",
+      "R1101.1",
+      "TP5.1",
+      "U11.5",
+      "U11.8",
+      "U12.16",
+      "U4.10",
+      "U4.21",
+      "U4.26",
+      "U4.32",
+      "U4.8",
+      "U5.6",
+      "Y1.1",
+      "Y1.4"
+    ],
+    "V3V3_CC": [
+      "C81.1",
+      "C92.1",
+      "C93.1",
+      "R82.1",
+      "U10.5",
+      "U8.12",
+      "U9.5"
+    ],
+    "V3V3_LOGIC": [
+      "C110.1",
+      "C120.1",
+      "C130.1",
+      "C21.1",
+      "C22.1",
+      "J4.28",
+      "J5.4",
+      "M1.12",
+      "R100.1",
+      "R101.1",
+      "R102.1",
+      "R103.1",
+      "R104.1",
+      "R105.1",
+      "R106.1",
+      "R107.1",
+      "R108.1",
+      "R109.1",
+      "R110.1",
+      "R111.1",
+      "R112.1",
+      "R132.1",
+      "R21.1",
+      "R22.1",
+      "R23.1",
+      "TP4.1",
+      "U11.1",
+      "U12.1",
+      "U12.3",
+      "U13.5",
+      "U2.9",
+      "U3.15",
+      "U3.9"
+    ],
+    "V5_SWITCHED": [
+      "C2.1",
+      "U1.6",
+      "U7.1"
+    ],
+    "VBUS_DETECT": [
+      "R81.2",
+      "U8.4"
+    ],
+    "VBUS_IN": [
+      "C1.1",
+      "C91.1",
+      "J1.A4",
+      "J1.A9",
+      "J1.B4",
+      "J1.B9",
+      "R5.1",
+      "R81.1",
+      "TP2.1",
+      "U1.1",
+      "U9.1",
+      "U9.3"
+    ],
+    "VMID": [
+      "C46.1",
+      "C49.1",
+      "U4.27"
+    ],
+    "unconnected-(J1-PadA6)": [
+      "J1.A6"
+    ],
+    "unconnected-(J1-PadA7)": [
+      "J1.A7"
+    ],
+    "unconnected-(J1-PadA8)": [
+      "J1.A8"
+    ],
+    "unconnected-(J1-PadB6)": [
+      "J1.B6"
+    ],
+    "unconnected-(J1-PadB7)": [
+      "J1.B7"
+    ],
+    "unconnected-(J1-PadB8)": [
+      "J1.B8"
+    ],
+    "unconnected-(M1-BOTTOM15-Pad15)": [
+      "M1.15"
+    ],
+    "unconnected-(M1-BOTTOM16-Pad16)": [
+      "M1.16"
+    ],
+    "unconnected-(M1-BOTTOM17-Pad17)": [
+      "M1.17"
+    ],
+    "unconnected-(M1-BOTTOM18-Pad18)": [
+      "M1.18"
+    ],
+    "unconnected-(M1-BOTTOM19-Pad19)": [
+      "M1.19"
+    ],
+    "unconnected-(M1-BOTTOM20-Pad20)": [
+      "M1.20"
+    ],
+    "unconnected-(M1-BOTTOM21-Pad21)": [
+      "M1.21"
+    ],
+    "unconnected-(M1-BOTTOM22-Pad22)": [
+      "M1.22"
+    ],
+    "unconnected-(M1-BOTTOM23-Pad23)": [
+      "M1.23"
+    ],
+    "unconnected-(M1-BOTTOM24-Pad24)": [
+      "M1.24"
+    ],
+    "unconnected-(M1-BOTTOM25-Pad25)": [
+      "M1.25"
+    ],
+    "unconnected-(M1-D2_GPIO3-Pad3)": [
+      "M1.3"
+    ],
+    "unconnected-(M1-D3_GPIO4-Pad4)": [
+      "M1.4"
+    ],
+    "unconnected-(U2-GPA7-Pad28)": [
+      "U2.28"
+    ],
+    "unconnected-(U2-GPB6-Pad7)": [
+      "U2.7"
+    ],
+    "unconnected-(U2-GPB7-Pad8)": [
+      "U2.8"
+    ],
+    "unconnected-(U2-INTA-Pad20)": [
+      "U2.20"
+    ],
+    "unconnected-(U2-INTB-Pad19)": [
+      "U2.19"
+    ],
+    "unconnected-(U2-NC-Pad11)": [
+      "U2.11"
+    ],
+    "unconnected-(U2-NC-Pad14)": [
+      "U2.14"
+    ],
+    "unconnected-(U3-GPA4-Pad25)": [
+      "U3.25"
+    ],
+    "unconnected-(U3-GPA5-Pad26)": [
+      "U3.26"
+    ],
+    "unconnected-(U3-GPA6-Pad27)": [
+      "U3.27"
+    ],
+    "unconnected-(U3-GPA7-Pad28)": [
+      "U3.28"
+    ],
+    "unconnected-(U3-GPB4-Pad5)": [
+      "U3.5"
+    ],
+    "unconnected-(U3-GPB5-Pad6)": [
+      "U3.6"
+    ],
+    "unconnected-(U3-GPB6-Pad7)": [
+      "U3.7"
+    ],
+    "unconnected-(U3-GPB7-Pad8)": [
+      "U3.8"
+    ],
+    "unconnected-(U3-INTA-Pad20)": [
+      "U3.20"
+    ],
+    "unconnected-(U3-INTB-Pad19)": [
+      "U3.19"
+    ],
+    "unconnected-(U3-NC-Pad11)": [
+      "U3.11"
+    ],
+    "unconnected-(U3-NC-Pad14)": [
+      "U3.14"
+    ],
+    "unconnected-(U4-ADCDAT-Pad16)": [
+      "U4.16"
+    ],
+    "unconnected-(U4-ADCLRC_GPIO1-Pad15)": [
+      "U4.15"
+    ],
+    "unconnected-(U4-LIN1-Pad4)": [
+      "U4.4"
+    ],
+    "unconnected-(U4-LIN2-Pad3)": [
+      "U4.3"
+    ],
+    "unconnected-(U4-LIN3_JD2-Pad2)": [
+      "U4.2"
+    ],
+    "unconnected-(U4-MICBIAS-Pad1)": [
+      "U4.1"
+    ],
+    "unconnected-(U4-OUT3-Pad30)": [
+      "U4.30"
+    ],
+    "unconnected-(U4-RIN1-Pad5)": [
+      "U4.5"
+    ],
+    "unconnected-(U4-RIN2-Pad6)": [
+      "U4.6"
+    ],
+    "unconnected-(U4-RIN3_JD3-Pad7)": [
+      "U4.7"
+    ],
+    "unconnected-(U4-SPK_RN-Pad19)": [
+      "U4.19"
+    ],
+    "unconnected-(U4-SPK_RP-Pad22)": [
+      "U4.22"
+    ],
+    "unconnected-(U5-PG-Pad8)": [
+      "U5.8"
+    ],
+    "unconnected-(U7-NC-Pad4)": [
+      "U7.4"
+    ],
+    "unconnected-(U8-ADDR-Pad5)": [
+      "U8.5"
+    ],
+    "unconnected-(U8-ID-Pad9)": [
+      "U8.9"
+    ],
+    "unconnected-(U8-INT_N_OUT3-Pad6)": [
+      "U8.6"
+    ],
+    "unconnected-(U8-SCL_OUT2-Pad8)": [
+      "U8.8"
+    ],
+    "unconnected-(U9-NC-Pad4)": [
+      "U9.4"
+    ],
+    "unconnected-(U10-NC-Pad1)": [
+      "U10.1"
+    ],
+    "unconnected-(U12-2B2-Pad10)": [
+      "U12.10"
+    ]
+  },
+  "parts": [
+    {
+      "ref": "M1",
+      "lid": "kalimpad_integrated:XIAO_ESP32S3",
+      "value": "Seeed 113991114",
+      "footprint": "kalimpad_integrated:XIAO_ESP32S3",
+      "xy": [
+        12,
+        27
+      ],
+      "nets": {
+        "2": "RGB_3V3",
+        "5": "CTRL_SDA",
+        "6": "CTRL_SCL",
+        "7": "UART_TX",
+        "8": "UART_RX",
+        "9": "I2S_BCLK",
+        "10": "I2S_LRCLK",
+        "11": "I2S_DOUT",
+        "12": "V3V3_LOGIC",
+        "13": "GND",
+        "14": "SYS5V",
+        "1": "AUDIO_OE_N"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "dab99396-2892-5c41-9139-63a443ba7546",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "U2",
+      "lid": "Interface_Expansion:MCP23017x-x-SO",
+      "value": "MCP23017-E/SO",
+      "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
+      "xy": [
+        18,
+        49
+      ],
+      "nets": {
+        "9": "V3V3_LOGIC",
+        "10": "GND",
+        "12": "CTRL_SCL",
+        "13": "CTRL_SDA",
+        "15": "GND",
+        "16": "GND",
+        "17": "GND",
+        "18": "MCP_RESET",
+        "21": "KEY_L1",
+        "22": "KEY_L2",
+        "23": "KEY_L3",
+        "24": "KEY_L4",
+        "1": "KEY_R1",
+        "2": "KEY_R2",
+        "3": "KEY_R3",
+        "4": "KEY_R4",
+        "25": "BTN_1",
+        "26": "BTN_2",
+        "27": "BTN_3",
+        "5": "BTN_4",
+        "6": "BTN_5"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "32b8bd31-a29e-57a2-9a95-af6d87af6929",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "U3",
+      "lid": "Interface_Expansion:MCP23017x-x-SO",
+      "value": "MCP23017-E/SO",
+      "footprint": "Package_SO:SOIC-28W_7.5x17.9mm_P1.27mm",
+      "xy": [
+        42,
+        49
+      ],
+      "nets": {
+        "9": "V3V3_LOGIC",
+        "10": "GND",
+        "12": "CTRL_SCL",
+        "13": "CTRL_SDA",
+        "15": "V3V3_LOGIC",
+        "16": "GND",
+        "17": "GND",
+        "18": "MCP_RESET",
+        "21": "FUTURE_L1",
+        "22": "FUTURE_L2",
+        "23": "FUTURE_L3",
+        "24": "FUTURE_L4",
+        "1": "FUTURE_R1",
+        "2": "FUTURE_R2",
+        "3": "FUTURE_R3",
+        "4": "FUTURE_R4"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "f9419e8d-d3bd-53d6-a936-05698c46aeb7",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "C21",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        8,
+        49
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "016336e6-ad9c-5269-a6f7-343b968f08d7",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "C22",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        32,
+        49
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "7db5b5bc-4858-556f-b452-1889b751df0f",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R21",
+      "lid": "Device:R",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        29,
+        36
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "MCP_RESET"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "98a66464-f55c-5bd0-97c8-c9fd9fba135c",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R22",
+      "lid": "Device:R",
+      "value": "4.7k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        37,
+        31
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "CTRL_SDA"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "ca299290-8a7e-5374-a02c-c5e41b157df9",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R23",
+      "lid": "Device:R",
+      "value": "4.7k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        37,
+        34
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "CTRL_SCL"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "662b0efe-7bb8-565f-9fe3-98445bfbe9a4",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R100",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        8,
+        65
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "KEY_L1"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "cdd25eef-e4d7-5941-bbd9-67cdec350150",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R101",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        16,
+        65
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "KEY_L2"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "d3da66ba-532f-51f3-af55-8610c16cb6a0",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R102",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        24,
+        65
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "KEY_L3"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "049661df-33b9-546f-bf6a-1ef826c657e9",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R103",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        32,
+        65
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "KEY_L4"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "e5de79e2-86b3-557c-b8a1-90d29da12b44",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R104",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        40,
+        65
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "KEY_R1"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "861a9b27-8b54-555e-8f18-9f11c37e9380",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R105",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        48,
+        65
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "KEY_R2"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "230107ae-e721-5e33-8d74-2ec5c52d26f8",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R106",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        56,
+        65
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "KEY_R3"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "587e16b0-5a37-5d12-81e9-5bb07560569e",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R107",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        8,
+        69
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "KEY_R4"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "e6f42f6a-d97f-5759-baa5-657ab4ea671d",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R108",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        16,
+        69
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "BTN_1"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "9f801aa3-e1c0-5afb-9f64-ca01fa38a1af",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R109",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        24,
+        69
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "BTN_2"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "c2083903-057b-57a0-8495-98bb2dc3097c",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R110",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        32,
+        69
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "BTN_3"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "e0dd76c2-8b9e-5504-bdee-6fac6527df12",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R111",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        40,
+        69
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "BTN_4"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "9d75c362-51ad-5339-874d-0ab0355289d4",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R112",
+      "lid": "Device:R",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        48,
+        69
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "BTN_5"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "181f2628-adcc-5188-b4f9-4b75e21d014b",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "J4",
+      "lid": "Connector_Generic:Conn_01x30",
+      "value": "FH12-30S-0.5SH(55)",
+      "footprint": "Connector_FFC-FPC:Hirose_FH12-30S-0.5SH_1x30-1MP_P0.50mm_Horizontal",
+      "xy": [
+        36,
+        81
+      ],
+      "nets": {
+        "1": "GND",
+        "2": "SYS5V",
+        "3": "SYS5V",
+        "4": "GND",
+        "5": "LED_DATA",
+        "6": "GND",
+        "7": "KEY_L1",
+        "8": "KEY_L2",
+        "9": "KEY_L3",
+        "10": "KEY_L4",
+        "11": "KEY_R1",
+        "12": "KEY_R2",
+        "13": "KEY_R3",
+        "14": "KEY_R4",
+        "15": "BTN_1",
+        "16": "BTN_2",
+        "17": "BTN_3",
+        "18": "BTN_4",
+        "19": "BTN_5",
+        "20": "FUTURE_L1",
+        "21": "FUTURE_L2",
+        "22": "FUTURE_L3",
+        "23": "FUTURE_L4",
+        "24": "FUTURE_R1",
+        "25": "FUTURE_R2",
+        "26": "FUTURE_R3",
+        "27": "FUTURE_R4",
+        "28": "V3V3_LOGIC",
+        "29": "GND",
+        "30": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "8ce24eb6-dda7-5924-952e-5b821854ced7",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "J5",
+      "lid": "Connector_Generic:Conn_01x04",
+      "value": "B4B-PH-K-S / Waveshare14657",
+      "footprint": "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical",
+      "xy": [
+        20,
+        113
+      ],
+      "nets": {
+        "1": "CTRL_SCL",
+        "2": "CTRL_SDA",
+        "3": "GND",
+        "4": "V3V3_LOGIC"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "329d9943-9860-57eb-85f1-f604d6baa1e5",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "U6",
+      "lid": "kalimpad_integrated:SN74LV1T125",
+      "value": "SN74LV1T125DBVR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "xy": [
+        56,
+        76
+      ],
+      "nets": {
+        "1": "GND",
+        "2": "RGB_3V3",
+        "3": "GND",
+        "4": "RGB_5V",
+        "5": "SYS5V"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "1158b6e3-f39e-5d0a-92de-4ab7f56907dd",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R24",
+      "lid": "Device:R",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        61,
+        72
+      ],
+      "nets": {
+        "1": "RGB_3V3",
+        "2": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "be6d8fc3-9157-535a-b3ba-9a595188a52f",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R25",
+      "lid": "Device:R",
+      "value": "330",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        51,
+        79
+      ],
+      "nets": {
+        "1": "RGB_5V",
+        "2": "LED_DATA"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "e7675ebc-3f8b-5872-b48c-de77a489b3af",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "C23",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        56,
+        71
+      ],
+      "nets": {
+        "1": "SYS5V",
+        "2": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "5ecfe7e9-a43d-5982-90d5-c16cd25ecc16",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "J1",
+      "lid": "kalimpad_integrated:USB_POWER",
+      "value": "HRO TYPE-C-31-M-12",
+      "footprint": "kalimpad_integrated:USB_POWER_EDGE",
+      "xy": [
+        45,
+        2.65
+      ],
+      "nets": {
+        "A1": "GND",
+        "A12": "GND",
+        "B1": "GND",
+        "B12": "GND",
+        "SH": "GND",
+        "A4": "VBUS_IN",
+        "A9": "VBUS_IN",
+        "B4": "VBUS_IN",
+        "B9": "VBUS_IN",
+        "A5": "USB_CC1",
+        "B5": "USB_CC2"
+      },
+      "section": "power",
+      "angle": 180,
+      "back": false,
+      "uuid": "8c66c828-24b6-5a36-9fe6-493bd8066767",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "U8",
+      "lid": "kalimpad_integrated:TUSB320LAI",
+      "value": "TUSB320LAIRWBR",
+      "footprint": "Package_DFN_QFN:Texas_X2QFN-12_1.6x1.6mm_P0.4mm",
+      "xy": [
+        35,
+        15
+      ],
+      "nets": {
+        "1": "USB_CC1",
+        "2": "USB_CC2",
+        "3": "GND",
+        "4": "VBUS_DETECT",
+        "7": "CC_CURRENT_N",
+        "10": "GND",
+        "11": "GND",
+        "12": "V3V3_CC"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "dbb59a13-c079-5af4-80e0-9f047589356b",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "U9",
+      "lid": "Regulator_Linear:TLV75533PDBV",
+      "value": "TLV75533PDBVR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "xy": [
+        35,
+        24
+      ],
+      "nets": {
+        "1": "VBUS_IN",
+        "2": "GND",
+        "3": "VBUS_IN",
+        "5": "V3V3_CC"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "cfabedd3-5fad-53a6-acc3-fd2e76fb09fb",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "U10",
+      "lid": "74xGxx:74LVC1G04",
+      "value": "SN74LVC1G04DBVR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "xy": [
+        61,
+        20
+      ],
+      "nets": {
+        "2": "CC_CURRENT_N",
+        "3": "GND",
+        "4": "USB_POWER_OK",
+        "5": "V3V3_CC"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "f2066612-3cdc-50e5-9195-bc1e68f7f75a",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "R81",
+      "lid": "Device:R",
+      "value": "887k 1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        35,
+        19
+      ],
+      "nets": {
+        "1": "VBUS_IN",
+        "2": "VBUS_DETECT"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "1b2e39e5-30ae-5415-a05d-cd28d803e637",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "R82",
+      "lid": "Device:R",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        51,
+        15
+      ],
+      "nets": {
+        "1": "V3V3_CC",
+        "2": "CC_CURRENT_N"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "13cb5e92-a69b-54cd-8849-957a72398e9f",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "C81",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        35,
+        11
+      ],
+      "nets": {
+        "1": "V3V3_CC",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "ca05420d-b300-5001-8f85-cb7e80d75133",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "C91",
+      "lid": "Device:C",
+      "value": "1u 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        39,
+        24
+      ],
+      "nets": {
+        "1": "VBUS_IN",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "b98cb513-7048-5739-b9a6-46dfd49a30b3",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "C92",
+      "lid": "Device:C",
+      "value": "1u 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        35,
+        29
+      ],
+      "nets": {
+        "1": "V3V3_CC",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "d05195a8-ebc2-5686-aa09-5fad0a81d534",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "C93",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        60,
+        25
+      ],
+      "nets": {
+        "1": "V3V3_CC",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "f9f84260-c8ac-598b-9e2e-ed76c955be18",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "U1",
+      "lid": "kalimpad:TPS2553DBVR",
+      "value": "TPS2553DBVR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "xy": [
+        48,
+        22
+      ],
+      "nets": {
+        "1": "VBUS_IN",
+        "2": "GND",
+        "3": "POWER_EN",
+        "4": "OC_FAULT",
+        "5": "ILIM",
+        "6": "V5_SWITCHED"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "b901bc58-4ed8-5bb4-9445-233f850f310f",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "SW1",
+      "lid": "Switch:SW_SPDT",
+      "value": "JS102011SAQN",
+      "footprint": "Button_Switch_SMD:SW_SPDT_CK_JS102011SAQN",
+      "xy": [
+        70,
+        16
+      ],
+      "nets": {
+        "1": "USB_POWER_OK",
+        "2": "POWER_EN",
+        "3": "GND"
+      },
+      "section": "power",
+      "angle": 90,
+      "back": false,
+      "uuid": "b562c18f-d6b3-5205-8991-4817f53455fc",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "R3",
+      "lid": "Device:R",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        54,
+        22
+      ],
+      "nets": {
+        "1": "POWER_EN",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "f1450bee-cac6-574e-87ed-2575e63c7d02",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "R4",
+      "lid": "Device:R",
+      "value": "20k 1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        48,
+        27
+      ],
+      "nets": {
+        "1": "ILIM",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "e56fe99c-43bd-5eb6-9050-3fec39ab449c",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "R5",
+      "lid": "Device:R",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        54,
+        18
+      ],
+      "nets": {
+        "1": "VBUS_IN",
+        "2": "OC_FAULT"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "92187213-3903-593a-9d58-29381f731c4c",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "C1",
+      "lid": "Device:C",
+      "value": "1u 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        43,
+        21
+      ],
+      "nets": {
+        "1": "VBUS_IN",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "97e35b9a-51d2-5303-a760-31366e2a782a",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "C2",
+      "lid": "Device:C",
+      "value": "10u 16V X5R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "xy": [
+        49,
+        31
+      ],
+      "nets": {
+        "1": "V5_SWITCHED",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "f855c1f8-af58-574e-adb1-af458fe0b591",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "U7",
+      "lid": "Power_Management:LM66100DCK",
+      "value": "LM66100DCKR",
+      "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+      "xy": [
+        57,
+        32
+      ],
+      "nets": {
+        "1": "V5_SWITCHED",
+        "2": "GND",
+        "3": "SYS5V",
+        "5": "DIODE_STATUS",
+        "6": "SYS5V"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "3256c62c-cd08-5d9e-abc1-8df343fd7c1c",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "R6",
+      "lid": "Device:R",
+      "value": "0",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        61,
+        32
+      ],
+      "nets": {
+        "1": "DIODE_STATUS",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "1e00d49d-2c8e-5c0a-aacf-326f2af52016",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "U5",
+      "lid": "Regulator_Switching:TPS62162DSG",
+      "value": "TPS62162DSGR",
+      "footprint": "Package_SON:Texas_DSG0008A_WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm",
+      "xy": [
+        60,
+        48
+      ],
+      "nets": {
+        "1": "GND",
+        "2": "SYS5V",
+        "3": "SYS5V",
+        "4": "GND",
+        "5": "GND",
+        "6": "V3V3_AUDIO",
+        "7": "BUCK_SW",
+        "9": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "45bcc441-bcb5-5123-9fde-d7a9c66c7126",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "L1",
+      "lid": "Device:L",
+      "value": "XFL4020-222MEC / 2.2uH",
+      "footprint": "kalimpad_integrated:XFL4020",
+      "xy": [
+        64,
+        46.5
+      ],
+      "nets": {
+        "1": "BUCK_SW",
+        "2": "V3V3_AUDIO"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "70a32ce9-ba33-56db-b224-d71c58735b29",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "C51",
+      "lid": "Device:C",
+      "value": "10u 16V X5R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "xy": [
+        56.5,
+        48
+      ],
+      "nets": {
+        "1": "SYS5V",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 180,
+      "back": false,
+      "uuid": "0d34c1a8-9283-577e-8ad4-e8cd89d14a73",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "C52",
+      "lid": "Device:C",
+      "value": "22u 10V X5R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "xy": [
+        64,
+        51
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND"
+      },
+      "section": "power",
+      "angle": 180,
+      "back": false,
+      "uuid": "5dd27805-70ad-50f6-9112-f4e4a699c579",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "U4",
+      "lid": "kalimpad_integrated:WM8960",
+      "value": "WM8960CGEFL/RV",
+      "footprint": "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm",
+      "xy": [
+        44,
+        99
+      ],
+      "nets": {
+        "8": "V3V3_AUDIO",
+        "9": "GND",
+        "10": "V3V3_AUDIO",
+        "11": "MCLK",
+        "12": "BCLK_CODEC",
+        "13": "LRCLK_CODEC",
+        "14": "DACDATA_CODEC",
+        "17": "AUDIO_SCL",
+        "18": "AUDIO_SDA",
+        "20": "GND",
+        "21": "V3V3_AUDIO",
+        "23": "SPK_N",
+        "24": "GND",
+        "25": "SPK_P",
+        "26": "V3V3_AUDIO",
+        "27": "VMID",
+        "28": "GND",
+        "29": "HP_R",
+        "31": "HP_L",
+        "32": "V3V3_AUDIO",
+        "33": "GND"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "22dd9df1-5bba-5e7c-b9d3-69e3fc45de5c",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C41",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        39,
+        94
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "02b6ce54-9a25-5f14-9ee5-a71b88fc1ec4",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C42",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        40,
+        91
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "760f0a05-8c07-59eb-bd69-209e0e0fc4cf",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C43",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        49,
+        95
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "b21d7946-49ca-5097-9b34-8ae357727e6a",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C44",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        48,
+        104
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "34b79bb6-aa31-5bd8-8a62-885b3a2e9cfb",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C45",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        40,
+        104
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "a57fdc12-f456-52c5-9fe6-63b55d9ac851",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C46",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        44,
+        107
+      ],
+      "nets": {
+        "1": "VMID",
+        "2": "GND"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "8b4383b0-6f48-5959-a0b8-1ea97a565f96",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C49",
+      "lid": "Device:C",
+      "value": "10u 10V X5R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "xy": [
+        47,
+        110
+      ],
+      "nets": {
+        "1": "VMID",
+        "2": "GND"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "adcefcb0-55ac-5c14-837e-15c41356b5cf",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C50",
+      "lid": "Device:C",
+      "value": "10u 10V X5R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "xy": [
+        51,
+        109
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "1ce21a01-9205-5ca2-b0c4-a179016849ae",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C47",
+      "lid": "Device:C_Polarized",
+      "value": "EEEFK0J221P / 220u 6.3V",
+      "footprint": "Capacitor_SMD:CP_Elec_6.3x5.8",
+      "xy": [
+        55,
+        97
+      ],
+      "nets": {
+        "1": "HP_L",
+        "2": "JACK_L"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "6f2732c9-8835-59e5-8634-33bcea08cc3b",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C48",
+      "lid": "Device:C_Polarized",
+      "value": "EEEFK0J221P / 220u 6.3V",
+      "footprint": "Capacitor_SMD:CP_Elec_6.3x5.8",
+      "xy": [
+        66,
+        97
+      ],
+      "nets": {
+        "1": "HP_R",
+        "2": "JACK_R"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "34921a5c-c20b-5a66-92cf-91c74672b986",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "J2",
+      "lid": "kalimpad_integrated:SJ3523",
+      "value": "SJ-3523-SMT",
+      "footprint": "kalimpad_integrated:SJ3523_EDGE",
+      "xy": [
+        59,
+        6.2
+      ],
+      "nets": {
+        "S": "GND",
+        "T": "JACK_L",
+        "R": "JACK_R"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "fd5427c8-03a1-5af4-b9fa-2f4fed1e0848",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "J3",
+      "lid": "Connector_Generic:Conn_01x02",
+      "value": "B2B-PH-K-S / 8ohm speaker",
+      "footprint": "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical",
+      "xy": [
+        7,
+        112
+      ],
+      "nets": {
+        "1": "SPK_P",
+        "2": "SPK_N"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "6351e3a5-9db1-57c5-ac2f-6e6c3ff974f8",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "Y1",
+      "lid": "kalimpad_integrated:OSC4",
+      "value": "ASE-24.000MHZ-LC-T",
+      "footprint": "Oscillator:Oscillator_SMD_Abracon_ASE-4Pin_3.2x2.5mm",
+      "xy": [
+        30,
+        95
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND",
+        "3": "MCLK_OSC",
+        "4": "V3V3_AUDIO"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "731f6f96-63fa-533f-8826-ad9f4171f4fb",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "C40",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        30,
+        91
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "df3fa98a-9321-5dd0-baef-ee8d2687f9eb",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "R40",
+      "lid": "Device:R",
+      "value": "10",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        35,
+        96
+      ],
+      "nets": {
+        "1": "MCLK_OSC",
+        "2": "MCLK"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "49a4fddd-b10c-5f97-a081-563ee71f0408",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "R41",
+      "lid": "Device:R",
+      "value": "10",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        40,
+        87
+      ],
+      "nets": {
+        "1": "BCLK_CODEC",
+        "2": "BCLK_AUDIO_FILT"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "6999ce98-b4f5-5dcd-a33b-8f634853b815",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "R42",
+      "lid": "Device:R",
+      "value": "10",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        45,
+        87
+      ],
+      "nets": {
+        "1": "LRCLK_CODEC",
+        "2": "LRCLK_AUDIO_FILT"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "7addf7c8-f839-5648-afd3-c5c6fc42848d",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "R43",
+      "lid": "Device:R",
+      "value": "10",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        16,
+        82
+      ],
+      "nets": {
+        "1": "DACDATA_LINK",
+        "2": "DACDATA_CODEC"
+      },
+      "section": "audio",
+      "angle": 0,
+      "back": false,
+      "uuid": "8421f474-8c3e-5644-8ba9-6a1fb2c50c01",
+      "sheetUuid": "bcd5d46a-9624-5200-b402-24925aa5f7ee"
+    },
+    {
+      "ref": "TP1",
+      "lid": "Connector:TestPoint",
+      "value": "GND",
+      "footprint": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        10,
+        121
+      ],
+      "nets": {
+        "1": "GND"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "d6e16d0c-1de3-5941-a846-1e20ee00fecf",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "TP2",
+      "lid": "Connector:TestPoint",
+      "value": "VBUS_IN",
+      "footprint": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        14,
+        121
+      ],
+      "nets": {
+        "1": "VBUS_IN"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "efa955c2-4086-5795-8b5e-6dfd1c3de7a3",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "TP3",
+      "lid": "Connector:TestPoint",
+      "value": "SYS5V",
+      "footprint": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        23,
+        121
+      ],
+      "nets": {
+        "1": "SYS5V"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "17655f9b-5295-5df8-b20c-3af30e1c96f9",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "TP4",
+      "lid": "Connector:TestPoint",
+      "value": "V3V3_LOGIC",
+      "footprint": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        32,
+        121
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "2f388a08-2f62-5920-8c6c-dc9becdcee6b",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "TP5",
+      "lid": "Connector:TestPoint",
+      "value": "V3V3_AUDIO",
+      "footprint": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        41,
+        121
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "2f9a4fdc-d030-597c-9348-39ec4ecdb30c",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "TP6",
+      "lid": "Connector:TestPoint",
+      "value": "OC_FAULT",
+      "footprint": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        50,
+        121
+      ],
+      "nets": {
+        "1": "OC_FAULT"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "12d8cfe3-df6f-5b7c-84a9-9dd6d5a5900a",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "TP7",
+      "lid": "Connector:TestPoint",
+      "value": "MCP_RESET",
+      "footprint": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        59,
+        121
+      ],
+      "nets": {
+        "1": "MCP_RESET"
+      },
+      "section": "power",
+      "angle": 0,
+      "back": false,
+      "uuid": "ff11b20e-00a4-5f8d-b255-9b5542bf8370",
+      "sheetUuid": "a70c5ff0-489d-5e65-ba35-b66535c91c21"
+    },
+    {
+      "ref": "J6",
+      "lid": "Connector_Generic:Conn_01x03",
+      "value": "UART 3.3V / NO POWER",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "xy": [
+        13,
+        35
+      ],
+      "nets": {
+        "1": "GND",
+        "2": "UART_TX_OUT",
+        "3": "UART_RX_IN"
+      },
+      "section": "logic",
+      "angle": 90,
+      "back": false,
+      "uuid": "72deb9c8-3474-5c85-ad76-eb00a0762f06",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "U13",
+      "lid": "kalimpad_integrated:SN74LVC1G125",
+      "value": "SN74LVC1G125DBVR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "xy": [
+        23,
+        34
+      ],
+      "nets": {
+        "1": "GND",
+        "2": "UART_RX_IN",
+        "3": "GND",
+        "4": "UART_RX",
+        "5": "V3V3_LOGIC"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "bcfa93d8-24de-5213-9d05-d4a7b5ea71fe",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "C130",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        21,
+        31
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "9a1e7f2f-11a3-50e2-8f9d-382e1c2aa702",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R130",
+      "lid": "Device:R",
+      "value": "1k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        17,
+        31
+      ],
+      "nets": {
+        "1": "UART_TX",
+        "2": "UART_TX_OUT"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "00b5a1da-d298-59f7-86d7-a5de0d253e0f",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "U11",
+      "lid": "Logic_LevelTranslator:TCA9517ADGK",
+      "value": "TCA9517ADGKR",
+      "footprint": "Package_SO:VSSOP-8_3x3mm_P0.65mm",
+      "xy": [
+        44,
+        74
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "CTRL_SCL",
+        "3": "CTRL_SDA",
+        "4": "GND",
+        "5": "V3V3_AUDIO",
+        "6": "AUDIO_SDA",
+        "7": "AUDIO_SCL",
+        "8": "V3V3_AUDIO"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "aa7d6cf1-0c3c-5f68-a0b2-a88c9ede3963",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "C110",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        38,
+        74
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "0a4f508a-f0cc-557e-9e81-6a5ac2f83fc7",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "C111",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        50,
+        74
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "cfee062c-1e90-5cae-adcd-01998528c49d",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R1100",
+      "lid": "Device:R",
+      "value": "4.7k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        37,
+        77
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "AUDIO_SCL"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "2306ae65-8475-5474-9b7d-e6ebfaea2e4e",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R1101",
+      "lid": "Device:R",
+      "value": "4.7k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        42,
+        77
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "AUDIO_SDA"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "caa6b43f-820f-5089-bfd2-78525ef1b39f",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "U12",
+      "lid": "kalimpad_integrated:SN74AXC4T245PW",
+      "value": "SN74AXC4T245PWR",
+      "footprint": "Package_SO:TSSOP-16_4.4x5mm_P0.65mm",
+      "xy": [
+        18,
+        91
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "GND",
+        "3": "V3V3_LOGIC",
+        "4": "I2S_BCLK",
+        "5": "I2S_LRCLK",
+        "6": "I2S_DOUT",
+        "7": "UNUSED_I2S_IN",
+        "8": "GND",
+        "9": "GND",
+        "11": "DACDATA_LINK",
+        "12": "LRCLK_AUDIO_FILT",
+        "13": "BCLK_AUDIO_FILT",
+        "14": "AUDIO_OE_N",
+        "15": "AUDIO_OE_N",
+        "16": "V3V3_AUDIO"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "dfe514a2-54c0-51e7-aa08-e4690bb2c95c",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "C120",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        12,
+        88
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "4d8a3c2d-8840-555e-8dd3-133ec3699a1e",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "C121",
+      "lid": "Device:C",
+      "value": "100n 16V X7R",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        24,
+        88
+      ],
+      "nets": {
+        "1": "V3V3_AUDIO",
+        "2": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "dda9cb6e-2a69-51fa-9c17-13a403c9cdf8",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R132",
+      "lid": "Device:R",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        24,
+        92
+      ],
+      "nets": {
+        "1": "V3V3_LOGIC",
+        "2": "AUDIO_OE_N"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "465da394-75db-5917-9685-c18823764d2d",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    },
+    {
+      "ref": "R133",
+      "lid": "Device:R",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        24,
+        95
+      ],
+      "nets": {
+        "1": "UNUSED_I2S_IN",
+        "2": "GND"
+      },
+      "section": "logic",
+      "angle": 0,
+      "back": false,
+      "uuid": "bab402df-35f8-52f6-b0cd-e22b6d4d8d21",
+      "sheetUuid": "e4a53f49-a5b9-5b78-bb4e-ac02cda9beb4"
+    }
+  ],
+  "drc": {
+    "violations": 0,
+    "unconnected": 0,
+    "parity": 0
+  },
+  "sourceHashes": {
+    "main-integrated-02.kicad_pcb": "120562c6fd6a21952015f12d2fd1ffeec6fbb5b31955970d8d523635dd8005b4",
+    "main-integrated-02.net.xml": "a7e3d66d53f5a58f5a8ffe1affb2c37f6159019e2e4d07e654c666b743fdbb08",
+    "design.json": "7ceb986789e0883dea1acdbb7b802a4aa0ff90439b81a53a2e28df4dec0c1f17",
+    "drc.json": "4c64fd617af75e82828ac36630e621c6d0107045078d78efa4a4c716e03b48e5"
+  },
+  "missingModels": [
+    "M1",
+    "J1",
+    "U8",
+    "SW1",
+    "U5",
+    "L1",
+    "J2",
+    "Y1"
+  ],
+  "electricalSimulation": false
+}
+;
+},"device/simulator/exterior.ts":function(module,exports,require){
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.setupExterior = setupExterior;
+const exterior_json_1 = __importDefault(require("device/simulator/exterior.json"));
+const assembly_json_1 = __importDefault(require("device/mechanical/assembly-03/assembly.json"));
+function setupExterior() {
+    const el = (id) => document.getElementById(id);
+    const d = el('device');
+    const scale = 300 / exterior_json_1.default.body.width;
+    d.style.height = exterior_json_1.default.body.length * scale + 'px';
+    d.style.setProperty('--depth', exterior_json_1.default.body.depth * scale + 'px');
+    const facePosition = (node, x, y, w, h) => { node.style.left = (x + exterior_json_1.default.body.originOffset) / exterior_json_1.default.body.width * 100 + '%'; node.style.top = (128.4 - y) / 130.8 * 100 + '%'; node.style.width = w / exterior_json_1.default.body.width * 100 + '%'; node.style.height = h / 130.8 * 100 + '%'; };
+    for (const [i, id] of exterior_json_1.default.controls.ids.entries()) {
+        const b = document.querySelector('#controls [data-input="' + id + '"]');
+        facePosition(b, exterior_json_1.default.controls.x[i], exterior_json_1.default.controls.y, 6, 6);
+        b.style.transform = 'translate(-50%,-50%)';
+    }
+    facePosition(el('display-frame'), exterior_json_1.default.display.x, exterior_json_1.default.display.y + 12.5, 36, 12.5);
+    const top = (y) => (128.4 - y) / 130.8 * 100 + '%';
+    el('power').style.top = top(exterior_json_1.default.power.y);
+    el('power').style.left = (exterior_json_1.default.body.depth - exterior_json_1.default.power.z) / exterior_json_1.default.body.depth * 100 + '%';
+    el('usb-port').style.left = (exterior_json_1.default.usb.x + exterior_json_1.default.body.originOffset) / exterior_json_1.default.body.width * 100 + '%';
+    el('usb-port').style.top = exterior_json_1.default.usb.z / exterior_json_1.default.body.depth * 100 + '%';
+    el('headphone-port').style.left = (exterior_json_1.default.phones.x + exterior_json_1.default.body.originOffset) / exterior_json_1.default.body.width * 100 + '%';
+    el('headphone-port').style.top = exterior_json_1.default.phones.z / exterior_json_1.default.body.depth * 100 + '%';
+    el('speaker').style.left = (exterior_json_1.default.body.width - (exterior_json_1.default.speaker.x + exterior_json_1.default.body.originOffset)) / exterior_json_1.default.body.width * 100 + '%';
+    el('speaker').style.top = top(exterior_json_1.default.speaker.y);
+    for (const [selector, w, h, length] of [['.usb-plug', exterior_json_1.default.cable.usbPlugWidth, exterior_json_1.default.cable.usbPlugHeight, exterior_json_1.default.cable.usbPlugLength], ['.phones-plug', 7, 7, exterior_json_1.default.cable.phonesPlugLength]]) {
+        const p = document.querySelector(selector);
+        p.style.setProperty('--pw', w * scale + 'px');
+        p.style.setProperty('--ph', h * scale + 'px');
+        p.style.setProperty('--pl', length * scale + 'px');
+        p.innerHTML = '<i class=plug-end><span class=cord></span></i><b class=plug-top></b><b class=plug-bottom></b><b class=plug-left></b><b class=plug-right></b>';
+    }
+    for (const [i, [x, y]] of assembly_json_1.default.fasteners.centers.entries()) {
+        const mark = document.createElement('span');
+        mark.className = 'case-screw';
+        mark.title = `S${i + 1}: M2×8 / X${x} Y${y} mm（案）`;
+        mark.textContent = '⊕';
+        mark.style.left = (exterior_json_1.default.body.width - (x + exterior_json_1.default.body.originOffset)) / exterior_json_1.default.body.width * 100 + '%';
+        mark.style.top = top(y);
+        document.querySelector('.back-face').appendChild(mark);
+    }
+    el('usb-port').style.width = exterior_json_1.default.usb.openingWidth * scale + 'px';
+    el('usb-port').style.height = exterior_json_1.default.usb.openingHeight * scale + 'px';
+    el('headphone-port').style.width = el('headphone-port').style.height = exterior_json_1.default.phones.openingDiameter * scale + 'px';
+    el('speaker').style.width = exterior_json_1.default.speaker.width * scale + 'px';
+    el('speaker').style.height = exterior_json_1.default.speaker.length * scale + 'px';
+    const views = { front: [0, 0], angle: [-22, -28], top: [-90, 0], right: [0, -90], bottom: [90, 0], back: [0, 180] };
+    const messages = { front: '上部に丸い5ボタン。キー中心は適合済みプレートと同じ。左右の余白は将来の半音キー用です。', angle: 'A2主基板は72×124mm。外形80.8×130.8×37.8mmは収納予約で、完成ケース寸法ではありません。', top: 'A2ではUSB-Cとイヤホンの両方が上端。横位置は実装座標、高さと開口は予約値です。', right: '右側面上寄りの電源。A2 SW1の位置へ同期。指の干渉・挿抜荷重は実物で確認が必要です。', bottom: '下端には端子を置かない案です。イヤホンはA2基板に合わせ上端へ移しました。', back: '背面6本の外装ネジとスピーカー開口は構造案。主基板内部の固定4か所は右の3Dで確認できます。音の出口は未設計です。' };
+    function view(name) { const [x, y] = views[name]; d.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`; el('view-caption').textContent = messages[name]; d.dataset.currentView = name; for (const b of document.querySelectorAll('button[data-view]'))
+        b.setAttribute('aria-pressed', String(b.dataset.view === name)); }
+    for (const b of document.querySelectorAll('button[data-view]'))
+        b.onclick = () => view(b.dataset.view);
+    for (const [id, cls] of [['show-cables', 'show-cables'], ['show-grip', 'show-grip'], ['show-labels', 'show-labels']])
+        el(id).onchange = () => { const checked = el(id).checked; d.classList.toggle(cls, checked); if (id === 'show-cables')
+            document.querySelector('.model-stage').style.height = checked ? '1150px' : ''; };
+    view('angle');
+}
+
+},"device/mechanical/assembly-03/assembly.json":function(module,exports,require){
+module.exports={
+  "revision": "ME-005 A",
+  "units": "mm",
+  "origin": "元プレート左下XY・背面外側Z=0",
+  "manufacturingReleased": false,
+  "physicalFitVerified": false,
+  "body": [
+    80.8,
+    130.8,
+    37.8
+  ],
+  "bodyMin": [
+    -14.4,
+    -2.4,
+    0
+  ],
+  "pcbBottom": 32,
+  "plateBottom": 34.6,
+  "plateTop": 35.8,
+  "capTopReservation": 43,
+  "modules": [
+    {
+      "id": "M1",
+      "at": [
+        8,
+        70,
+        4
+      ],
+      "size": [
+        21,
+        17.8,
+        10
+      ],
+      "status": "平面は資料値。高さ10は嵌合込み仮予約"
+    },
+    {
+      "id": "M2",
+      "at": [
+        33,
+        20,
+        4
+      ],
+      "size": [
+        18,
+        43,
+        10
+      ],
+      "status": "資料43×18×5を90度回転。高さ10は嵌合込み仮予約"
+    },
+    {
+      "id": "M3",
+      "at": [
+        8,
+        4,
+        4
+      ],
+      "size": [
+        24,
+        58,
+        12
+      ],
+      "status": "資料58×24を90度回転。高さ12は仮予約、端子位置未再現"
+    },
+    {
+      "id": "M5",
+      "at": [
+        33,
+        72,
+        4
+      ],
+      "size": [
+        18,
+        13,
+        8
+      ],
+      "status": "資料18×13×3.5。高さ8は嵌合込み仮予約"
+    },
+    {
+      "id": "M6",
+      "at": [
+        8,
+        109.8,
+        4
+      ],
+      "size": [
+        20.4,
+        14.2,
+        8
+      ],
+      "status": "資料20.4×14.2×5。高さ8は嵌合込み仮予約、USB開口は概念位置"
+    },
+    {
+      "id": "LS1",
+      "at": [
+        11,
+        89,
+        4
+      ],
+      "size": [
+        30,
+        20,
+        5
+      ],
+      "status": "資料公称30×20×5。振動板と付属線は未再現"
+    },
+    {
+      "id": "POWER",
+      "at": [
+        1,
+        33,
+        20
+      ],
+      "size": [
+        50,
+        30,
+        8
+      ],
+      "status": "未設計電源PCBと小部品の予約。製品寸法ではない"
+    },
+    {
+      "id": "SW1",
+      "at": [
+        50,
+        108,
+        4
+      ],
+      "size": [
+        12,
+        8,
+        8
+      ],
+      "status": "電源スイッチと小基板の仮予約。製品寸法ではない"
+    },
+    {
+      "id": "M4",
+      "at": [
+        8,
+        110,
+        27.8
+      ],
+      "size": [
+        36,
+        12.5,
+        8
+      ],
+      "status": "上部横向き。高さ8は予約値"
+    },
+    {
+      "id": "J101",
+      "at": [
+        2,
+        75,
+        17
+      ],
+      "size": [
+        5.08,
+        12.7,
+        15
+      ],
+      "status": "将来PCB上の移設案。電気CAD未変更"
+    },
+    {
+      "id": "J102",
+      "at": [
+        46,
+        75,
+        17
+      ],
+      "size": [
+        2.54,
+        7.62,
+        15
+      ],
+      "status": "将来PCB上の移設案。電気CAD未変更"
+    },
+    {
+      "id": "J6",
+      "at": [
+        46,
+        85,
+        17
+      ],
+      "size": [
+        2.54,
+        5.08,
+        15
+      ],
+      "status": "将来PCB上の移設案。電気CAD未変更"
+    },
+    {
+      "id": "BTN1",
+      "at": [
+        1.9,
+        97.8,
+        31.5
+      ],
+      "size": [
+        8.2,
+        6.4,
+        4.3
+      ],
+      "status": "タクト本体の予約。キャップと導線は別"
+    },
+    {
+      "id": "BTN2",
+      "at": [
+        11.9,
+        97.8,
+        31.5
+      ],
+      "size": [
+        8.2,
+        6.4,
+        4.3
+      ],
+      "status": "タクト本体の予約。キャップと導線は別"
+    },
+    {
+      "id": "BTN3",
+      "at": [
+        21.9,
+        97.8,
+        31.5
+      ],
+      "size": [
+        8.2,
+        6.4,
+        4.3
+      ],
+      "status": "タクト本体の予約。キャップと導線は別"
+    },
+    {
+      "id": "BTN4",
+      "at": [
+        31.9,
+        97.8,
+        31.5
+      ],
+      "size": [
+        8.2,
+        6.4,
+        4.3
+      ],
+      "status": "タクト本体の予約。キャップと導線は別"
+    },
+    {
+      "id": "BTN5",
+      "at": [
+        41.9,
+        97.8,
+        31.5
+      ],
+      "size": [
+        8.2,
+        6.4,
+        4.3
+      ],
+      "status": "タクト本体の予約。キャップと導線は別"
+    },
+    {
+      "id": "CONTROL-PCB",
+      "at": [
+        0,
+        96.8,
+        29.9
+      ],
+      "size": [
+        52,
+        8.4,
+        1.6
+      ],
+      "status": "上部5タクトの白板予約。電気CAD未作成"
+    },
+    {
+      "id": "KEY-PCB",
+      "at": [
+        0,
+        0,
+        32
+      ],
+      "size": [
+        52,
+        96,
+        1.6
+      ],
+      "status": "上部を短縮する新PCBの機械予約。既存PCBの切断は禁止。電気CAD未変更"
+    }
+  ],
+  "fasteners": {
+    "centers": [
+      [
+        -11.2,
+        10
+      ],
+      [
+        63.2,
+        10
+      ],
+      [
+        -11.2,
+        64
+      ],
+      [
+        63.2,
+        64
+      ],
+      [
+        -11.2,
+        120
+      ],
+      [
+        63.2,
+        120
+      ]
+    ],
+    "frontCount": 0,
+    "rear": "M2×8を6本。背面から固定",
+    "bossDiameter": 6
+  },
+  "printParts": [
+    "shell",
+    "back",
+    "power-shelf",
+    "key-carrier",
+    "display-shelf",
+    "control-carrier",
+    "control-blank",
+    "deck",
+    "key-blank",
+    "spacer",
+    "button-plunger",
+    "nut-coupon"
+  ],
+  "sourceHashes": {
+    "device/hardware/key-unit-8key-window/key-unit-8key.kicad_pcb": "2d5aa03f44127b75224dad54cac2ddc1c0ee8e2a00815eeb0a122edeeb0bb8e0",
+    "hardware/poc-01/mechanical/switch-plate-8key-left-C.stl": "0c2311700f45b9ff1a2b0f2a9ee163433e8045eb051b0e318d19400a3fc5d13d",
+    "hardware/poc-01/mechanical/layout-8key-left-C.json": "4543279618cd0fcea79766d128205cfa2037a49083d1b060e5114c4a8d15835f",
+    "device/hardware/component-audit/components.json": "61ce83d6da61f418a4efbc6dc679c8ae6f50db14b3f5e8b28575716daf4e1c50"
+  },
+  "conditions": [
+    "モジュール高さ・端子と線の曲げは予約値",
+    "固定した購入部品の精密STEPではない",
+    "LEDとキーの高さは実測待ち",
+    "電池なし、USB給電PoC",
+    "USB/イヤホンの挿抜支持は広めの模型開口で実物合わせが必要",
+    "上部配置には演奏PCB短縮とコネクター移設が必要。未承認のため電気CAD未変更",
+    "将来半音キーは位置予約のみ。音配列・穴・基板は別設計"
+  ],
+  "requiresNewKeyPcb": true,
+  "controls": {
+    "x": [
+      6,
+      16,
+      26,
+      36,
+      46
+    ],
+    "y": 101
+  },
+  "futureKeys": [
+    {
+      "id": "FL1",
+      "x": -0.082904,
+      "y": 26
+    },
+    {
+      "id": "FL2",
+      "x": -0.082904,
+      "y": 46
+    },
+    {
+      "id": "FL3",
+      "x": -0.082904,
+      "y": 66
+    },
+    {
+      "id": "FL4",
+      "x": -0.082904,
+      "y": 86
+    },
+    {
+      "id": "FR1",
+      "x": 51.87862,
+      "y": 16
+    },
+    {
+      "id": "FR2",
+      "x": 51.87862,
+      "y": 36
+    },
+    {
+      "id": "FR3",
+      "x": 51.87862,
+      "y": 56
+    },
+    {
+      "id": "FR4",
+      "x": 51.87862,
+      "y": 76
+    }
+  ],
+  "widthAllowance": {
+    "added": 24,
+    "perSide": 12,
+    "switchOpening": 14,
+    "maxConservativeAdded": 28,
+    "status": "2個分を14mm取付穴×2として保守的に比較。実キー間隔の上限指定ではない"
+  }
+}
+;
+},"device/simulator/model.ts":function(module,exports,require){
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DeviceModel = exports.modes = exports.keyIds = void 0;
+/** 操作仕様の試作モデル。ESP32実装／電気回路のエミュレーターではない。 */
+const keyNav_1 = require("src/domain/keyNav.ts");
+const spelling_1 = require("src/domain/spelling.ts");
+const firmware_contract_json_1 = __importDefault(require("hardware/poc-01/firmware-contract.json"));
+exports.keyIds = Object.keys(firmware_contract_json_1.default.keys);
+const keyDefs = firmware_contract_json_1.default.keys;
+exports.modes = ['key', 'rootPosition', 'timbre', 'volume', 'noteLength', 'output'];
+const controlIds = ['mode', 'minus', 'plus', 'octaveMinus', 'octavePlus'];
+class DeviceModel {
+    constructor() {
+        this.phase = 'Off';
+        this.settings = { ...keyNav_1.DEFAULT_KEY, rootPosition: 0, timbre: 0, volume: 20, noteLength: 100, output: 'speaker' };
+        this.mode = 0;
+        this.active = new Map();
+        this.contacts = new Map();
+        this.events = [];
+        this.suppressed = new Set();
+        this.sequence = 0;
+        this.preparedAt = 0;
+        this.connected = true;
+        this.disconnectedAt = 0;
+        this.octOverlap = false;
+        this.octHoldAt = null;
+        this.octConsumed = false;
+        this.octBootBlocked = false;
+        this.blockedControls = new Set();
+        for (const id of [...exports.keyIds, ...controlIds])
+            this.contacts.set(id, { raw: false, stable: false, since: 0 });
+    }
+    event(type, text, at, nodes, extra = {}) {
+        this.events.push({ seq: ++this.sequence, at, type, text, nodes, ...extra });
+        if (this.events.length > 80)
+            this.events.shift();
+    }
+    notes() {
+        return exports.keyIds.map(id => {
+            const d = keyDefs[id];
+            const relative = firmware_contract_json_1.default.rootPosition.order.indexOf(id) - this.settings.rootPosition;
+            const degree = ((relative % 7) + 7) % 7;
+            const midi = 12 * (this.settings.octave + 1) + (0, spelling_1.keyPc)(this.settings.keyIndex) + 12 * Math.floor(relative / 7) + spelling_1.SCALE[degree];
+            return { id, midi, name: (0, spelling_1.spellDegree)(this.settings.keyIndex, degree) + (Math.floor(midi / 12) - 1), root: degree === 0, led: d.ledIndex, input: d.input, j1Pin: d.j1Pin, pressed: this.active.has(id) };
+        });
+    }
+    input(id, down, at) { const c = this.contacts.get(id); if (!c || c.raw === down)
+        return; c.raw = down; c.since = at; }
+    stop(at, reason) { this.active.clear(); for (const [id, c] of this.contacts)
+        if (c.raw || c.stable)
+            this.suppressed.add(id); this.event('stop', reason, at, ['controller', 'audio', 'led']); }
+    power(on, at) {
+        if (on && this.phase !== 'Off')
+            return;
+        if (on)
+            this.suppressed.clear();
+        this.stop(at, on ? '起動時は消音' : '主電源OFF・全音停止');
+        this.octOverlap = false;
+        this.octHoldAt = null;
+        this.octConsumed = false;
+        this.blockedControls = new Set(controlIds.filter(id => this.contacts.get(id).raw));
+        this.octBootBlocked = this.blockedControls.has('octaveMinus') || this.blockedControls.has('octavePlus');
+        if (on) {
+            this.settings = { ...keyNav_1.DEFAULT_KEY, rootPosition: 0, timbre: 0, volume: 20, noteLength: 100, output: 'speaker' };
+            this.mode = 0;
+            this.phase = 'Preparing';
+            this.preparedAt = at + 800;
+        }
+        else
+            this.phase = 'Off';
+        this.event('power', on ? '電源ON → 起動・音源準備（仮の800ms）' : '電源系統から全負荷への給電停止', at, ['power', 'controller', 'display']);
+    }
+    connection(ok, at) { if (ok === this.connected)
+        return; this.connected = ok; this.disconnectedAt = at; }
+    prepare(at) { this.stop(at, '設定変更 → 旧音停止・保持キーを抑止'); this.phase = 'Preparing'; this.preparedAt = at + 600; this.event('prepare', '音・表示・色を新設定へ（仮の準備600ms）', at, ['controller', 'display', 'led']); }
+    modify(delta, at) {
+        const mode = exports.modes[this.mode];
+        if (mode === 'key') {
+            Object.assign(this.settings, delta > 0 ? (0, keyNav_1.nextKey)(this.settings) : (0, keyNav_1.prevKey)(this.settings));
+            this.prepare(at);
+        }
+        if (mode === 'rootPosition') {
+            const next = Math.max(0, Math.min(firmware_contract_json_1.default.rootPosition.order.length - 1, this.settings.rootPosition + delta));
+            if (next !== this.settings.rootPosition) {
+                this.settings.rootPosition = next;
+                this.prepare(at);
+            }
+        }
+        if (mode === 'timbre') {
+            this.settings.timbre = 1 - this.settings.timbre;
+            this.prepare(at);
+        }
+        if (mode === 'volume') {
+            this.settings.volume = Math.min(100, Math.max(0, this.settings.volume + delta * 5));
+            this.event('volume', '音量を変更', at, ['controller', 'audio', 'display']);
+        }
+        if (mode === 'noteLength') {
+            this.settings.noteLength = Math.min(100, Math.max(10, this.settings.noteLength + delta * 10));
+            this.event('length', '次の発音から余韻を変更', at, ['controller', 'display']);
+        }
+        if (mode === 'output') {
+            this.stop(at, '出力切替のため消音');
+            this.settings.output = this.settings.output === 'speaker' ? 'headphones' : 'speaker';
+            this.event('route', '出力先を切替（実PCの出力先は変えない）', at, ['controller', 'audio', 'display']);
+        }
+    }
+    oct(id, down, at) {
+        const a = this.contacts.get('octaveMinus').stable, b = this.contacts.get('octavePlus').stable;
+        if (this.octBootBlocked) {
+            if (!a && !b)
+                this.octBootBlocked = false;
+            return;
+        }
+        if (a && b && !this.octOverlap) {
+            this.octOverlap = true;
+            this.octHoldAt = at;
+            this.octConsumed = false;
+        }
+        if (!down) {
+            if (this.octOverlap) {
+                this.octHoldAt = null;
+                if (!a && !b) {
+                    this.octOverlap = false;
+                    this.octConsumed = false;
+                }
+            }
+            else {
+                Object.assign(this.settings, id === 'octavePlus' ? (0, keyNav_1.nextOctave)(this.settings) : (0, keyNav_1.prevOctave)(this.settings));
+                this.prepare(at);
+            }
+        }
+    }
+    changed(id, down, at) {
+        if (this.phase === 'Off' || this.phase === 'Fault')
+            return;
+        if (id === 'octaveMinus' || id === 'octavePlus') {
+            this.oct(id, down, at);
+            return;
+        }
+        if (this.blockedControls.has(id)) {
+            if (!down)
+                this.blockedControls.delete(id);
+            return;
+        }
+        if (controlIds.includes(id)) {
+            if (!down)
+                return;
+            if (id === 'mode') {
+                this.mode = (this.mode + 1) % exports.modes.length;
+                this.event('mode', '調整する項目を切替', at, ['input', 'controller', 'display']);
+            }
+            else
+                this.modify(id === 'plus' ? 1 : -1, at);
+            return;
+        }
+        const def = keyDefs[id];
+        if (!def)
+            return;
+        this.event('contact', `${id} → ${def.input} ${down ? 'LOW（押下）' : 'HIGH（離鍵）'}`, at, ['input'], { key: id, led: def.ledIndex });
+        if (!down) {
+            const midi = this.active.get(id);
+            this.active.delete(id);
+            this.suppressed.delete(id);
+            this.event('noteOff', `${id} 離鍵 → 通常色へ。減衰音の余韻は継続`, at, ['controller', 'led'], { key: id, midi });
+            return;
+        }
+        if (this.phase !== 'Ready' || this.suppressed.has(id)) {
+            this.suppressed.add(id);
+            return;
+        }
+        const midi = this.notes().find(n => n.id === id).midi;
+        this.active.set(id, midi);
+        this.event('noteOn', `${id} → MIDI ${midi} 発音 → LED ${def.ledIndex + 1} 点灯`, at, ['input', 'controller', 'audio', 'led'], { key: id, midi, led: def.ledIndex });
+    }
+    tick(at) {
+        if (this.phase !== 'Off' && !this.connected && at - this.disconnectedAt >= firmware_contract_json_1.default.timing.inputFaultUs / 1000 && this.phase !== 'Fault') {
+            this.stop(at, '入力通信途絶 → 全音停止');
+            this.phase = 'Fault';
+            this.event('fault', '入力通信異常。復旧後、電源を入れ直す', at, ['input', 'controller', 'audio', 'display']);
+        }
+        // 同じスキャン内は全接点の安定値を先に反映し、両OCT同時解除の順序依存をなくす。
+        const changes = [];
+        if (this.connected)
+            for (const [id, c] of this.contacts) {
+                if (c.raw !== c.stable && at - c.since >= firmware_contract_json_1.default.timing.debounceStableUs / 1000) {
+                    c.stable = c.raw;
+                    changes.push([id, c.stable]);
+                }
+            }
+        const octReleased = !this.contacts.get('octaveMinus').stable && !this.contacts.get('octavePlus').stable;
+        const skipOctRelease = octReleased && (this.octOverlap || this.octBootBlocked);
+        for (const [id, down] of changes)
+            if (!(skipOctRelease && id.startsWith('octave')))
+                this.changed(id, down, at);
+        if (skipOctRelease) {
+            this.octOverlap = false;
+            this.octBootBlocked = false;
+            this.octHoldAt = null;
+            this.octConsumed = false;
+        }
+        if (this.phase === 'Preparing' && at >= this.preparedAt) {
+            this.phase = 'Ready';
+            this.event('ready', '準備完了。離したキーから演奏可能', at, ['controller', 'display', 'led']);
+        }
+        if ((this.phase === 'Ready' || this.phase === 'Preparing') && this.octHoldAt !== null && !this.octConsumed && at - this.octHoldAt >= firmware_contract_json_1.default.panicGesture.holdMs) {
+            this.octConsumed = true;
+            this.stop(at, 'OCT両押し → 全音停止');
+            this.event('panic', '全音停止。保持中のキーは離してから再演奏', at, ['input', 'controller', 'audio', 'led']);
+        }
+    }
+    cancel(at) { for (const c of this.contacts.values()) {
+        c.raw = false;
+        c.stable = false;
+        c.since = at;
+    } this.octOverlap = false; this.octHoldAt = null; this.octBootBlocked = false; this.blockedControls.clear(); this.suppressed.clear(); this.stop(at, '画面離脱 → 試聴停止'); }
+}
+exports.DeviceModel = DeviceModel;
+
+},"src/domain/keyNav.ts":function(module,exports,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.prevOctave = exports.nextOctave = exports.DEFAULT_KEY = exports.OCT_MAX = exports.OCT_MIN = exports.KEYS = void 0;
+exports.nextKey = nextKey;
+exports.prevKey = prevKey;
+/** 選べるキー（12種、半音順）。黒鍵ルートは D♭・E♭・F♯・A♭・B♭ */
+exports.KEYS = [
+    { letter: 'C', acc: 0 },
+    { letter: 'D', acc: -1 },
+    { letter: 'D', acc: 0 },
+    { letter: 'E', acc: -1 },
+    { letter: 'E', acc: 0 },
+    { letter: 'F', acc: 0 },
+    { letter: 'F', acc: 1 },
+    { letter: 'G', acc: 0 },
+    { letter: 'A', acc: -1 },
+    { letter: 'A', acc: 0 },
+    { letter: 'B', acc: -1 },
+    { letter: 'B', acc: 0 },
+];
+exports.OCT_MIN = 1;
+exports.OCT_MAX = 6;
+exports.DEFAULT_KEY = { keyIndex: 0, octave: 4 };
+const wrapOct = (o) => (o > exports.OCT_MAX ? exports.OCT_MIN : o < exports.OCT_MIN ? exports.OCT_MAX : o);
+function nextKey(s) {
+    if (s.keyIndex === exports.KEYS.length - 1)
+        return { keyIndex: 0, octave: wrapOct(s.octave + 1) };
+    return { ...s, keyIndex: s.keyIndex + 1 };
+}
+function prevKey(s) {
+    if (s.keyIndex === 0)
+        return { keyIndex: exports.KEYS.length - 1, octave: wrapOct(s.octave - 1) };
+    return { ...s, keyIndex: s.keyIndex - 1 };
+}
+const nextOctave = (s) => ({ ...s, octave: wrapOct(s.octave + 1) });
+exports.nextOctave = nextOctave;
+const prevOctave = (s) => ({ ...s, octave: wrapOct(s.octave - 1) });
+exports.prevOctave = prevOctave;
+
+},"src/domain/spelling.ts":function(module,exports,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.keyName = exports.nextLabelMode = exports.LABEL_MODES = exports.SCALE = void 0;
+exports.keyPc = keyPc;
+exports.isFlatKey = isFlatKey;
+exports.spellDegree = spellDegree;
+exports.padLabel = padLabel;
+const keyNav_1 = require("src/domain/keyNav.ts");
+exports.SCALE = [0, 2, 4, 5, 7, 9, 11];
+const LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+const LETTER_PC = [0, 2, 4, 5, 7, 9, 11];
+const ACC = { 0: '', 1: '♯', [-1]: '♭', 2: '𝄪', [-2]: '𝄫' };
+const DO = ['ド', 'レ', 'ミ', 'ファ', 'ソ', 'ラ', 'シ'];
+const SHARP_N = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'];
+const FLAT_N = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G', 'A♭', 'A', 'B♭', 'B'];
+exports.LABEL_MODES = ['doremi', 'letter', 'hidden'];
+const nextLabelMode = (m) => exports.LABEL_MODES[(exports.LABEL_MODES.indexOf(m) + 1) % exports.LABEL_MODES.length];
+exports.nextLabelMode = nextLabelMode;
+const mod = (n, m) => ((n % m) + m) % m;
+function keyPc(keyIndex) {
+    const k = keyNav_1.KEYS[keyIndex];
+    return mod(LETTER_PC[LETTERS.indexOf(k.letter)] + k.acc, 12);
+}
+const keyName = (keyIndex) => keyNav_1.KEYS[keyIndex].letter + ACC[keyNav_1.KEYS[keyIndex].acc];
+exports.keyName = keyName;
+function isFlatKey(keyIndex) {
+    const k = keyNav_1.KEYS[keyIndex];
+    return k.acc < 0 || (k.letter === 'F' && k.acc === 0);
+}
+/** キーのスケールどおりの綴り（degree 0〜6） */
+function spellDegree(keyIndex, degree) {
+    const li = (LETTERS.indexOf(keyNav_1.KEYS[keyIndex].letter) + degree) % 7;
+    const pc = (keyPc(keyIndex) + exports.SCALE[degree]) % 12;
+    const acc = mod(pc - LETTER_PC[li] + 6, 12) - 6;
+    return LETTERS[li] + (ACC[acc] ?? '');
+}
+function padLabel(cell, keyIndex, mode, language = 'ja') {
+    const solfege = language === 'ja' ? DO : ['Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Ti'];
+    if (mode === 'hidden' || cell.kind === 'void' || cell.midi == null)
+        return '';
+    if (cell.kind === 'sharp') {
+        return mode === 'doremi' ? `${solfege[cell.degree]}♯` : (isFlatKey(keyIndex) ? FLAT_N : SHARP_N)[cell.midi % 12];
+    }
+    const name = spellDegree(keyIndex, cell.degree);
+    if (cell.kind === 'root') {
+        const withOct = name + (Math.floor(cell.midi / 12) - 1);
+        return mode === 'doremi' ? `${solfege[0]} ${withOct}` : withOct;
+    }
+    return mode === 'doremi' ? solfege[cell.degree] : name;
+}
+
+},"hardware/poc-01/firmware-contract.json":function(module,exports,require){
+module.exports={
+  "status": "設計値。ESP32実装・実機測定は未実施",
+  "keys": {
+    "L1": {
+      "input": "GPA0",
+      "j1Pin": 1,
+      "ledIndex": 0,
+      "semitones": 0
+    },
+    "L2": {
+      "input": "GPA1",
+      "j1Pin": 2,
+      "ledIndex": 1,
+      "semitones": 4
+    },
+    "L3": {
+      "input": "GPA2",
+      "j1Pin": 3,
+      "ledIndex": 2,
+      "semitones": 7
+    },
+    "L4": {
+      "input": "GPA3",
+      "j1Pin": 4,
+      "ledIndex": 3,
+      "semitones": 11
+    },
+    "R1": {
+      "input": "GPB0",
+      "j1Pin": 5,
+      "ledIndex": 4,
+      "semitones": 2
+    },
+    "R2": {
+      "input": "GPB1",
+      "j1Pin": 6,
+      "ledIndex": 5,
+      "semitones": 5
+    },
+    "R3": {
+      "input": "GPB2",
+      "j1Pin": 7,
+      "ledIndex": 6,
+      "semitones": 9
+    },
+    "R4": {
+      "input": "GPB3",
+      "j1Pin": 8,
+      "ledIndex": 7,
+      "semitones": 12
+    }
+  },
+  "audio": {
+    "sampleRateHz": 48000,
+    "slots": 2,
+    "slotBits": 32,
+    "validBits": 16,
+    "mclkHz": 24000000,
+    "bclkHz": 3072000,
+    "blockFrames": 64,
+    "dmaBlocks": 3,
+    "mclkSource": "WM8960 board XTAL1",
+    "sysclkHz": 12288000,
+    "sysclkMultiple": 256,
+    "clockMaster": "WM8960",
+    "esp32Role": "I2S slave TX",
+    "pll": {
+      "prescale": 2,
+      "n": 8,
+      "kHex": "3126E8",
+      "postDivide": 8,
+      "status": "メーカー表45の候補。実機クロック未測定"
+    },
+    "sharedLrclkGuard": {
+      "ALRCGPIO": 1,
+      "GPIOSEL": 0,
+      "HPSWEN": 0,
+      "beforeMasterEnable": true
+    }
+  },
+  "timing": {
+    "inputScanUs": 1000,
+    "debounceStableUs": 2000,
+    "inputFaultUs": 10000,
+    "displayMaxHz": 20,
+    "ledMaxHz": 60
+  },
+  "state": {
+    "initial": "Boot",
+    "ready": "Ready",
+    "preparing": "Preparing",
+    "fault": "Fault"
+  },
+  "controls": [
+    "key",
+    "rootPosition",
+    "timbre",
+    "volume",
+    "noteLength",
+    "output"
+  ],
+  "panicGesture": {
+    "buttons": [
+      "octaveMinus",
+      "octavePlus"
+    ],
+    "holdMs": 1000,
+    "singleAction": "onReleaseWithoutOverlap",
+    "overlapCancelsBoth": true,
+    "rearm": "bothReleased",
+    "bootRequiresRelease": true
+  },
+  "rootPosition": {
+    "defaultIndex": 0,
+    "order": [
+      "L1",
+      "R1",
+      "L2",
+      "R2",
+      "L3",
+      "R3",
+      "L4",
+      "R4"
+    ],
+    "step": "diatonic",
+    "bounds": "clamp",
+    "anchor": "selected key and octave",
+    "change": "stop old notes; suppress held pads until release; update audio LED and display together",
+    "persist": false
+  }
+}
+;
+},"hardware/poc-01/mechanical/layout-8key-left-C.json":function(module,exports,require){
+module.exports={
+  "units": "mm",
+  "width": 52,
+  "height": 126,
+  "pitch": 20,
+  "keys": [
+    {
+      "id": "L1",
+      "col": 0,
+      "row": 0,
+      "x": 17.23760430703401,
+      "y": 16.0,
+      "referenceMidi": 60
+    },
+    {
+      "id": "L2",
+      "col": 0,
+      "row": 1,
+      "x": 17.23760430703401,
+      "y": 36.0,
+      "referenceMidi": 64
+    },
+    {
+      "id": "L3",
+      "col": 0,
+      "row": 2,
+      "x": 17.23760430703401,
+      "y": 56.0,
+      "referenceMidi": 67
+    },
+    {
+      "id": "L4",
+      "col": 0,
+      "row": 3,
+      "x": 17.23760430703401,
+      "y": 76.0,
+      "referenceMidi": 71
+    },
+    {
+      "id": "R1",
+      "col": 1,
+      "row": 0,
+      "x": 34.55811238272278,
+      "y": 26.0,
+      "referenceMidi": 62
+    },
+    {
+      "id": "R2",
+      "col": 1,
+      "row": 1,
+      "x": 34.55811238272278,
+      "y": 46.0,
+      "referenceMidi": 65
+    },
+    {
+      "id": "R3",
+      "col": 1,
+      "row": 2,
+      "x": 34.55811238272278,
+      "y": 66.0,
+      "referenceMidi": 69
+    },
+    {
+      "id": "R4",
+      "col": 1,
+      "row": 3,
+      "x": 34.55811238272278,
+      "y": 86.0,
+      "referenceMidi": 72
+    }
+  ],
+  "status": "左下C4・中央２列８キー初号機。寸法未実測。B案の間隔を継承"
+}
+;
+}};const cache={};function require(id){if(!cache[id]){const m={exports:{}};cache[id]=m;modules[id](m,m.exports,require);}return cache[id].exports;}require("device/simulator/browser.ts");})();</script>
+</html>
