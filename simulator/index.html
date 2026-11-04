@@ -63,11 +63,11 @@
 .case-screw{position:absolute;transform:translate(-50%,-50%);width:23px;height:23px;border-radius:50%;background:#13242b;border:1px solid #8e9ca3;color:#a4b1b7;text-align:center;font-size:18px;line-height:21px}.structure-image{width:100%;height:auto}
 .model-stage{height:600px}.pad{font-size:13px;padding:3px}.pad small{font-size:8px}.oled{font-size:8px;line-height:9px;padding:1px 0!important}.case-screw{width:15px;height:15px;font-size:12px;line-height:13px}.hardware-frame{width:100%;height:650px;border:1px solid #dce3e7;border-radius:10px}.a2-status{font-size:12px;color:#526373}.controls button{font-size:7px}.port-usb i{left:20%;right:20%;top:40%;height:3px}
 @media(max-width:700px){.model-stage{height:580px;margin:-20px 0}.hardware-frame{height:640px}}
-</style>
+.front-audio-slot{display:none;position:absolute;background:#08171c;border-radius:8px;pointer-events:none}.show-front-audio .front-audio-slot{display:block}</style>
 <main id="simulator">
 <header><div class="eyebrow">KALIMPAD / HARDWARE A2</div><h1>押す。鳴る。光る。</h1><p>操作とA2基板の内部3Dを並べて確認できます。USB・イヤホンは上端、電源は右側面。外形80.8×130.8×37.8mmは収納予約です。演奏面・ケース開口・部品の高さには未確定部分があります。</p></header>
 <div class="layout"><section class="left" aria-label="デバイスの操作">
-<div class="review-toolbar"><div class="row simulation-tools"><label class="hold-toggle" title="マウス用：演奏キーとOCTをクリックで保持、再クリックで離します。実機のボタンではありません"><input id="hold-input" type="checkbox">保持</label><label class="listen-toggle" title="ブラウザーの試聴。実機の追加スイッチではありません"><input id="listen" type="checkbox">試聴</label></div><div class="row view-buttons" aria-label="見る方向"><button data-view="front">正面</button><button data-view="angle">立体</button><button data-view="top">上端 USB・イヤホン</button><button data-view="right">右側 電源</button><button data-view="bottom">下端</button><button data-view="back">背面</button></div><div class="row"><label><input id="show-cables" type="checkbox">仮のケーブル</label><label><input id="show-grip" type="checkbox">握り範囲の目安</label><label><input id="show-labels" type="checkbox" checked>音名の補助表示</label></div></div>
+<div class="review-toolbar"><div class="row simulation-tools"><label class="hold-toggle" title="マウス用：演奏キーとOCTをクリックで保持、再クリックで離します。実機のボタンではありません"><input id="hold-input" type="checkbox">保持</label><label class="listen-toggle" title="ブラウザーの試聴。実機の追加スイッチではありません"><input id="listen" type="checkbox">試聴</label></div><div class="row view-buttons" aria-label="見る方向"><button data-view="front">正面</button><button data-view="angle">立体</button><button data-view="top">上端 USB・イヤホン</button><button data-view="right">右側 電源</button><button data-view="bottom">下端</button><button data-view="back">背面</button></div><div class="row"><label title="基板・キー・スピーカー位置を変えず、画面とボタンの間へ音道を追加する案。音響性能は未検証"><input id="show-front-audio" type="checkbox">前面音出口の追加案</label><label><input id="show-cables" type="checkbox">仮のケーブル</label><label><input id="show-grip" type="checkbox">握り範囲の目安</label><label><input id="show-labels" type="checkbox" checked>音名の補助表示</label></div></div>
 <div class="model-stage"><div class="device show-labels" id="device" aria-label="8キー試作機の操作モデル">
 <div id="front-face" class="body-face front-face"><div class="device-brand">kalimpad <span>POC · 8</span></div>
 
@@ -89,7 +89,7 @@
 <p class="caption operation-help">右側面の電源をクリックして起動し、正面に戻して演奏。本体のMODEで項目を選び、−／＋で変更。OCTは離すと変更、両方を1秒押すと全音停止。マウスで和音・両押しを試す場合はモデル上の操作欄の「保持」をONにし、キーを順にクリック。再クリックか保持OFFで離します。</p>
 <p id="audio-status" class="caption">モデル上の操作欄の「試聴」で音をON。簡易音源です。</p>
 </section><section aria-label="内部の動作とユーザーテスト">
-<div class="panel"><h2>A2 内部3D</h2><p class="a2-status">実配線済みKiCadから75部品を表示。橙は8部品・画面・スピーカー等の仮予約です。キーを押すと関連部品が緑になります。電気回路の計算ではありません。</p><iframe id="hardware-view" class="hardware-frame" title="A2基板と内部構造、操作連動表示" src="internal.html"></iframe><p class="caption"><a href="internal.html" target="_blank">3Dを大きく開く</a> · <a href="board-front.svg" target="_blank">表面の銅配線</a> · <a href="board-back.svg" target="_blank">裏面の銅配線</a> · <a href="notes.html">設計と残件</a></p></div><div class="panel"><div class="row toolbar"><h2>どこが動く？</h2><span class="subtle">直近の操作を表示</span></div><div class="flow">
+<div class="panel"><h2>A2 内部3D</h2><p class="a2-status">実配線済みKiCadから75部品を表示。青は最大寸法を照合した5部品、橙は残る3部品・画面・スピーカー等の仮予約です。キーを押すと関連部品が緑になります。電気回路の計算ではありません。</p><iframe id="hardware-view" class="hardware-frame" title="A2基板と内部構造、操作連動表示" src="internal.html"></iframe><p class="caption"><a href="internal.html" target="_blank">3Dを大きく開く</a> · <a href="board-front.svg" target="_blank">表面の銅配線</a> · <a href="board-back.svg" target="_blank">裏面の銅配線</a> · <a href="notes.html">設計と残件</a></p></div><div class="panel"><div class="row toolbar"><h2>どこが動く？</h2><span class="subtle">直近の操作を表示</span></div><div class="flow">
 <div class="stage" data-node="power"><div class="stepnum">給電</div><div><b>電源 → 全部品</b><small>側面スイッチ → TPS2553 → 5Vと2系統の3.3V</small></div></div>
 <div class="stage" data-node="input"><div class="stepnum">01</div><div><b>接点を読む</b><small id="input-detail">スイッチ → MCP23017 → 制御I2C GPIO5/6</small></div></div>
 <div class="stage" data-node="controller"><div class="stepnum">02</div><div><b>音を決める</b><small id="controller-detail">XIAO ESP32S3：キー＋オクターブ＋位置 → 音高</small></div></div>
@@ -2983,6 +2983,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.setupExterior = setupExterior;
 const exterior_json_1 = __importDefault(require("device/simulator/exterior.json"));
+const design_json_1 = __importDefault(require("device/mechanical/front-audio-01/design.json"));
 const assembly_json_1 = __importDefault(require("device/mechanical/assembly-03/assembly.json"));
 function setupExterior() {
     const el = (id) => document.getElementById(id);
@@ -2997,6 +2998,16 @@ function setupExterior() {
         b.style.transform = 'translate(-50%,-50%)';
     }
     facePosition(el('display-frame'), exterior_json_1.default.display.x, exterior_json_1.default.display.y + 12.5, 36, 12.5);
+    for (const slot of design_json_1.default.frontSlots) {
+        const hole = document.createElement('i');
+        hole.className = 'front-audio-slot';
+        facePosition(hole, slot.x, slot.y + slot.height, slot.width, slot.height);
+        el('front-face').appendChild(hole);
+    }
+    const frontAudio = el('show-front-audio');
+    const sendFrontAudio = () => { d.classList.toggle('show-front-audio', frontAudio.checked); el('hardware-view').contentWindow?.postMessage({ type: 'kalimpad-front-audio', enabled: frontAudio.checked }, '*'); };
+    frontAudio.onchange = sendFrontAudio;
+    el('hardware-view').addEventListener('load', sendFrontAudio);
     const top = (y) => (128.4 - y) / 130.8 * 100 + '%';
     el('power').style.top = top(exterior_json_1.default.power.y);
     el('power').style.left = (exterior_json_1.default.body.depth - exterior_json_1.default.power.z) / exterior_json_1.default.body.depth * 100 + '%';
@@ -3028,7 +3039,7 @@ function setupExterior() {
     el('speaker').style.width = exterior_json_1.default.speaker.width * scale + 'px';
     el('speaker').style.height = exterior_json_1.default.speaker.length * scale + 'px';
     const views = { front: [0, 0], angle: [-22, -28], top: [-90, 0], right: [0, -90], bottom: [90, 0], back: [0, 180] };
-    const messages = { front: '上部に丸い5ボタン。キー中心は適合済みプレートと同じ。左右の余白は将来の半音キー用です。', angle: 'A2主基板は72×124mm。外形80.8×130.8×37.8mmは収納予約で、完成ケース寸法ではありません。', top: 'A2ではUSB-Cとイヤホンの両方が上端。横位置は実装座標、高さと開口は予約値です。', right: '右側面上寄りの電源。A2 SW1の位置へ同期。指の干渉・挿抜荷重は実物で確認が必要です。', bottom: '下端には端子を置かない案です。イヤホンはA2基板に合わせ上端へ移しました。', back: '背面6本の外装ネジとスピーカー開口は構造案。主基板内部の固定4か所は右の3Dで確認できます。音の出口は未設計です。' };
+    const messages = { front: '上部に丸い5ボタン。前面音出口はチェックで追加案を比較できます。キー中心は適合済みプレートと同じ。左右の余白は将来の半音キー用です。', angle: 'A2主基板は72×124mm。外形80.8×130.8×37.8mmは収納予約で、完成ケース寸法ではありません。', top: 'A2ではUSB-Cとイヤホンの両方が上端。横位置は実装座標、高さと開口は予約値です。', right: '右側面上寄りの電源。A2 SW1の位置へ同期。指の干渉・挿抜荷重は実物で確認が必要です。', bottom: '下端には端子を置かない案です。イヤホンはA2基板に合わせ上端へ移しました。', back: '背面6本の外装ネジとスピーカー開口は構造案。主基板内部の固定4か所は右の3Dで確認できます。音の出口は未設計です。' };
     function view(name) { const [x, y] = views[name]; d.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`; el('view-caption').textContent = messages[name]; d.dataset.currentView = name; for (const b of document.querySelectorAll('button[data-view]'))
         b.setAttribute('aria-pressed', String(b.dataset.view === name)); }
     for (const b of document.querySelectorAll('button[data-view]'))
@@ -3039,6 +3050,151 @@ function setupExterior() {
     view('angle');
 }
 
+},"device/mechanical/front-audio-01/design.json":function(module,exports,require){
+module.exports={
+  "revision": "FA-001",
+  "requiresPcbChange": false,
+  "manufacturingRelease": false,
+  "acousticVerified": false,
+  "body": [
+    80.8,
+    130.8,
+    37.8
+  ],
+  "speakerAt": [
+    11,
+    76,
+    20
+  ],
+  "speakerSize": [
+    30,
+    20,
+    5
+  ],
+  "speakerSource": "https://www.adafruit.com/product/3923",
+  "frontSlots": [
+    {
+      "x": 13.0,
+      "y": 106.8,
+      "width": 3.6,
+      "height": 1.6
+    },
+    {
+      "x": 17.3,
+      "y": 106.8,
+      "width": 3.6,
+      "height": 1.6
+    },
+    {
+      "x": 21.6,
+      "y": 106.8,
+      "width": 3.6,
+      "height": 1.6
+    },
+    {
+      "x": 25.9,
+      "y": 106.8,
+      "width": 3.6,
+      "height": 1.6
+    },
+    {
+      "x": 30.2,
+      "y": 106.8,
+      "width": 3.6,
+      "height": 1.6
+    },
+    {
+      "x": 34.5,
+      "y": 106.8,
+      "width": 3.6,
+      "height": 1.6
+    }
+  ],
+  "outerSolids": [
+    {
+      "id": "chamber",
+      "bounds": [
+        10.2,
+        75.2,
+        24.2,
+        41.8,
+        109.2,
+        27.8
+      ]
+    },
+    {
+      "id": "neck",
+      "bounds": [
+        12,
+        106,
+        27,
+        40,
+        109.2,
+        35.8
+      ]
+    },
+    {
+      "id": "ear-left",
+      "bounds": [
+        9,
+        106,
+        34.6,
+        12.1,
+        109.2,
+        35.8
+      ]
+    },
+    {
+      "id": "ear-right",
+      "bounds": [
+        39.9,
+        106,
+        34.6,
+        43,
+        109.2,
+        35.8
+      ]
+    }
+  ],
+  "airVolumes": [
+    [
+      10.7,
+      75.7,
+      24.1,
+      41.3,
+      96.3,
+      25.1
+    ],
+    [
+      11,
+      76,
+      25,
+      41,
+      108.4,
+      27
+    ],
+    [
+      12.8,
+      106.8,
+      26.9,
+      39.2,
+      108.4,
+      38
+    ]
+  ],
+  "minimumWallMm": 0.8,
+  "caseFaceZ": 37.8,
+  "ductTopZ": 35.8,
+  "ductBottomZ": 24.2,
+  "mounting": "上端の左右耳を前面裏へ接着する追加案。前面ネジなし。接着剤・固定強度・スピーカー縁の気密は未検証。振動板へ接着しない。",
+  "status": "追加案・無通電形状試験用。既存ケースを加工する指示ではない。旧背面開口は保持するが、前後の音漏れと音量は未検証。",
+  "preservedSources": {
+    "device/hardware/main-integrated-02/main-integrated-02.kicad_pcb": "120562c6fd6a21952015f12d2fd1ffeec6fbb5b31955970d8d523635dd8005b4",
+    "device/mechanical/assembly-03/assembly.scad": "c101e078ae2f306484b65300ce78e880222d53fab4bd8c4d26bf3fc40d71947f",
+    "hardware/poc-01/mechanical/switch-plate-8key-left-C.stl": "0c2311700f45b9ff1a2b0f2a9ee163433e8045eb051b0e318d19400a3fc5d13d"
+  }
+}
+;
 },"device/mechanical/assembly-03/assembly.json":function(module,exports,require){
 module.exports={
   "revision": "ME-005 A",
