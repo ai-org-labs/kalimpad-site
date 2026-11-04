@@ -423,5 +423,17 @@
     "order": 38,
     "width": 1400,
     "height": 933
+  },
+  {
+    "id": "kalimpad-synth-orbit",
+    "title": "スマホから、シンセの宇宙。",
+    "alt": "宇宙服の手が六角形のスマホ画面に触れ、音符が惑星のように巡るイラスト。シンセ音色は無料、音・演奏・画面のイメージと注記。",
+    "src": "ads/kalimpad-synth-orbit.webp",
+    "thumb": "ads/kalimpad-synth-orbit-thumb.webp",
+    "date": "2026-11-04",
+    "genre": "レトロSFのシルクスクリーン",
+    "order": 39,
+    "width": 1400,
+    "height": 933
   }
 ]
