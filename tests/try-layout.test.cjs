@@ -16,3 +16,7 @@ test('英字ラベルが有効で、外側の半音も区別する',()=>{
  assert.match(js,/rot:false,lab:1/);
  assert.match(js,/SHARP_N=\['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'\]/);
 });
+test('横画面だけ演奏面を80%に縮小して中央に置く',()=>{
+ const css=fs.readFileSync('try.css','utf8');
+ assert.match(css,/@media\s*\(orientation:landscape\)\s*\{\s*#frame\s*\{[^}]*width:80%;[^}]*margin-inline:auto/);
+});

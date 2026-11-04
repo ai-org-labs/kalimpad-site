@@ -82,3 +82,5 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);
 
 /* 演奏面は画面横幅を使い、上下はクリップする。 */
 body{max-width:none;padding-inline:clamp(12px,3vw,40px)}#frame{height:65svh;min-height:320px;overflow:hidden}.demo-header,.play-intro,.demo-footer{width:100%}.demo-footer .store{max-width:480px;margin-inline:auto}.demo-footer{text-align:center}
+
+@media (orientation:landscape){#frame{width:80%;margin-inline:auto}}
