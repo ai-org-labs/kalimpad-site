@@ -399,5 +399,17 @@
     "order": 36,
     "width": 1254,
     "height": 1254
+  },
+  {
+    "id": "kalimpad-two-proofs",
+    "title": "AIに頼む、確認は二段階。",
+    "alt": "AIに頼む確認を二段階に分けた図解。コード側では画像台帳とHTMLの一致、並び順、トップの選抜をテスト。配信結果では公開URLの画像読込、一覧・トップを確認。kalimpadのサイト更新の実例で、不具合ゼロの保証ではない。",
+    "src": "ads/kalimpad-two-proofs.webp",
+    "thumb": "ads/kalimpad-two-proofs-thumb.webp",
+    "date": "2026-11-04",
+    "genre": "明るい二段階の比較図解",
+    "order": 37,
+    "width": 1400,
+    "height": 1100
   }
 ]
