@@ -17,3 +17,11 @@ test('QRの背景を白にし角丸を維持する',()=>{
  const css=fs.readFileSync(path.join(root,'style.css'),'utf8');
  assert.ok(css.includes('background:#fff;border-radius:12px'));
 });
+
+test('初めての訪問者が広告一覧より先に商品種別と無料範囲と入手先を確認できる',()=>{
+ const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+ const gallery=html.indexOf('<section class="ad-carousel"');
+ for(const value of ['iPhone・iPadの画面に触れて','11音色と演奏ガイドは無料','一部の機能は買い切りのPro','class="store-badge"']){
+  assert.ok(html.indexOf(value)>=0 && html.indexOf(value)<gallery,value);
+ }
+});
