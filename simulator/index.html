@@ -3007,6 +3007,10 @@ function setupExterior() {
     const frontAudio = el('show-front-audio');
     const sendFrontAudio = () => { d.classList.toggle('show-front-audio', frontAudio.checked); el('hardware-view').contentWindow?.postMessage({ type: 'kalimpad-front-audio', enabled: frontAudio.checked }, '*'); };
     frontAudio.onchange = sendFrontAudio;
+    window.addEventListener('message', e => { if (e.source === el('hardware-view').contentWindow && e.data?.type === 'kalimpad-front-audio-choice') {
+        frontAudio.checked = e.data.enabled === true;
+        d.classList.toggle('show-front-audio', frontAudio.checked);
+    } });
     el('hardware-view').addEventListener('load', sendFrontAudio);
     const top = (y) => (128.4 - y) / 130.8 * 100 + '%';
     el('power').style.top = top(exterior_json_1.default.power.y);

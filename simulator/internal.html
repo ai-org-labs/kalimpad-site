@@ -47,4 +47,4 @@ for(const type of ['keydown','keyup'])window.addEventListener(type,e=>{
  if(['KeyA','KeyS','KeyD','KeyF','KeyJ','KeyK','KeyL','Semicolon','KeyM','Minus','Equal','KeyZ','KeyX'].includes(e.code)){e.preventDefault();parent.postMessage({type:'kalimpad-a2-key',code:e.code,down:type==='keydown'},'*');}
 });
 window.addEventListener('blur',()=>parent.postMessage({type:'kalimpad-a2-cancel'},'*'));
-window.addEventListener('message',e=>{if(e.source===parent&&e.data?.type==='kalimpad-front-audio'){document.getElementById('front-audio').checked=e.data.enabled===true;render();}});</script></html>
+document.getElementById('front-audio').addEventListener('change',e=>parent.postMessage({type:'kalimpad-front-audio-choice',enabled:e.target.checked},'*'));window.addEventListener('message',e=>{if(e.source===parent&&e.data?.type==='kalimpad-front-audio'){document.getElementById('front-audio').checked=e.data.enabled===true;render();}});</script></html>
