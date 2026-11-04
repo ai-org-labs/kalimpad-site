@@ -20,7 +20,7 @@ const HR=Math.sqrt(3)/2, GAP=HR*0.5;
 const OCT_MIN=1, OCT_MAX=6;
 
 
-const st={ki:0,oct:4,size:0,rot:false,lab:2,off:0,tim:0,dmp:0};
+const st={ki:0,oct:4,size:0,rot:false,lab:1,off:0,tim:0,dmp:0};
 function save(){}
 
 const $=id=>document.getElementById(id);
@@ -152,6 +152,7 @@ function play(m){
 function refreshBar(){}
 
 let cells=[], byMidi=new Map();
+function padWidth(W){return W*(1-2*AUTO_SIDE_MIN)/((HR+GAP)*HR*3+1);}
 function layout(){
   clearAll();
   const fw=frame.clientWidth, fh=frame.clientHeight;
@@ -168,8 +169,7 @@ function layout(){
   
   const NCOL=4;
   const k=(HR+GAP)*HR*(NCOL-1)+1;
-  const wMax=Math.min(W/k,availH/(5*(HR+GAP)+HR));
-  const w=Math.min(wMax*SIZE_F[st.size],W*(1-2*AUTO_SIDE_MIN)/k), g=w*GAP, h=w*HR, step=h+g, dx=step*HR;
+  const w=padWidth(W), g=w*GAP, h=w*HR, step=h+g, dx=step*HR;
   const gw=(NCOL-1)*dx+w, x0=(W-gw)/2;
   
   const list=[]; let used=0;
@@ -196,7 +196,7 @@ function layout(){
   const map=document.createElement('div'); map.id='map'; frag.appendChild(map); mapEl=map;
   const mfrag=map;
   cells=[]; byMidi=new Map();
-  const fs=Math.max(8,Math.min(13,h*0.22,w*0.1));
+  const fs=Math.max(14,Math.min(34,h*0.24,w*0.22));
   stage.style.setProperty('--fs',fs.toFixed(1)+'px');
   for(const L of list){
     const el=document.createElement('div');
