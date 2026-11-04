@@ -11,7 +11,7 @@
  banner.hidden=choice==='granted'||choice==='denied';document.body.append(banner);
  function cleanPage(){const u=new URL(loc.pathname,loc.origin),q=new URL('https://local.invalid/'+loc.search);for(const name of ['utm_source','utm_medium','utm_campaign','utm_content']){const value=q.searchParams.get(name);if(value&&/^[a-zA-Z0-9_-]{1,100}$/.test(value))u.searchParams.set(name,value)}return u.href}
  function referrer(){try{return new URL(document.referrer).origin+'/'}catch(e){return ''}}
- function pageType(){return loc.pathname.includes('/notes/')?'dev_note':loc.pathname.endsWith('/dev-notes.html')?'dev_notes_index':loc.pathname.endsWith('/gallery.html')?'gallery':loc.pathname.endsWith('/site-privacy.html')?'site_privacy':'home'}
+ function pageType(){return loc.pathname.endsWith('/try.html')?'web_play':loc.pathname.includes('/notes/')?'dev_note':loc.pathname.endsWith('/dev-notes.html')?'dev_notes_index':loc.pathname.endsWith('/gallery.html')?'gallery':loc.pathname.endsWith('/site-privacy.html')?'site_privacy':'home'}
  function gtag(){w.dataLayer.push(arguments)}
  function start(){
   if(started||loc.hostname!=='ai-org-labs.github.io'||!loc.pathname.startsWith('/kalimpad-site/'))return;

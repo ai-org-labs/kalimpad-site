@@ -1,0 +1,79 @@
+
+:root{
+  --bg:#e4e8ee; --bar:#d6dbe3; --btn:#f4f6f9; --btn-fg:#252a36; --btn-on:#6a4fe0; --btn-on-fg:#fff;
+  --root:#7a5af5; --scale:#86d6f2; --sharp:#2a2f3c; --void:#aab2c0; --on:#34d27b;
+  --lab:#0e2436; --lab-root:#fff; --lab-sharp:#c3cad6; --lab-on:#05301a;
+  --trail:52,210,123; --band:rgba(40,50,70,.05); --toast-bg:rgba(24,27,38,.86); --toast-fg:#fff;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12141c; --bar:#1a1d28; --btn:#242836; --btn-fg:#dde2ec; --btn-on:#7d62ff; --btn-on-fg:#fff;
+    --root:#7d5ffa; --scale:#6cc8ea; --sharp:#2c3140; --void:#3b4254; --on:#34d27b;
+    --lab:#08202e; --lab-root:#fff; --lab-sharp:#a9b1c1; --lab-on:#05301a;
+    --trail:52,210,123; --band:rgba(255,255,255,.025); --toast-bg:rgba(240,242,248,.92); --toast-fg:#12141c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12141c; --bar:#1a1d28; --btn:#242836; --btn-fg:#dde2ec; --btn-on:#7d62ff; --btn-on-fg:#fff;
+  --root:#7d5ffa; --scale:#6cc8ea; --sharp:#2c3140; --void:#3b4254; --on:#34d27b;
+  --lab:#08202e; --lab-root:#fff; --lab-sharp:#a9b1c1; --lab-on:#05301a;
+  --trail:52,210,123; --band:rgba(255,255,255,.025); --toast-bg:rgba(240,242,248,.92); --toast-fg:#12141c;
+}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);
+  touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+  -webkit-tap-highlight-color:transparent;overscroll-behavior:none;
+  font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic UI",system-ui,sans-serif;}
+#frame{position:fixed;top:env(safe-area-inset-top,0px);right:env(safe-area-inset-right,0px);
+  bottom:env(safe-area-inset-bottom,0px);left:env(safe-area-inset-left,0px);overflow:hidden;}
+#app{position:absolute;left:0;top:0;transform-origin:0 0;}
+#bar{position:absolute;left:0;top:0;right:0;display:flex;align-items:center;justify-content:center;
+  gap:4px;padding:0 6px;box-sizing:border-box;background:var(--bar);}
+#bar button{flex:1 1 0;min-width:0;max-width:54px;height:calc(100% - 10px);border:0;border-radius:9px;
+  background:var(--btn);color:var(--btn-fg);font:inherit;font-size:var(--ic,18px);line-height:1;
+  display:flex;align-items:center;justify-content:center;padding:0;touch-action:manipulation;cursor:pointer;}
+#bar button.on{background:var(--btn-on);color:var(--btn-on-fg);}
+#bar button:focus-visible{outline:2px solid var(--btn-on);outline-offset:1px;}
+#bar button svg{width:1.1em;height:1.1em;display:block;}
+#bar .sep{flex:0 0 4px;}
+#stage{position:absolute;left:0;right:0;bottom:0;overflow:hidden;}
+.band{position:absolute;top:0;bottom:0;background:var(--band);}
+#trail{position:absolute;left:0;top:0;pointer-events:none;}
+#map{position:absolute;left:0;top:0;right:0;bottom:0;will-change:transform;pointer-events:none;}
+#map .pad{pointer-events:auto;}
+.pad{position:absolute;display:flex;align-items:center;justify-content:center;
+  clip-path:polygon(0% 50%,25% 0%,75% 0%,100% 50%,75% 100%,25% 100%);
+  background:var(--scale);color:var(--lab);contain:layout paint style;}
+.pad.root{background:var(--root);color:var(--lab-root);}
+.pad.sharp{background:var(--sharp);color:var(--lab-sharp);}
+.pad.void{background:var(--void);}
+.pad.void::before{content:"";position:absolute;inset:1.5px;background:var(--bg);
+  clip-path:polygon(0% 50%,25% 0%,75% 0%,100% 50%,75% 100%,25% 100%);}
+.pad.on{background:var(--on);color:var(--lab-on);}
+
+.pad .relief{position:absolute;inset:0;pointer-events:none;fill:none;stroke-width:.75;stroke-linecap:round;stroke-linejoin:round;}
+.pad .relief .upper{stroke:rgba(255,255,255,.16);}
+.pad .relief .lower{stroke:rgba(0,0,0,.12);}
+.pad.on .relief .upper{stroke:rgba(0,0,0,.22);}
+.pad.on .relief .lower{stroke:rgba(255,255,255,.07);}
+.pad span{pointer-events:none;font-size:var(--fs,11px);font-weight:600;white-space:nowrap;letter-spacing:.02em;}
+#toast{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);padding:14px 22px;border-radius:14px;
+  background:var(--toast-bg);color:var(--toast-fg);font-size:26px;font-weight:700;text-align:center;
+  pointer-events:none;opacity:0;transition:opacity .12s;z-index:5;}
+#toast small{display:block;font-size:13px;font-weight:500;opacity:.75;margin-top:3px;}
+#toast.show{opacity:1;}
+#start{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;
+  background:var(--bg);color:var(--btn-fg);font-size:20px;font-weight:600;flex-direction:column;gap:14px;}
+#start i{font-style:normal;width:74px;height:40px;background:var(--root);
+  clip-path:polygon(0% 50%,25% 0%,75% 0%,100% 50%,75% 100%,25% 100%);}
+@media (prefers-reduced-motion:reduce){#toast{transition:none;}}
+
+:root{--material-edge:#d7dee7;--material-panel:#e9edf3;--material-pressed:#e3e8f0;--material-selected-pressed:#5c43c9;}
+:root[data-theme="dark"]{--material-edge:#2b303c;--material-panel:#1d212d;--material-pressed:#343a49;--material-selected-pressed:#6950db;}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--material-edge:#2b303c;--material-panel:#1d212d;--material-pressed:#343a49;--material-selected-pressed:#6950db;}}
+
+#stage{background:linear-gradient(to bottom,rgba(255,255,255,.035),rgba(255,255,255,0) 50%,rgba(0,0,0,.035));}
+#bar button{border:1px solid transparent;}
+#bar button:active{background:var(--material-pressed);}
+#bar button.on:active{background:var(--material-selected-pressed);}
+
+#frame{position:relative;inset:auto;width:100%;height:min(70svh,680px);min-height:400px}html,body{height:auto;overflow:auto;touch-action:auto}body{max-width:480px;margin:auto;padding:0 12px;box-sizing:border-box}#bar,#start,#toast{display:none}#stage{touch-action:none}.demo-header{height:64px;display:flex;align-items:center;justify-content:space-between;color:var(--btn-fg);font-size:12px}.demo-header a{font-size:20px;font-weight:700;color:inherit;text-decoration:none}.demo-footer{padding:16px 0 24px;color:var(--btn-fg);font-size:12px;line-height:1.7}.demo-footer a{color:inherit}.store{display:block;text-align:center;background:var(--btn-on);color:white!important;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:12px}.pad:focus-visible{outline:2px solid var(--on);outline-offset:-2px}
