@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>INPUT-02 設計</title><a href="index.html">戻る</a><pre style="white-space:pre-wrap;font:16px/1.8 system-ui;max-width:900px;margin:24px auto"># INPUT-02 部品構成（発注用確定BOMではない）
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>INPUT-02 設計</title><style>body{margin:24px auto;padding:0 16px;max-width:900px;font:16px/1.8 system-ui;color:#193744}a{color:#006678}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}</style><nav><a href="index.html">シミュレーター</a> · <a href="notes.html">現行設計</a> · <a href="parts.html">部品</a> · <a href="completion.html">完成までの確認</a> · <a href="manufacturing.html">外注の指定</a></nav><pre># INPUT-02 部品構成（3ボタン版・品番選定済み／製造リリース前）
 
 | 部品 | 数量 | 扱い |
 |---|---:|---|
@@ -6,7 +6,7 @@
 | ATOMIC Battery Base A151 | 0〜1 | 電池時のみ。所持・購入版は未確認 |
 | Twilightスイッチ | 8 | 手持ち、適合済みプレート使用 |
 | TCA9535PWR | 2 | 操作用＋8キー用。TSSOP-24、外付け入力プルアップを追加。調達在庫未照合 |
-| 窓用逆実装RGB LED | 8 | 保存KEY-A2の窓位置を継承。電流・型番・実装高さの再照合後に確定 |
+| 窓用逆実装RGB LED | 8 | OPSCO SK6812MINI-E、C5149201資料版。窓直下の逆実装。光量・電流は実測待ち |
 | SN74LVC1T45DBVR／TPS2553DBVR | 各1 | 信号変換／LED電源制限。電流設定抵抗226kΩ・1%。全体電力の実測は未完了 |
 | 小型丸押し子＋B3F-1000 | 3 | 右側縦並び。制御03を90度回しSW103〜105だけ実装、SW101/102は非実装 |
 | JST GH 6極コネクター・ケーブル | 1組 | 両端SM06B-GHS-TB、GHR-06V-S、SSHL-002T-P0.2。詳細はelectrical-detail.md |
@@ -17,4 +17,8 @@
 Echo Base、Feather、音源DAC、OLED、スピーカー、イヤホンジャックはINPUT-02の購入対象に含めない。A5の部品表はA5専用として残す。
 
 現行実装は[assembly-variant.json](assembly-variant.json)を優先。旧5ボタンの実装一覧をそのまま発注しない。銅配線と基板外形は保存input-control-03を使う。
+
+基板上の全物理部品の品番は[procurement.json](procurement.json)、製造指定は[manufacturing-instructions.md](manufacturing-instructions.md)。現行資料は`device/manufacturing/input03-review/`と同名ZIP。各基板BOMと実装対象だけの座標、1台合計の調達表を同梱。旧input02-reviewは5ボタン版として保存する。
+
+抵抗はYAGEO RC0603FR（1%、0.1W）、100nFはSamsung CL10B104KB8NNNC、1µFはCL10B105KO8NNNC、10µF/16VはCL21B106KOQNNNEを選定。メーカー資料の寸法を部品台帳へ記録。型番選定と在庫確保・業者の実装承認は区別する。
 </pre></html>

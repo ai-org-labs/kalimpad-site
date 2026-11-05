@@ -1,0 +1,56 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>INPUT-02 設計</title><style>body{margin:24px auto;padding:0 16px;max-width:900px;font:16px/1.8 system-ui;color:#193744}a{color:#006678}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}</style><nav><a href="index.html">シミュレーター</a> · <a href="notes.html">現行設計</a> · <a href="parts.html">部品</a> · <a href="completion.html">完成までの確認</a> · <a href="manufacturing.html">外注の指定</a></nav><pre># USB・8キーPoCを完成とするための実機確認
+
+対象：INPUT-02-3BUTTON、MOCK-03、AtomS3 C123。2026-11-06現在、以下の実機結果は未取得。設計検査の合格を実機結果へ転記しない。
+
+## 先に用意するもの
+
+画面付きAtomS3 C123×1。手持ちのLite、Echo Base、Featherは今回の組立部品へ代用しない。Twilight8個と3Dプリンターは所有済み。USBケーブル、ノギス、導通／直流電圧を測れるテスター、MIDI対応受信端末を使う。電流波形・FAULT検証は測定機材を持つ実装業者にも依頼できる。
+
+基板に載せる全品番はprocurement.jsonへ選定済み。基板発注前に、メーカー品番・DNP・LEDの向き・特殊実装工程を見積もり回答と照合する。これは機構部品を含む全調達完了を意味しない。
+
+## 1. 現物が必要な端子寸法
+
+Atomを裏返し、底面ラベルの3V3、G5、G6の連続3端子を確認する。メーカーの[底面図](https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/472/C123_PinMap_01.jpg)と照合する。G7/G8や反対列の5Vへ取り違えない。
+
+記録する寸法：端子ピッチ、底面からソケット口までの段差、適合した雄ピンの挿入長、接続後に底面から突き出す端末＋絶縁材の高さ。外観写真から挿入深さを推定しない。Samtec TSWの候補は資料上のピン長・絶縁部の高さと組み合わせて選ぶ必要があり、現段階では購入指定にしない。
+
+底面全体を覆う中継基板は制御J101と競合するため採用しない。3端子だけの取り出しを優先し、端末位置・線の曲がり・絶縁と抜け止めを確定してMOCK-03へ反映する。所有MAIAR-032は汎用基板で、Atom専用品と扱わない。
+
+USBとGroveは実プラグを差し、接続状態の外形と抜き差しに必要な空間を測る。USB開口は12.5×6mm、想定プラグ外形は12×5.5mm以内。外形だけでなく完全に差し込めるかを確認する。
+
+## 2. 小さい試験片から印刷
+
+`device/mechanical/input-only-03/fit-check/coupon.stl`をケースと同じ材料・向き・積層条件で1個印刷する。寸法34×16×9.8mm。1本線側はM1.6用の径3mm柱／下穴1.3mm、2本線側はM2用の径5mm柱／下穴1.7mm。実際のねじの相手部を再現した試験片であり、ケース全体の強度試験の代用ではない。
+
+短いねじまたは挿入長を制限したねじで約5mmだけ締め、割れ、空転、引き抜け、繰り返し脱着後の緩みを記録する。長さ16mmのねじを試験片へ全部入れない。続いて既存keytop.stlを1個印刷しTwilightへ装着、押下後の戻りと抜けを確認する。
+
+合格後にfront/back/wallを各1、plunger×3、keytop残り7個、keypcb/controlpcb/atomのダミーを印刷。無理に閉じず、接点ピン・ソケット・端子の挿入方向も確認する。
+
+## 3. ハーネスの製作図を閉じる
+
+- H1：Atom GroveのGND／5V／G2／G1 → 制御J100の1／2／3／4。
+- H2：Atom底面3V3／G5／G6 → 制御J102の1／2／3。
+- H3：制御J101 → キーJ1、1〜6を同番号接続。GND／5V_LED／3V3／SDA／SCL／LED_DATA_5V。
+
+GH側はGHR-04V-S、GHR-03V-S、GHR-06V-S×2とSSHL-002T-P0.2。線はAWG26、被覆径0.76〜1.0mmの指定。Grove相手端末と底面端末はGHとは別。完成長は端末出口間で定義し、実機仮組みで曲げ・作業余長を含めて決める。3Dの経路中心線長を線の切断長へ転用しない。各信号の導通と隣接短絡なしを全数確認する。
+
+## 4. 基板組立・初回通電
+
+製造資料input03-reviewの3ボタン指定で実装し、業者検査後に受領する。Twilightはソケットへ差す。逆実装LEDの発光面が窓側、ソケットが正しい側であることを確認する。
+
+Atomを書き込む前に対象C123とUSB接続端末を照合する。初回はケースを開け、A151なし、LED既定OFFのファームで行う。3.3V系と5V系の短絡なしを確認後、USB給電、3.3V／5VとG6初期Low、TCA0x20／0x23の応答、LCD向きを記録する。異常電流・発熱・表示異常では停止して原因を調べる。
+
+## 5. 演奏と接続の受入
+
+受信側のMIDI設定で「kalimpad INPUT-02」を選ぶ。GarageBand iPhoneは[Apple公式手順](https://support.apple.com/ja-jp/guide/garageband-iphone/chse356a0321/ios)のBluetooth MIDI設定を使う。LCDがMIDI READYになってから演奏する。
+
+8キーを1個ずつ押して離す→2個／4個／8個の同時押しと離し→MODEでKEYを選び＋／−→ROOTを選び＋／−→OCTAVEを選び＋／−。全てのNoteOnに対応するNoteOffを受信記録で照合。キーを保持したまま設定変更、切断、再接続を行い、音の残留と意図しない再発音がないことを確かめる。電源再投入後の設定初期化は現仕様。
+
+## 6. 点灯と最終組立
+
+測定用LEDフラグを有効化し、低輝度から電源起動・PWMピーク・全8個点灯・FAULT・熱を測る。制限回路の101.3〜142.1mAはLED分岐の設計範囲で、USB機全体の消費値ではない。正常動作、故障時の停止、スイッチ窓とキーへの光の通りを確認後、常用点灯のファームを発行する。
+
+ハーネスと端末の絶縁・余長を収め、全ねじを締結。全キーと3操作の復帰、USB挿抜、ガタ、ケースの噛み込み、閉じた状態の熱とBLE接続を再確認する。
+
+合格記録には日付、基板ハッシュ、ファームハッシュ、部品版、測定値、写真、受信MIDIログを添付する。ここまで終えてUSB・8キーPoC完成とする。電池内蔵、4列、USB MIDI、単体音源は別の拡張であり、今回の完成をそれらで引き延ばさない。
+</pre></html>

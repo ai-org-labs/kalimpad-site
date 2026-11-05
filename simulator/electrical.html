@@ -1,14 +1,14 @@
-<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>INPUT-02 設計</title><a href="index.html">戻る</a><pre style="white-space:pre-wrap;font:16px/1.8 system-ui;max-width:900px;margin:24px auto"># INPUT-02 電源・信号・ハーネスの設計指定
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>INPUT-02 設計</title><style>body{margin:24px auto;padding:0 16px;max-width:900px;font:16px/1.8 system-ui;color:#193744}a{color:#006678}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}</style><nav><a href="index.html">シミュレーター</a> · <a href="notes.html">現行設計</a> · <a href="parts.html">部品</a> · <a href="completion.html">完成までの確認</a> · <a href="manufacturing.html">外注の指定</a></nav><pre># INPUT-02 電源・信号・ハーネスの設計指定
 
-2026-11-05。回路図化のための指定。配線済みPCBや発注承認ではない。AtomのLCD有無に依存しない周辺回路を先に整理する。
+2026-11-06更新。保存input-control-03／input-keys-led-02へ実装済みの設計指定。銅配線とKiCad検査は完了。製造・実物受入は別。現行のメーカー品番はprocurement.json、3ボタン実装はassembly-variant.jsonを参照。
 
 ## LED回路
 
 - Atom G5 → A：SN74LVC1T45DBVR → B → 330Ω直列 → LED_DATA_5V。DIRをVCCAへ固定しA→B。A入力に100kΩプルダウン。
 - VCCA=3.3V、VCCB=LED側のスイッチ後5V。各電源に100nF。片電源がGNDのときに高インピーダンスとなる特性を利用し、LED停止中の信号経由給電を避ける。起動／停止中の中間電圧は実機検証対象。
-- 5V入力 → TPS2553DBVR → 5V_LED。G6をENへ、ENに100kΩプルダウン。初期状態はLED電源OFF。FAULTは操作用入力ICの空き入力へ取り込み、3.3Vへプルアップする案。
+- 5V入力 → TPS2553DBVR → 5V_LED。G6をENへ、ENに100kΩプルダウン。初期状態はLED電源OFF。FAULTは操作用TCA9535のP05へ接続し、3.3Vへ10kΩでプルアップ。
 - 電流制限抵抗は226kΩ・1%を採用。最小101.3〜最大142.1mA。完成機の消費は未検証で、詳細はpower-budget.md。旧A5の抵抗値を流用していない。
-- LED候補は保存KEY-A2と同じSK6812MINI-E。窓直下位置と8個を継承。各100nFと入力側のバルク容量を配置。最大輝度を初期許可しない。消費・発光高さ・透過は受入待ち。
+- LEDは保存KEY-A2と同じOPSCO SK6812MINI-E（C5149201資料版）を指定。窓直下位置と8個を継承。各100nFと入力側のバルク容量を配置。最大輝度を初期許可しない。消費・発光高さ・透過は受入待ち。
 - 起動はG5=Low、LED用5Vを許可、電源安定後に消灯フレーム、その後表示。停止は消灯送信、G5=Low、LED用5Vを禁止。故障時は送信待ちをせず電源禁止。具体的な待ち時間はLED資料と実測後に定義。
 
 [TI SN74LVC1T45](https://www.ti.com/product/SN74LVC1T45)／[TI TPS2553](https://www.ti.com/product/TPS2553)。TPS2553はLED分岐の電流制限であり、USBとA151を自動切替する部品ではない。USB＋電池ONを許可する根拠にはならない。
