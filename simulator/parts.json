@@ -1,13 +1,20 @@
 {
-  "revision": "A2",
+  "revision": "A5",
   "manufacturingRelease": false,
   "physicalFitVerified": false,
   "catalog": [
     {
       "ref": "M1",
       "mpnOrValue": "Seeed 113991114",
-      "status": "missing_model",
-      "cadBoundsMm": null,
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        23.1100000445875,
+        101.51725868195948,
+        8.745000021676534,
+        40.8900003439188,
+        123.99924056398854,
+        13.205000216442514
+      ],
       "guaranteedMaximumHeightMm": null,
       "dimensionEvidence": null
     },
@@ -343,7 +350,7 @@
     },
     {
       "ref": "U6",
-      "mpnOrValue": "SN74LV1T125DBVR",
+      "mpnOrValue": "SN74LVC1T45DBVR",
       "status": "cad_geometry",
       "cadBoundsMm": [
         44.60000004991889,
@@ -402,183 +409,15 @@
       "dimensionEvidence": null
     },
     {
-      "ref": "J1",
-      "mpnOrValue": "HRO TYPE-C-31-M-12",
-      "status": "missing_model",
-      "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": 3.36,
-      "dimensionEvidence": {
-        "ref": "J1",
-        "orderableMpn": "TYPE-C-31-M-12",
-        "bodyMaximumMm": [
-          9.09,
-          7.5,
-          3.36
-        ],
-        "solderAllowanceMm": 0.15,
-        "source": {
-          "url": "https://datasheet.lcsc.com/datasheet/pdf/9e56b777c022540fcce7c7f67825f55e.pdf",
-          "drawing": "HRO TYPE-C-31-M-12、2020-12-08。8.94/7.35の一般公差±0.15、3.26の一般公差±0.10。基板下の固定脚は別評価。",
-          "sha256": "6ae33d50ac47820114661138dc4e4659f40fdc5d4f485b46685dfec338da1a9e"
-        },
-        "geometryKind": "maximum_dimension_envelope",
-        "assembly": "主基板へ業者実装。固定脚4本もはんだ付け。ケースに挿抜荷重の受けを設ける。"
-      }
-    },
-    {
-      "ref": "U8",
-      "mpnOrValue": "TUSB320LAIRWBR",
-      "status": "missing_model",
-      "cadBoundsMm": null,
-      "guaranteedMaximumHeightMm": 0.4,
-      "dimensionEvidence": {
-        "ref": "U8",
-        "orderableMpn": "TUSB320LAIRWBR",
-        "bodyMaximumMm": [
-          1.65,
-          1.65,
-          0.4
-        ],
-        "solderAllowanceMm": 0.15,
-        "source": {
-          "url": "https://www.ti.com/lit/ds/symlink/tusb320lai.pdf",
-          "drawing": "RWB0012A、図面4221631/B、2017-07、PDF35ページ",
-          "sha256": "62f7b3f65338e25ebd6fd46ef04474ba806b06b1cc04bc0b3d7b8191b01ca87d"
-        },
-        "geometryKind": "maximum_dimension_envelope",
-        "assembly": "主基板へ業者はんだ実装。回転・端子1は実装座標ファイルに従う。"
-      }
-    },
-    {
-      "ref": "U9",
-      "mpnOrValue": "TLV75533PDBVR",
-      "status": "cad_geometry",
-      "cadBoundsMm": [
-        23.60000004991889,
-        98.55000001844019,
-        8.595,
-        26.39999995008111,
-        101.44999998155981,
-        10.14500004451722
-      ],
-      "guaranteedMaximumHeightMm": null,
-      "dimensionEvidence": null
-    },
-    {
-      "ref": "U10",
-      "mpnOrValue": "SN74LVC1G04DBVR",
-      "status": "cad_geometry",
-      "cadBoundsMm": [
-        49.60000004991889,
-        102.55000001844019,
-        8.595,
-        52.39999995008111,
-        105.44999998155981,
-        10.14500004451722
-      ],
-      "guaranteedMaximumHeightMm": null,
-      "dimensionEvidence": null
-    },
-    {
-      "ref": "R81",
-      "mpnOrValue": "887k 1%",
-      "status": "cad_geometry",
-      "cadBoundsMm": [
-        24.2000000202097,
-        104.60000001010485,
-        8.595,
-        25.7999999797903,
-        105.39999998989515,
-        9.044999992270023
-      ],
-      "guaranteedMaximumHeightMm": null,
-      "dimensionEvidence": null
-    },
-    {
-      "ref": "R82",
-      "mpnOrValue": "10k",
-      "status": "cad_geometry",
-      "cadBoundsMm": [
-        40.20000002020971,
-        108.60000001010485,
-        8.595,
-        41.79999997979031,
-        109.39999998989515,
-        9.044999992270023
-      ],
-      "guaranteedMaximumHeightMm": null,
-      "dimensionEvidence": null
-    },
-    {
-      "ref": "C81",
-      "mpnOrValue": "100n 16V X7R",
-      "status": "cad_geometry",
-      "cadBoundsMm": [
-        24.2000000202097,
-        112.60000001010485,
-        8.595,
-        25.7999999797903,
-        113.39999998989515,
-        9.3949999797903
-      ],
-      "guaranteedMaximumHeightMm": null,
-      "dimensionEvidence": null
-    },
-    {
-      "ref": "C91",
-      "mpnOrValue": "1u 16V X7R",
-      "status": "cad_geometry",
-      "cadBoundsMm": [
-        28.2000000202097,
-        99.60000001010485,
-        8.595,
-        29.7999999797903,
-        100.39999998989515,
-        9.3949999797903
-      ],
-      "guaranteedMaximumHeightMm": null,
-      "dimensionEvidence": null
-    },
-    {
-      "ref": "C92",
-      "mpnOrValue": "1u 16V X7R",
-      "status": "cad_geometry",
-      "cadBoundsMm": [
-        24.2000000202097,
-        94.60000001010485,
-        8.595,
-        25.7999999797903,
-        95.39999998989515,
-        9.3949999797903
-      ],
-      "guaranteedMaximumHeightMm": null,
-      "dimensionEvidence": null
-    },
-    {
-      "ref": "C93",
-      "mpnOrValue": "100n 16V X7R",
-      "status": "cad_geometry",
-      "cadBoundsMm": [
-        49.2000000202097,
-        98.60000001010485,
-        8.595,
-        50.7999999797903,
-        99.39999998989515,
-        9.3949999797903
-      ],
-      "guaranteedMaximumHeightMm": null,
-      "dimensionEvidence": null
-    },
-    {
       "ref": "U1",
       "mpnOrValue": "TPS2553DBVR",
       "status": "cad_geometry",
       "cadBoundsMm": [
         36.60000004991889,
-        100.55000001844019,
+        94.55000001844019,
         8.595,
         39.39999995008111,
-        103.44999998155981,
+        97.44999998155981,
         10.14500004451722
       ],
       "guaranteedMaximumHeightMm": null,
@@ -598,10 +437,10 @@
       "status": "cad_geometry",
       "cadBoundsMm": [
         43.2000000202097,
-        101.60000001010485,
+        96.60000001010485,
         8.595,
         44.7999999797903,
-        102.39999998989515,
+        97.39999998989515,
         9.044999992270023
       ],
       "guaranteedMaximumHeightMm": null,
@@ -609,14 +448,14 @@
     },
     {
       "ref": "R4",
-      "mpnOrValue": "20k 1%",
+      "mpnOrValue": "133k 1%",
       "status": "cad_geometry",
       "cadBoundsMm": [
         37.2000000202097,
-        96.60000001010485,
+        90.60000001010485,
         8.595,
         38.7999999797903,
-        97.39999998989515,
+        91.39999998989515,
         9.044999992270023
       ],
       "guaranteedMaximumHeightMm": null,
@@ -627,10 +466,10 @@
       "mpnOrValue": "10k",
       "status": "cad_geometry",
       "cadBoundsMm": [
-        43.2000000202097,
+        45.2000000202097,
         105.60000001010485,
         8.595,
-        44.7999999797903,
+        46.7999999797903,
         106.39999998989515,
         9.044999992270023
       ],
@@ -643,10 +482,10 @@
       "status": "cad_geometry",
       "cadBoundsMm": [
         32.2000000202097,
-        102.60000001010485,
+        96.60000001010485,
         8.595,
         33.7999999797903,
-        103.39999998989515,
+        97.39999998989515,
         9.3949999797903
       ],
       "guaranteedMaximumHeightMm": null,
@@ -658,10 +497,10 @@
       "status": "cad_geometry",
       "cadBoundsMm": [
         37.99999995250255,
-        92.37500001396984,
+        86.37500001396984,
         8.595,
         40.00000004749745,
-        93.62499998603016,
+        87.62499998603016,
         9.844999972060323
       ],
       "guaranteedMaximumHeightMm": null,
@@ -747,30 +586,30 @@
     },
     {
       "ref": "C51",
-      "mpnOrValue": "10u 16V X5R",
+      "mpnOrValue": "GRM32ER71E226KE15L / 22u 25V X7R 10%",
       "status": "cad_geometry",
       "cadBoundsMm": [
-        45.49999995250255,
-        75.37500001396984,
+        44.60000004041941,
+        74.75000002793968,
         8.595,
-        47.50000004749745,
-        76.62499998603016,
-        9.844999972060323
+        47.79999995958061,
+        77.24999997206032,
+        11.094999944120644
       ],
       "guaranteedMaximumHeightMm": null,
       "dimensionEvidence": null
     },
     {
       "ref": "C52",
-      "mpnOrValue": "22u 10V X5R",
+      "mpnOrValue": "GRM32ER71E226KE15L / 22u 25V X7R 10%",
       "status": "cad_geometry",
       "cadBoundsMm": [
-        52.99999995250255,
-        72.37500001396984,
+        52.4000000404194,
+        71.75000002793968,
         8.595,
-        55.00000004749745,
-        73.62499998603016,
-        9.844999972060323
+        55.5999999595806,
+        74.24999997206032,
+        11.094999944120644
       ],
       "guaranteedMaximumHeightMm": null,
       "dimensionEvidence": null
@@ -1327,53 +1166,234 @@
       ],
       "guaranteedMaximumHeightMm": null,
       "dimensionEvidence": null
+    },
+    {
+      "ref": "U14",
+      "mpnOrValue": "TPS3808G33DBVR",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        6.6000000499188936,
+        20.550000018440173,
+        8.595,
+        9.399999950081114,
+        23.4499999815598,
+        10.14500004451722
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "U15",
+      "mpnOrValue": "SN74LVC1G00DBVR",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        13.60000004991889,
+        17.550000018440187,
+        8.595,
+        16.39999995008111,
+        20.449999981559813,
+        10.14500004451722
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "C140",
+      "mpnOrValue": "100n 16V X7R",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        3.2000000202097,
+        21.600000010104836,
+        8.595,
+        4.7999999797903,
+        22.399999989895136,
+        9.3949999797903
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "C141",
+      "mpnOrValue": "100n 16V X7R",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        18.2000000202097,
+        18.60000001010485,
+        8.595,
+        19.7999999797903,
+        19.39999998989515,
+        9.3949999797903
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "R140",
+      "mpnOrValue": "10k",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        7.200000020209703,
+        16.60000001010485,
+        8.595,
+        8.799999979790304,
+        17.39999998989515,
+        9.044999992270023
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "R141",
+      "mpnOrValue": "100k",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        14.2000000202097,
+        14.60000001010485,
+        8.595,
+        15.7999999797903,
+        15.39999998989515,
+        9.044999992270023
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "C150",
+      "mpnOrValue": "GRM32ER71E226KE15L / 22u 25V X7R 10%",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        44.60000004041941,
+        69.75000002793968,
+        8.595,
+        47.79999995958061,
+        72.24999997206032,
+        11.094999944120644
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "C151",
+      "mpnOrValue": "GRM32ER71E226KE15L / 22u 25V X7R 10%",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        52.4000000404194,
+        66.75000002793968,
+        8.595,
+        55.5999999595806,
+        69.24999997206032,
+        11.094999944120644
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "D150",
+      "mpnOrValue": "TPD2E007DCKR",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        55.45000003743917,
+        112.99999995250255,
+        8.595,
+        57.54999996256083,
+        115.00000004749745,
+        9.694999994039536
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "U16",
+      "mpnOrValue": "SN74LVC1G08DBVR",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        49.60000004991889,
+        101.55000001844019,
+        8.595,
+        52.39999995008111,
+        104.44999998155981,
+        10.14500004451722
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "C160",
+      "mpnOrValue": "100n 16V X7R",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        46.2000000202097,
+        102.60000001010485,
+        8.595,
+        47.7999999797903,
+        103.39999998989515,
+        9.3949999797903
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "R160",
+      "mpnOrValue": "100k",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        51.2000000202097,
+        96.60000001010485,
+        8.595,
+        52.7999999797903,
+        97.39999998989515,
+        9.044999992270023
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "R161",
+      "mpnOrValue": "100k",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        46.2000000202097,
+        98.60000001010485,
+        8.595,
+        47.7999999797903,
+        99.39999998989515,
+        9.044999992270023
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "C24",
+      "mpnOrValue": "100n 16V X7R",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        47.2000000202097,
+        50.60000001010485,
+        8.595,
+        48.7999999797903,
+        51.39999998989515,
+        9.3949999797903
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
+    },
+    {
+      "ref": "R162",
+      "mpnOrValue": "10k",
+      "status": "cad_geometry",
+      "cadBoundsMm": [
+        53.2000000202097,
+        64.60000001010485,
+        8.595,
+        54.7999999797903,
+        65.39999998989515,
+        9.044999992270023
+      ],
+      "guaranteedMaximumHeightMm": null,
+      "dimensionEvidence": null
     }
   ],
   "reservations": [
-    {
-      "id": "M1",
-      "at": [
-        1.4599999999999937,
-        97.049,
-        8.6
-      ],
-      "size": [
-        18.915000000000006,
-        20.99799999999999,
-        8
-      ],
-      "status": "仮の収納予約。保証最大高さではない"
-    },
-    {
-      "id": "J1",
-      "at": [
-        30.455,
-        117.6,
-        8.6
-      ],
-      "size": [
-        9.09,
-        7.5,
-        3.51
-      ],
-      "dimensionVerified": true,
-      "status": "メーカー最大外形＋はんだ高さ0.15mm。精細な外観モデルではない"
-    },
-    {
-      "id": "U8",
-      "at": [
-        24.175,
-        108.175,
-        8.6
-      ],
-      "size": [
-        1.65,
-        1.65,
-        0.55
-      ],
-      "dimensionVerified": true,
-      "status": "メーカー最大外形＋はんだ高さ0.15mm。精細な外観モデルではない"
-    },
     {
       "id": "SW1",
       "at": [
@@ -1649,21 +1669,16 @@
     }
   ],
   "missingModels": [
-    "M1",
-    "J1",
-    "U8",
     "SW1",
     "U5",
     "L1",
     "J2",
     "Y1"
   ],
-  "cadModelCount": 75,
+  "cadModelCount": 83,
   "dimensionVerifiedRefs": [
-    "J1",
     "L1",
     "U5",
-    "U8",
     "Y1"
   ],
   "limitations": [
