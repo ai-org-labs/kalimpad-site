@@ -459,5 +459,17 @@
     "order": 41,
     "width": 1280,
     "height": 720
+  },
+  {
+    "id": "kalimpad-note-notebook",
+    "title": "この音、何の音？",
+    "alt": "方眼紙にスマホとC・D・Eの六角形、鉛筆と虫眼鏡。音名表示の設定は無料。音名の概念図で実画面ではないと注記。",
+    "src": "ads/kalimpad-note-notebook.webp",
+    "thumb": "ads/kalimpad-note-notebook-thumb.webp",
+    "date": "2026-11-04",
+    "genre": "方眼ノートと色鉛筆の概念図",
+    "order": 42,
+    "width": 1199,
+    "height": 1312
   }
 ]
