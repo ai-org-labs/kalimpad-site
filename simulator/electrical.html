@@ -1,0 +1,38 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>INPUT-02 設計</title><a href="index.html">戻る</a><pre style="white-space:pre-wrap;font:16px/1.8 system-ui;max-width:900px;margin:24px auto"># INPUT-02 電源・信号・ハーネスの設計指定
+
+2026-11-05。回路図化のための指定。配線済みPCBや発注承認ではない。AtomのLCD有無に依存しない周辺回路を先に整理する。
+
+## LED回路
+
+- Atom G5 → A：SN74LVC1T45DBVR → B → 330Ω直列 → LED_DATA_5V。DIRをVCCAへ固定しA→B。A入力に100kΩプルダウン。
+- VCCA=3.3V、VCCB=LED側のスイッチ後5V。各電源に100nF。片電源がGNDのときに高インピーダンスとなる特性を利用し、LED停止中の信号経由給電を避ける。起動／停止中の中間電圧は実機検証対象。
+- 5V入力 → TPS2553DBVR → 5V_LED。G6をENへ、ENに100kΩプルダウン。初期状態はLED電源OFF。FAULTは操作用入力ICの空き入力へ取り込み、3.3Vへプルアップする案。
+- 電流制限抵抗はAtom消費と電池の300mA上限を合わせて決める。旧A5の抵抗値をそのまま流用して容量確認済みとしない。
+- LED候補は保存KEY-A2と同じSK6812MINI-E。窓直下位置と8個を継承。各100nFと入力側のバルク容量を配置。最大輝度を初期許可しない。消費・発光高さ・透過は受入待ち。
+- 起動はG5=Low、LED用5Vを許可、電源安定後に消灯フレーム、その後表示。停止は消灯送信、G5=Low、LED用5Vを禁止。故障時は送信待ちをせず電源禁止。具体的な待ち時間はLED資料と実測後に定義。
+
+[TI SN74LVC1T45](https://www.ti.com/product/SN74LVC1T45)／[TI TPS2553](https://www.ti.com/product/TPS2553)。TPS2553はLED分岐の電流制限であり、USBとA151を自動切替する部品ではない。USB＋電池ONを許可する根拠にはならない。
+
+## 基板間ケーブル
+
+JST GH 1.25mm・6極。両基板ともSM06B-GHS-TB(LF)(SN)、ハウジングGHR-06V-S×2、接点SSHL-002T-P0.2×12。AWG26、被覆径0.76〜1.0mmを指定する。メーカー定格1AはAWG26条件で、完成機の消費保証ではない。
+
+| 両端の端子番号 | 信号 |
+|---|---|
+| 1 | GND |
+| 2 | 5V_LED |
+| 3 | 3V3 |
+| 4 | SDA |
+| 5 | SCL |
+| 6 | LED_DATA_5V |
+
+1→1から6→6までの導通を検査する。「同じ色順」「見た目の左右」だけで製作しない。端子番号は部品図面の基板実装面から照合する。旧A5操作部のJST SH 6極とはシリーズを変え、異なる配線の誤接続を防ぐ。電源を切ってから抜き差しする。完成長、曲げ経路、基板の向きは機械配置後に確定する。
+
+[JST GH一次資料](https://www.jst-mfg.com/product/pdf/eng/eGH.pdf)。SSHL-003系接点はGHには使わない。
+
+## Atomからの取り出し
+
+Grove：黒GND、赤5V、黄G2=SDA、白G1=SCL。底面拡張端子から3.3V、G5、G6を取り出す。G8はA151電池検出として予約。Groveの4線だけで全回路へ接続できるとは扱わない。
+
+A151を接続する場合は、底面端子と電池ベースの間に専用中継基板を入れる案。嵌合ピンの長さ、電池ベースの筐体干渉、信号を取り出すパッド、ねじの有効長を次の3D設計で確定する。電池ベースを外したUSB単独試験を先に実施できる。既製品の端子撤去・ピン切断は指示しない。
+</pre></html>
