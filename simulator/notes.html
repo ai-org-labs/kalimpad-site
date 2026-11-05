@@ -1,4 +1,17 @@
-<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>INPUT-02 設計</title><a href="index.html">戻る</a><pre style="white-space:pre-wrap;font:16px/1.8 system-ui;max-width:900px;margin:24px auto"># INPUT-02：8キーから始める入力専用機
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>INPUT-02 設計</title><a href="index.html">戻る</a><pre style="white-space:pre-wrap;font:16px/1.8 system-ui;max-width:900px;margin:24px auto"># INPUT-02 現行：左LCD・右3ボタン
+
+2026-11-06の「すすめて」で左右配置を採用。制御03を90度回し、SW105＝MODE、SW104＝−、SW103＝＋。SW101/102は非実装。元の銅配線とキー基板は変更せず、3ボタンのファームとMOCK-03を実装した。
+
+- [現行の組立・ねじ・USB・印刷物](../../mechanical/input-only-03/README.md)
+- [現行の内部3D](../../mechanical/input-only-03/viewer.html)
+- [実装する部品と操作割当](assembly-variant.json)
+- [変更前のレビュー資料](review/index.html)
+
+外形60×139×26.6mm、演奏キー位置を保持。側面確認穴は閉じ、上部にUSB用開口を設けた。背面4ねじの締結と、軸付きキートップの試作を追加。実機での嵌合・ねじ保持・通電・BLE受信は未検証。Atom底面取り出し部とハーネス完成寸法は未完で、発注可ではない。
+
+## 以下は前段階の記録
+
+# INPUT-02：8キーから始める入力専用機
 
 2026-11-05。利用者承認：8キーPoCを完成させてから、半音を含む4列へ拡張する。制御基板とキー基板を分離する。USB給電が基本、BLE MIDIでPC／スマホの音源へ送る。A5とFeather INPUT-01は保存する。
 
@@ -76,4 +89,9 @@
 
 
 実機用ファーム：device/firmware/input-only-02/。USBでの入力・LCD・BLE MIDIを実装し、AtomS3向けビルド成功。LEDは既定OFF。書込み・実機試験は未実施。給電元の自動検出を推測実装していない。
+
+
+## 操作・接続・支持のレビュー（2026-11-06）
+
+[配置案・接続図・支持図・組立順を開く](review/index.html)。OCT専用2ボタンを省き、MODE／−／＋でキー・ルート・オクターブを切り替える案。左LCD／右3ボタンは基板改版前の提案であり、現行5ボタンの回路・ファームは変更していない。上・側面の穴は試作確認用で、製品向けUSB穴ではない。Atom底面取り出し、ケース締結、キートップ軸、押し子保持が未完成のため、現行一式を組立可能な完成設計とは扱わない。BLEは受信側で接続し、シミュレーター上の操作は通信の模擬に限る。
 </pre></html>
