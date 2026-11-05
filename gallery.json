@@ -447,5 +447,17 @@
     "order": 40,
     "width": 1254,
     "height": 1254
+  },
+  {
+    "id": "web-trial-1105",
+    "title": "インストールする前に、ひとつ音を。",
+    "alt": "kalimpadのWeb試奏画面。水色と紫、黒の六角形にC4、D、Eなどの音名が表示されている。上に「触れて、なぞって、音になる。」と操作説明、下にiPhone・iPad版への案内がある。",
+    "src": "ads/web-trial-1105.webp",
+    "thumb": "ads/web-trial-1105-thumb.webp",
+    "date": "2026-11-05",
+    "genre": "Web試奏の実画面",
+    "order": 41,
+    "width": 1280,
+    "height": 720
   }
 ]
