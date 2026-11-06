@@ -519,5 +519,17 @@
     "order": 46,
     "width": 1080,
     "height": 960
+  },
+  {
+    "id": "kalimpad-pixel-phrase",
+    "title": "ピコピコを、弾く側へ。",
+    "alt": "暗い紫地に大きな黄緑のドット音符。「ピコピコを、弾く側へ。」8ビット音色は無料。アプリ画面ではない。",
+    "src": "ads/kalimpad-pixel-phrase.webp",
+    "thumb": "ads/kalimpad-pixel-phrase-thumb.webp",
+    "date": "2026-11-06",
+    "genre": "ピクセル音符のゲームポスター",
+    "order": 47,
+    "width": 1080,
+    "height": 960
   }
 ]
