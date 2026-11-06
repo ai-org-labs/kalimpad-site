@@ -495,5 +495,17 @@
     "order": 44,
     "width": 1254,
     "height": 1254
+  },
+  {
+    "id": "kalimpad-keep-five",
+    "title": "AIに頼む前に、「変えない条件」を。",
+    "alt": "黄地の依頼メモ。変えるものは公開済み画像の追加、保つものは除外指定を守ったトップの最新5枚。再構成した依頼文の例。",
+    "src": "ads/kalimpad-keep-five.webp",
+    "thumb": "ads/kalimpad-keep-five-thumb.webp",
+    "date": "2026-11-06",
+    "genre": "編集指示票を模した左右の対比",
+    "order": 45,
+    "width": 1080,
+    "height": 960
   }
 ]
