@@ -471,5 +471,17 @@
     "order": 42,
     "width": 1199,
     "height": 1312
+  },
+  {
+    "id": "kalimpad-no-signup",
+    "title": "ちょっと、音を鳴らしたい。",
+    "alt": "男性がスマホを見て、六角形を触り、演奏を楽しむ三コマ。登録なし・広告なし、無料で演奏、アプリ内購入あり、演奏・画面はイメージと注記。",
+    "src": "ads/kalimpad-no-signup.webp",
+    "thumb": "ads/kalimpad-no-signup-thumb.webp",
+    "date": "2026-11-04",
+    "genre": "ミントと珊瑚色の三コマ漫画",
+    "order": 43,
+    "width": 1254,
+    "height": 1254
   }
 ]
