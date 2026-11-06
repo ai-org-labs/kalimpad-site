@@ -483,5 +483,17 @@
     "order": 43,
     "width": 1254,
     "height": 1254
+  },
+  {
+    "id": "kalimpad-color-stitch",
+    "title": "弾く色も、選びたい。",
+    "alt": "布と刺繍に囲まれた2台のスマホ。橙と紫・緑の六角形の配色イメージ。配色変更は無料、実画面ではないイメージと注記。",
+    "src": "ads/kalimpad-color-stitch.webp",
+    "thumb": "ads/kalimpad-color-stitch-thumb.webp",
+    "date": "2026-11-04",
+    "genre": "紙と刺繍のコラージュ",
+    "order": 44,
+    "width": 1254,
+    "height": 1254
   }
 ]
