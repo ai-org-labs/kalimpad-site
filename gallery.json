@@ -507,5 +507,17 @@
     "order": 45,
     "width": 1080,
     "height": 960
+  },
+  {
+    "id": "kalimpad-three-taps",
+    "title": "ド、レ、ミ。今夜はこの3音だけ。",
+    "alt": "紺地に「ド、レ、ミ。投稿のリンクを開いて弾こう。」Web試奏の実画面の抜粋に紫のC4と水色のD・E。リンクを開いて演奏する案内。",
+    "src": "ads/kalimpad-three-taps.webp",
+    "thumb": "ads/kalimpad-three-taps-thumb.webp",
+    "date": "2026-11-06",
+    "genre": "大判の音名と実画面の切り抜き",
+    "order": 46,
+    "width": 1080,
+    "height": 960
   }
 ]
