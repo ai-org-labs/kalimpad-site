@@ -567,5 +567,17 @@
     "order": 50,
     "width": 1200,
     "height": 1000
+  },
+  {
+    "id": "kalimpad-glowing-gaps",
+    "title": "指をすべらせて、\n光と音で遊ぼう。",
+    "alt": "紺色の横長ポスター。「指をすべらせて、光と音で遊ぼう。」右にWeb試奏の実画面の抜粋。C4などの六角形と、実際にドラッグして緑色に光ったすき間が見える。下に「リンクを開いて、六角形の上をひと往復」。",
+    "src": "ads/kalimpad-glowing-gaps.webp",
+    "thumb": "ads/kalimpad-glowing-gaps-thumb.webp",
+    "date": "2026-11-07",
+    "genre": "実画面を大胆に見せる横長の体験ポスター",
+    "order": 51,
+    "width": 1400,
+    "height": 972
   }
 ]
