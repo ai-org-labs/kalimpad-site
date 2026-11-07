@@ -531,5 +531,17 @@
     "order": 47,
     "width": 1080,
     "height": 960
+  },
+  {
+    "id": "kalimpad-score-slip",
+    "title": "ふと弾いた旋律を、明日の自分へ。",
+    "alt": "クリーム色のメモに小さな五線と音符。「ふと弾いた旋律を、明日の自分へ。」楽譜の保存・編集は無料で1件、追加作成はPro。",
+    "src": "ads/kalimpad-score-slip.webp",
+    "thumb": "ads/kalimpad-score-slip-thumb.webp",
+    "date": "2026-11-06",
+    "genre": "五線と余白のある手帳の見開き風",
+    "order": 48,
+    "width": 1080,
+    "height": 960
   }
 ]
