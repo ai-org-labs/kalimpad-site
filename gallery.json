@@ -543,5 +543,17 @@
     "order": 48,
     "width": 1080,
     "height": 960
+  },
+  {
+    "id": "kalimpad-touch-pulse",
+    "title": "指先にも、小さな返事。",
+    "alt": "深緑の地に指紋を思わせる曲線。「指先にも、小さな返事。」触覚フィードバックは対応端末で無料。図は感触のイメージ。",
+    "src": "ads/kalimpad-touch-pulse.webp",
+    "thumb": "ads/kalimpad-touch-pulse-thumb.webp",
+    "date": "2026-11-06",
+    "genre": "指紋の同心線による触覚のポスター",
+    "order": 49,
+    "width": 1080,
+    "height": 960
   }
 ]
