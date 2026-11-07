@@ -555,5 +555,17 @@
     "order": 49,
     "width": 1080,
     "height": 960
+  },
+  {
+    "id": "kalimpad-check-place",
+    "title": "AIへの依頼に、\n「確認する場所」も。",
+    "alt": "白地に「AIへの依頼に、確認する場所も。」左のカードはテストで件数・順序を確認、右は公開URLで画像の表示を確認。再構成した依頼文の例として「公開URLで、画像が表示されるところまで確認して」。",
+    "src": "ads/kalimpad-check-place.webp",
+    "thumb": "ads/kalimpad-check-place-thumb.webp",
+    "date": "2026-11-07",
+    "genre": "左右の検証カードをつなぐ編集図解",
+    "order": 50,
+    "width": 1200,
+    "height": 1000
   }
 ]
