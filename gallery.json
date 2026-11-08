@@ -591,5 +591,29 @@
     "order": 52,
     "width": 1250,
     "height": 1050
+  },
+  {
+    "id": "kalimpad-two-ways",
+    "title": "ぜひ触ってみてください！",
+    "alt": "薄紫の案内画像。「ぜひ触ってみてください！」の下に、iPhone・iPadアプリとWebお試しの二つの案内。アプリは11音色・演奏ガイド、Webはインストール不要でカリンバ音色。アプリは無料で開始、一部機能は買い切りPro。",
+    "src": "ads/kalimpad-two-ways.webp",
+    "thumb": "ads/kalimpad-two-ways-thumb.webp",
+    "date": "2026-11-08",
+    "genre": "二つの入口を並べた明るい案内カード",
+    "order": 53,
+    "width": 1400,
+    "height": 1000
+  },
+  {
+    "id": "kalimpad-two-ways-web",
+    "title": "Webでも、ちょっとお試し。",
+    "alt": "kalimpadのWeb試奏の実画面。C4、D、Eなどの音名が付いた六角形が並ぶ。上に触れると音が鳴る説明、下にiPhone・iPadアプリへのリンク。iOSアプリの画面ではない。",
+    "src": "ads/kalimpad-two-ways-web.webp",
+    "thumb": "ads/kalimpad-two-ways-web-thumb.webp",
+    "date": "2026-11-08",
+    "genre": "Web試奏の実画面",
+    "order": 54,
+    "width": 1280,
+    "height": 720
   }
 ]
