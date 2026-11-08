@@ -579,5 +579,17 @@
     "order": 51,
     "width": 1400,
     "height": 972
+  },
+  {
+    "id": "kalimpad-keep-list",
+    "title": "変えないところも、AIに渡す。",
+    "alt": "AIへの依頼例の画像。「変えないところも、AIに渡す。」公開済み画像の追加に、トップは最新5枚・除外指定を残す・自動切替を維持する条件を添えている。公開事例をもとに再構成した例と明記。",
+    "src": "ads/kalimpad-keep-list.webp",
+    "thumb": "ads/kalimpad-keep-list-thumb.webp",
+    "date": "2026-11-08",
+    "genre": "作業依頼の付箋とチェックリスト",
+    "order": 52,
+    "width": 1250,
+    "height": 1050
   }
 ]
