@@ -615,5 +615,17 @@
     "order": 54,
     "width": 1280,
     "height": 720
+  },
+  {
+    "id": "kalimpad-offline-ticket",
+    "title": "ネットがなくても、弾けます。",
+    "alt": "切符を模したクリーム色の画像。「ネットがなくても、弾けます。」内蔵音色のオフライン演奏は無料。Proの購入・復元には通信が必要と記載。",
+    "src": "ads/kalimpad-offline-ticket.webp",
+    "thumb": "ads/kalimpad-offline-ticket-thumb.webp",
+    "date": "2026-11-08",
+    "genre": "切符をモチーフにした横長タイポグラフィ",
+    "order": 55,
+    "width": 1500,
+    "height": 850
   }
 ]
