@@ -627,5 +627,17 @@
     "order": 55,
     "width": 1500,
     "height": 850
+  },
+  {
+    "id": "kalimpad-sound-menu",
+    "title": "11音色、無料。",
+    "alt": "紺色の縦長メニュー。「11音色、無料。」音色の例としてカリンバ、オルゴール、シンセ、8ビットを掲載。本文のアプリリンクへ案内。",
+    "src": "ads/kalimpad-sound-menu.webp",
+    "thumb": "ads/kalimpad-sound-menu-thumb.webp",
+    "date": "2026-11-08",
+    "genre": "音色の例を大きく配置した縦長メニュー",
+    "order": 56,
+    "width": 1100,
+    "height": 1300
   }
 ]
