@@ -651,5 +651,17 @@
     "order": 57,
     "width": 1300,
     "height": 1000
+  },
+  {
+    "id": "kalimpad-test-first",
+    "title": "AIに、先にテストを。",
+    "alt": "生成り色の実務ノート。AIに、先にテストを。期待する並びをテストにして追加前の失敗を確認し、画像追加後に既存テストも確認する2段階。その後に公開URLも確認。11月2日の作業を紹介した記事の要約と明記。",
+    "src": "ads/kalimpad-test-first.webp",
+    "thumb": "ads/kalimpad-test-first-thumb.webp",
+    "date": "2026-11-09",
+    "genre": "編集工程を縦に並べた実務ノート",
+    "order": 58,
+    "width": 1280,
+    "height": 1000
   }
 ]
