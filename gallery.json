@@ -675,5 +675,17 @@
     "order": 59,
     "width": 1254,
     "height": 1254
+  },
+  {
+    "id": "kalimpad-midi-route",
+    "title": "別の音源を、kalimpadから。",
+    "alt": "濃い青緑の横長概念図。左のkalimpadからMIDIの矢印が右の対応アプリ・外部音源へ向かう。MIDI出力は買い切りPro、接続先の対応と設定が必要。実機接続の検証例ではないと明記。",
+    "src": "ads/kalimpad-midi-route.webp",
+    "thumb": "ads/kalimpad-midi-route-thumb.webp",
+    "date": "2026-11-09",
+    "genre": "横長の信号フロー図",
+    "order": 60,
+    "width": 1500,
+    "height": 950
   }
 ]
