@@ -639,5 +639,17 @@
     "order": 56,
     "width": 1100,
     "height": 1300
+  },
+  {
+    "id": "kalimpad-pad-fit",
+    "title": "押しやすい大きさに。",
+    "alt": "薄緑の説明図。小さい六角形と大きい六角形、同サイズ2個の間隔を示す線。パッドの大きさ・間隔の調整は無料。実際のアプリ画面ではないと明記。",
+    "src": "ads/kalimpad-pad-fit.webp",
+    "thumb": "ads/kalimpad-pad-fit-thumb.webp",
+    "date": "2026-11-08",
+    "genre": "大きさと間隔を示す幾何学の説明図",
+    "order": 57,
+    "width": 1300,
+    "height": 1000
   }
 ]
