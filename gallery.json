@@ -1,5 +1,17 @@
 [
   {
+    "id": "kalimpad-kalimba-break",
+    "title": "スマホで、カリンバ。",
+    "alt": "水色と朱色のポスター。ボーダーシャツの男性がスマートフォンに指を触れ、笑顔で演奏を楽しむイラスト。スマホで、カリンバ。iPhone・iPadの楽器アプリ、カリンバ音色は無料、演奏イメージ・一部機能はアプリ内購入と記載。",
+    "src": "ads/kalimpad-kalimba-break.webp",
+    "thumb": "ads/kalimpad-kalimba-break-thumb.webp",
+    "date": "2026-11-10",
+    "genre": "水色と朱色のレトロな人物版画広告",
+    "order": 64,
+    "width": 1254,
+    "height": 1254
+  },
+  {
     "id": "kalimpad-read-existing",
     "title": "AIに、今あるものを読ませる。",
     "alt": "紺色の図解。画像台帳・既存HTML・テストの3つを読んで、既存の構成から変更範囲を絞る。11月2日の公開サイト更新を扱う記事の要約・概念図と明記。",
