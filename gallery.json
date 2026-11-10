@@ -1,5 +1,17 @@
 [
   {
+    "id": "kalimpad-read-existing",
+    "title": "AIに、今あるものを読ませる。",
+    "alt": "紺色の図解。画像台帳・既存HTML・テストの3つを読んで、既存の構成から変更範囲を絞る。11月2日の公開サイト更新を扱う記事の要約・概念図と明記。",
+    "src": "ads/kalimpad-read-existing.webp",
+    "thumb": "ads/kalimpad-read-existing-thumb.webp",
+    "date": "2026-11-10",
+    "genre": "開発ノート・図解",
+    "order": 63,
+    "width": 1440,
+    "height": 1080
+  },
+  {
     "id": "kalimpad-ipad-pair",
     "title": "左と右、違う音色で。",
     "alt": "横長のポスター。左と右、違う音色で。紫の左側、青緑の右側それぞれに音色・音域を選ぶと表示。iPad横画面で無料。機能の概念図で実画面ではないと記載。",
