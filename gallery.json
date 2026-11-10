@@ -1,5 +1,17 @@
 [
   {
+    "id": "kalimpad-ipad-pair",
+    "title": "左と右、違う音色で。",
+    "alt": "横長のポスター。左と右、違う音色で。紫の左側、青緑の右側それぞれに音色・音域を選ぶと表示。iPad横画面で無料。機能の概念図で実画面ではないと記載。",
+    "src": "ads/kalimpad-ipad-pair.webp",
+    "thumb": "ads/kalimpad-ipad-pair-thumb.webp",
+    "date": "2026-11-09",
+    "genre": "大きな左右2面を使う横長の機能紹介",
+    "order": 62,
+    "width": 1600,
+    "height": 900
+  },
+  {
     "id": "kalimpad-note-name",
     "title": "音名を見ながら、弾いてみる。",
     "alt": "淡い黄色の縦長ポスター。音名を見ながら、弾いてみる。ピンク、水色、紫の六角形にC、D、E。音名表示の設定は無料。音名のイメージ図で実画面ではないと記載。",
