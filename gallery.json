@@ -1,5 +1,17 @@
 [
   {
+    "id": "kalimpad-image-review",
+    "title": "AIレビューには、完成画像も。",
+    "alt": "開発ノート03。AIレビューには、完成画像も。画像と対象者を渡す、マウスで試せる手がかりを問う、大見出しと注記へ反映して修正画像を再確認する3段階。11月11日の制作記録の要約・概念図。効果の向上を示すものではないと注記。",
+    "src": "ads/kalimpad-image-review.webp",
+    "thumb": "ads/kalimpad-image-review-thumb.webp",
+    "date": "2026-11-11",
+    "genre": "三段階の制作手順カード",
+    "order": 66,
+    "width": 1200,
+    "height": 800
+  },
+  {
     "id": "kalimpad-desktop-web",
     "title": "パソコンのマウスでも、弾けます。",
     "alt": "生成り色の案内画像。パソコンのマウスでも、弾けます。インストール不要、カリンバ音色のWebお試しと紹介。中央に公開中のWeb試奏の実画面の一部。iPhone・iPadアプリとは別のWeb体験と注記。",
