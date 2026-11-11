@@ -1,0 +1,2 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');
+test('画像レビューの記事は根拠と限界と共通導線を備える',()=>{const s=fs.readFileSync('notes/ai-image-review.html','utf8');for(const x of ['2026年11月11日','依頼文の例','人による最終確認','analytics.js','analytics-settings','note_header'])assert.ok(s.includes(x),x); const i=fs.readFileSync('dev-notes.html','utf8');assert.ok(i.indexOf('notes/ai-image-review.html')<i.indexOf('notes/ai-publish-check.html'));});
