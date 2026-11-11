@@ -1,5 +1,17 @@
 [
   {
+    "id": "kalimpad-example-label",
+    "title": "再構成したら、「依頼文の例」と書く。",
+    "alt": "校正紙を模した画像。再構成したら、「依頼文の例」と書く。説明のためにまとめた例として、完成画像と投稿文を初めて見る人の立場で確認してください、と記載。実際の発言の引用と再構成した例を分け、記事へ案内。",
+    "src": "ads/kalimpad-example-label.webp",
+    "thumb": "ads/kalimpad-example-label-thumb.webp",
+    "date": "2026-11-11",
+    "genre": "赤い校正線を引いた紙面広告",
+    "order": 69,
+    "width": 1200,
+    "height": 800
+  },
+  {
     "id": "kalimpad-tone-lab",
     "title": "音色の、その先を調整できます。",
     "alt": "暗い青緑の正方形画像。音色の、その先を調整できます。iPhone・iPadの楽器アプリ。歪み、トーン、エフェクトの量を縦に並べる。kalimpad Pro、買い切りのアプリ内購入。機能の図解で設定画面ではないと記載。",
