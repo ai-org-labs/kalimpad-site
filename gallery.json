@@ -1,5 +1,17 @@
 [
   {
+    "id": "kalimpad-typing-music",
+    "title": "文字を打つキーで、音も鳴らせます。",
+    "alt": "薄い桃色の画像。kalimpad、iPhone・iPadの楽器アプリ。文字を打つキーで、音も鳴らせます。英字キーボードから音符への矢印。外付けキーをパッドや演奏操作に割り当て、無料。対応するパソコン用キーボードが必要。MIDI鍵盤入力ではない。概念図で割り当ては一例、実画面ではない。",
+    "src": "ads/kalimpad-typing-music.webp",
+    "thumb": "ads/kalimpad-typing-music-thumb.webp",
+    "date": "2026-11-12",
+    "genre": "大きなキーと音符の接続概念図",
+    "order": 71,
+    "width": 1200,
+    "height": 1000
+  },
+  {
     "id": "kalimpad-offline-play",
     "title": "ネットを離れて、音を鳴らす時間。",
     "alt": "淡い青地に紫の音符。kalimpad、画面に触れて弾く、iPhone・iPadの楽器アプリ。ネットを離れて、音を鳴らす時間。内蔵音色はオフラインで演奏できます。11音色を無料で。Proの購入・復元にはネット接続が必要。一部機能はアプリ内購入。音符はイメージ。",
