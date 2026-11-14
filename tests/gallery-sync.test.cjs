@@ -14,3 +14,5 @@ test('公開画像の最新登録と静的フォールバックが一致する',
 });
 
 test('公開済みスコア作成画像を一覧へ含む',()=>{const items=JSON.parse(fs.readFileSync('gallery.json','utf8'));assert.ok(items.some(x=>x.id==='kalimpad-score-seed'));});
+
+test('余韻画像を制作日順でGIFの次に置く',()=>{const items=JSON.parse(fs.readFileSync('gallery.json','utf8'));assert.equal(top(items)[1].id,'kalimpad-release-shape');});
