@@ -1,5 +1,29 @@
 [
   {
+    "id": "kalimpad-offline-outing",
+    "title": "オフラインでも演奏できます。",
+    "alt": "緑と淡いクリーム色の切符風ポスター。kalimpad、持ち歩く楽器アプリ。「オフラインでも演奏できます。」「内蔵音色の演奏にインターネット接続は不要。」。右側に3つの音符。「11音色で、無料から。」。iPhone・iPad、アプリ内購入あり。Proの購入・復元にはインターネット接続が必要と注記。アプリ画面は掲載していません。",
+    "src": "ads/kalimpad-offline-outing.webp",
+    "thumb": "ads/kalimpad-offline-outing-thumb.webp",
+    "date": "2026-11-15",
+    "genre": "切符風タイポグラフィ",
+    "order": 78,
+    "width": 1400,
+    "height": 1050
+  },
+  {
+    "id": "kalimpad-web-invitation",
+    "title": "楽器アプリ、気になる？",
+    "alt": "生成り色の横長画像。「楽器アプリ、気になる？」「ブラウザーでも、お試しできます。」。中央に公開中のWeb試奏画面の一部を大きく掲載。水色・紫・濃紺の六角形に音名が付いている。「カリンバ音色を、指やマウスで。」。iPhone・iPadアプリとは別の体験と注記。",
+    "src": "ads/kalimpad-web-invitation.webp",
+    "thumb": "ads/kalimpad-web-invitation-thumb.webp",
+    "date": "2026-11-15",
+    "genre": "実画面を大きく見せる試奏案内",
+    "order": 77,
+    "width": 1400,
+    "height": 1100
+  },
+  {
     "id": "kalimpad-vibrato-paper",
     "title": "音に、ゆらぎを。",
     "alt": "生成り色の紙に赤い切り紙の音符と波打つリボン。「音に、ゆらぎを。」「パッドのビブラートで、演奏に表情を。」。iPhone・iPadの楽器アプリkalimpad、ビブラートは無料。機能のイメージ図です。",
