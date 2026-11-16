@@ -927,5 +927,17 @@
     "order": 79,
     "width": 1254,
     "height": 1254
+  },
+  {
+    "id": "kalimpad-plucked-chords",
+    "title": "和音を、はじいてそろえる。",
+    "alt": "白地に演奏ガイドの判定変更を示す左右のカード。変更前は同時に触れ続ける、変更後は時間内に弾いてそろえる。人が弾き方を伝え、Codexが実装と試験を変更した10月の開発記録を紹介。実画面ではない概念図で、操作感の改善量は未測定。",
+    "src": "ads/kalimpad-plucked-chords.webp",
+    "thumb": "ads/kalimpad-plucked-chords-thumb.webp",
+    "date": "2026-11-15",
+    "genre": "左右の判定条件を並べた開発記録",
+    "order": 80,
+    "width": 1440,
+    "height": 1080
   }
 ]
