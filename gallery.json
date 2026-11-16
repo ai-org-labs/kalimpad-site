@@ -975,5 +975,17 @@
     "order": 83,
     "width": 1600,
     "height": 1000
+  },
+  {
+    "id": "kalimpad-cat-concert",
+    "title": "カリンバ、弾いてみませんか。",
+    "alt": "薄紫の背景に、スマホに触れて楽しむ女性と、音符を見上げる猫のレトロなイラスト。「カリンバ、弾いてみませんか。」「kalimpad」「画面に触れて、音を楽しむ。」「iPhone・iPadの楽器アプリ」「カリンバ音色は無料」。下部に「演奏イメージ・アプリ内購入あり」。実際のアプリ画面ではありません。",
+    "src": "ads/kalimpad-cat-concert.webp",
+    "thumb": "ads/kalimpad-cat-concert-thumb.webp",
+    "date": "2026-11-16",
+    "genre": "人物と猫のレトロ雑誌広告",
+    "order": 84,
+    "width": 1254,
+    "height": 1254
   }
 ]
