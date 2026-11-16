@@ -951,5 +951,17 @@
     "order": 81,
     "width": 1200,
     "height": 1200
+  },
+  {
+    "id": "kalimpad-note-range",
+    "title": "低い音も、高い音も。",
+    "alt": "淡い紫の縦長ポスター。「低い音も、高い音も。」。5本の柱が階段状に高くなる、音の高さの概念図。「演奏する音域を変更できます。」「音域変更は無料」。iPhone・iPadの楽器アプリkalimpad。実際の音域や音量を測定したグラフではありません。",
+    "src": "ads/kalimpad-note-range.webp",
+    "thumb": "ads/kalimpad-note-range-thumb.webp",
+    "date": "2026-11-15",
+    "genre": "上下の音域を階段で示す縦長概念図",
+    "order": 82,
+    "width": 1080,
+    "height": 1400
   }
 ]
