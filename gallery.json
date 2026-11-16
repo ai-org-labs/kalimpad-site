@@ -915,5 +915,17 @@
     "date": "2026-10-24",
     "genre": "アメコミ",
     "order": 1
+  },
+  {
+    "id": "kalimpad-pocket-solo",
+    "title": "今日のソロは、スマホで。",
+    "alt": "マゼンタ色のカーテンと黄色い照明を配したペン画風ポスター。ソファの女性が笑顔でスマートフォンに触れる演奏イメージ。「今日のソロは、スマホで。」。kalimpad、iPhone・iPadの楽器アプリ、カリンバ音色は無料。演奏イメージ・アプリ内購入ありと明記。実際のアプリ画面は掲載していません。",
+    "src": "ads/kalimpad-pocket-solo.webp",
+    "thumb": "ads/kalimpad-pocket-solo-thumb.webp",
+    "date": "2026-11-15",
+    "genre": "人物の舞台風ペン画広告",
+    "order": 79,
+    "width": 1254,
+    "height": 1254
   }
 ]

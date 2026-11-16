@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>和音を、はじいてそろえる。 | kalimpad 開発ノート</title><meta name="description" content="実機での指摘から、AIと和音判定を見直したkalimpadの開発記録。">
+<link rel="canonical" href="https://ai-org-labs.github.io/kalimpad-site/notes/plucked-chords.html"><meta property="og:type" content="article"><meta property="og:title" content="和音を、はじいてそろえる。"><meta property="og:description" content="実機での指摘から、AIと和音判定を見直したkalimpadの開発記録。"><meta property="og:url" content="https://ai-org-labs.github.io/kalimpad-site/notes/plucked-chords.html"><meta property="og:image" content="https://ai-org-labs.github.io/kalimpad-site/notes/assets/plucked-chords-cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../icon.png"><link rel="stylesheet" href="../notes.css"><link rel="stylesheet" href="../analytics.css"><script defer src="../analytics.js"></script></head><body>
+<a class="skip" href="#content">本文へ</a>
+<header class="notes-header"><div class="header-inner"><a class="brand" href="../index.html"><img src="../icon.png" width="36" height="36" alt="">kalimpad</a><a data-analytics-placement="note_header" class="header-cta" href="https://apps.apple.com/app/id6818530043" aria-label="kalimpadをApp Storeで見る">App Storeで試す <span aria-hidden="true">↗</span></a></div></header>
+<main id="content"><nav class="crumb"><a href="../index.html">ホーム</a> / <a href="../dev-notes.html">開発ノート</a></nav><article><div class="article-heading"><p class="eyebrow">DEVELOPMENT NOTE / 04</p><h1>和音を、<br>はじいてそろえる。</h1><p class="lede">「同時に押す」と「はじいてそろえる」。<br>弾き方の違いを、判定の変更へ。</p><p class="meta">2026年11月16日 · ai-org-labs</p></div><div class="article-body">
+<h2>和音をはじいても、先へ進めるように。</h2>
+<p>kalimpadの演奏ガイドは、次に弾く音をパッドの光で案内します。開発中に考え直したのは、複数の音を弾く「和音」がそろったと判断する条件でした。画面をはじく楽器で、指を置いたままにすることまで求めてよいのか。この違いが実装に表れた、2026年10月15日から17日の開発記録を紹介します。</p>
+<h2>最初は、判定の時間を広げた。</h2>
+<p>10月15日の実機確認では、作り手から和音の判定が厳しすぎるという指摘がありました。開発記録には、1秒以内くらいにしてほしいという要望が残っています。Codexは、対象の音をそろえる時間を150ミリ秒から1秒へ変更しました。</p>
+<p>ただし、時間を広げるだけでは、求められた弾き方を表せませんでした。そこには、和音の音を同時に触れている必要があるという条件が残っていました。</p>
+<h2>人が直したのは、「同時に」の意味。</h2>
+<p>続いて作り手が指定したのは、直前の一定時間内に対象の音がすべて押されていれば進むことでした。その時点の要望は1.5秒以内。押した指をすべて残しておくことではありません。</p>
+<p>この訂正を受け、Codexは、指が今触れているかだけでなく、各音がいつ弾かれたかを使う判定へ変更しました。一音ずつはじいて指を離しても、時間内に和音の音がそろえば先へ進む形です。各音は、入力したときに鳴らす設計を維持しました。</p>
+<figure><img style="width:100%;height:auto" src="assets/plucked-chords-cover.png" alt="和音の判定を、同時に触れ続ける条件から、時間内にはじいて音をそろえる条件へ見直した開発経緯の概念図。"><figcaption>判定条件の変化を説明する概念図。実際のアプリ画面や演奏の計測結果ではありません。</figcaption></figure>
+<h2>AIへ渡された具体的な条件。</h2>
+<p>この回の記録で確認できるのは、実機で感じた厳しさ、和音として認める時間、離した指をどう扱うか、という具体的な条件です。会話全体や、図を渡した記録までは確認できません。実際の依頼文を推測して再現することは避けています。</p>
+<p>人が弾き方と判定条件を指定し、Codexが実装と試験を更新しました。10月17日には、作り手の指定で判定時間を0.8秒へ調整した記録もあります。これは開発時に選んだ値であり、すべての人に最適だと測定した値ではありません。</p>
+<h2>「できた」を確かめる操作を、試験にした。</h2>
+<p>実装の試験では、次のような操作を区別しています。</p>
+<ul><li>和音の音を一つずつ弾き、その都度指を離す。</li><li>古くなった音は、そのまま成立条件に使わない。</li><li>期限を過ぎた音を弾き直し、時間内にそろうと進む。</li><li>次の和音へ進んだとき、前の和音で弾いた音を持ち越さない。</li></ul>
+<p>音が一つずつ鳴ることと、ガイドが次へ進むことを分けて確認できるようにした変更です。コード上の試験が通ったことは記録されています。一方、変更後の弾きやすさを数値で比較した結果や、すべての端末での実機受入結果は、この記録からは確認できません。</p>
+<h2>この開発から試せること。</h2>
+<p>AIと操作を作るときの提案として、「和音を弾く」のような一語を、指の動きに分けて渡してみてください。指を置き続けるのか、はじいて離すのか。途中で時間が空いたらどうするのか。今回の変更では、その違いを人が明確にしたことで、AIが変える判定も具体的になりました。</p>
+<aside class="source-note"><h2>記録と公開範囲</h2><p>この記事は1.1公開前の2026年10月15日・17日の引き継ぎ記録、対応する変更履歴と試験内容を確認し、公開用に要約したものです。内部コードや診断情報は掲載していません。記事執筆時点で公開App Storeのバージョン1.1と演奏ガイドの案内を確認しました。現在の配信バイナリをここで実機試験したという意味ではありません。</p></aside>
+</div><aside class="product"><div><p class="eyebrow">TRY WHAT WE’RE BUILDING</p><h2>つくっているのは、指先の楽器。</h2><p>kalimpadをiPhone・iPadで。</p></div><a data-analytics-placement="product_badge" class="store-badge" href="https://apps.apple.com/app/id6818530043"><img src="../app-store-badge-ja.svg" width="163" height="60" alt="App Storeからダウンロード"></a></aside><p><a href="../dev-notes.html">← 開発ノート一覧へ</a></p></article></main>
+<footer><a href="../dev-notes.html">開発ノート</a><a href="../index.html">アプリ紹介</a><a href="../privacy-ja.html">プライバシー</a><span>© 2026 ai-org-labs</span></footer><div class="site-privacy-links"><a href="../site-privacy.html">Webサイトのプライバシー</a><button type="button" id="analytics-settings">アクセス解析の設定</button></div></body></html>

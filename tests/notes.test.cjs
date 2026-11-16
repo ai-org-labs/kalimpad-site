@@ -28,3 +28,11 @@ test('実図の抜粋と範囲が明示され、公開素材に内部経路を�
   assert.doesNotMatch(read(file).replace('<script defer src="../analytics.js"></script>',''),/\/Users\/|com\.aiorglabs|ProbeSurface|遅延テスト|hardware\/|<script/i);
  }
 });
+
+test('和音開発記事を一覧先頭に置き、公開範囲と同意導線を維持する',()=>{
+ const list=read('dev-notes.html'); assert.equal([...list.matchAll(/class="article-card" href="([^"]+)"/g)][0][1],'notes/plucked-chords.html');
+ const article=read('notes/plucked-chords.html');
+ for(const text of ['Codex','0.8秒','概念図','数値で比較','analytics-settings','../analytics.js','note_header']) assert.ok(article.includes(text));
+ assert.ok(fs.existsSync(path.join(__dirname,'../notes/assets/plucked-chords-cover.png')));
+ assert.doesNotMatch(article,/\/Users\/|advertising.sqlite3|HANDOFF.md/);
+});
