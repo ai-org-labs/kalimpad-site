@@ -963,5 +963,17 @@
     "order": 82,
     "width": 1080,
     "height": 1400
+  },
+  {
+    "id": "kalimpad-light-dark",
+    "title": "見た目も、好きなほうで。",
+    "alt": "左右で明暗を分けた横長ポスター。左は生成り色と太陽、右は紺色と月。「見た目も、好きなほうで。」「ライト」「ダーク」「表示の切り替えは無料」。iPhone・iPadの楽器アプリkalimpad。表示テーマのイメージ図で、実画面ではありません。",
+    "src": "ads/kalimpad-light-dark.webp",
+    "thumb": "ads/kalimpad-light-dark-thumb.webp",
+    "date": "2026-11-15",
+    "genre": "白黒の反転を生かす横長タイポグラフィ",
+    "order": 83,
+    "width": 1600,
+    "height": 1000
   }
 ]
