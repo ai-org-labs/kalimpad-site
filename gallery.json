@@ -939,5 +939,17 @@
     "order": 80,
     "width": 1440,
     "height": 1080
+  },
+  {
+    "id": "kalimpad-in-app-help",
+    "title": "使い方も、アプリの中に。",
+    "alt": "生成り色の背景に深緑の大きな案内札。「使い方も、アプリの中に。」。「画面に触れて、音を鳴らすアプリ。」。「右上の☰メニューから」「チュートリアル」「困ったとき」。iPhone・iPadの楽器アプリkalimpad、無料で開始・アプリ内購入あり。操作案内の図解で、実際のアプリ画面ではありません。",
+    "src": "ads/kalimpad-in-app-help.webp",
+    "thumb": "ads/kalimpad-in-app-help-thumb.webp",
+    "date": "2026-11-15",
+    "genre": "迷子札をモチーフにした案内カード",
+    "order": 81,
+    "width": 1200,
+    "height": 1200
   }
 ]
