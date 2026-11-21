@@ -1023,5 +1023,17 @@
     "order": 87,
     "width": 1024,
     "height": 1536
+  },
+  {
+    "id": "kalimpad-keyboard-input",
+    "title": "記号キーで、立ち止まった。",
+    "alt": "青灰色の開発ノート画像。記号キーで、立ち止まった。Shiftと疑問符のキーの概念図。人が実機で再報告、入力記録を渡す、Codexが見立てを改める、の3段階。2026年10月24日のコンピューターキーボード入力の開発記録。確認できるのは修正と試験まで、修正後の実機結果は未確認と記載。",
+    "src": "ads/kalimpad-keyboard-input.webp",
+    "thumb": "ads/kalimpad-keyboard-input-thumb.webp",
+    "date": "2026-11-17",
+    "genre": "キーキャップと時系列の開発記録",
+    "order": 88,
+    "width": 1440,
+    "height": 1280
   }
 ]
