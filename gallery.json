@@ -1035,5 +1035,17 @@
     "order": 88,
     "width": 1440,
     "height": 1280
+  },
+  {
+    "id": "kalimpad-synth-city",
+    "title": "スマホで、シンセを弾こう。",
+    "alt": "墨の線とシアン・オレンジの筆跡を使った人物ポスター。街を背景に、スマートフォンに指を伸ばす人物。スマホで、シンセを弾こう。kalimpad、iPhone・iPadの楽器アプリ、シンセ音色は無料。演奏イメージ・アプリ内購入ありと明記。実際のアプリ画面ではありません。",
+    "src": "ads/kalimpad-synth-city.webp",
+    "thumb": "ads/kalimpad-synth-city-thumb.webp",
+    "date": "2026-11-17",
+    "genre": "墨絵とネオンの都市広告",
+    "order": 89,
+    "width": 1254,
+    "height": 1254
   }
 ]

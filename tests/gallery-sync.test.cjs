@@ -15,4 +15,6 @@ test('公開画像の最新登録と静的フォールバックが一致する',
 
 test('公開済みスコア作成画像を一覧へ含む',()=>{const items=JSON.parse(fs.readFileSync('gallery.json','utf8'));assert.ok(items.some(x=>x.id==='kalimpad-score-seed'));});
 
-test('最新5件を制作日と登録順で選ぶ',()=>{const items=JSON.parse(fs.readFileSync('gallery.json','utf8'));assert.equal(top(items)[4].id,'kalimpad-cat-concert');});
+test('最新5件を制作日と登録順で選ぶ',()=>{const items=JSON.parse(fs.readFileSync('gallery.json','utf8'));assert.equal(top(items)[4].id,'kalimpad-paper-sound-play');});
+
+test('synth-city published asset is included',()=>{const items=JSON.parse(fs.readFileSync('gallery.json','utf8'));assert.ok(items.some(x=>x.id==='kalimpad-synth-city'));});
