@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>記号キーで、立ち止まった。 | kalimpad 開発ノート</title><meta name="description" content="記号キーの実機再報告と入力記録から、Codexが見立てを改めた開発の経緯。">
+<link rel="canonical" href="https://ai-org-labs.github.io/kalimpad-site/notes/keyboard-input.html"><meta property="og:type" content="article"><meta property="og:title" content="記号キーで、立ち止まった。"><meta property="og:description" content="記号キーの実機再報告と入力記録から、Codexが見立てを改めた開発の経緯。"><meta property="og:url" content="https://ai-org-labs.github.io/kalimpad-site/notes/keyboard-input.html"><meta property="og:image" content="https://ai-org-labs.github.io/kalimpad-site/notes/assets/keyboard-input-cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../icon.png"><link rel="stylesheet" href="../notes.css"><link rel="stylesheet" href="../analytics.css"><script defer src="../analytics.js"></script></head><body>
+<a class="skip" href="#content">本文へ</a>
+<header class="notes-header"><div class="header-inner"><a class="brand" href="../index.html"><img src="../icon.png" width="36" height="36" alt="">kalimpad</a><a data-analytics-placement="note_header" class="header-cta" href="https://apps.apple.com/app/id6818530043" aria-label="kalimpadをApp Storeで見る">App Storeで試す <span aria-hidden="true">↗</span></a></div></header>
+<main id="content"><nav class="crumb"><a href="../index.html">ホーム</a> / <a href="../dev-notes.html">開発ノート</a></nav><article><div class="article-heading"><p class="eyebrow">DEVELOPMENT NOTE / 05</p><h1 style="font-size:clamp(30px,6vw,64px)">記号キーで、<br>立ち止まった。</h1><p class="lede">外付けキーボードを演奏入力にする開発で。<br>実機の再報告で、AIの見立てを選び直す。</p><p class="meta">2026年11月17日 · ai-org-labs</p></div><div class="article-body"><h2>文字を打つキーを、演奏の入力にする。</h2>
+<p>kalimpadでは、外付けのコンピューターキーボードのキーを、パッドや演奏操作に割り当てられます。この記事は、その機能を作っていた2026年10月24日の記録です。MIDI鍵盤の接続ではなく、文字や記号を打つキーボードの入力を、楽器の演奏につなぐ開発でした。</p>
+<h2>まず、登録して試せる流れを作った。</h2>
+<p>作り手が承認したのは、左下のパッドから列ごとに、対応するキーを登録し、必要に応じて戻る・スキップする、試奏してから保存するという流れでした。Codexはキーの登録と保存を実装し、既存の演奏処理へ接続しました。キーを押し続けたときに入力が繰り返される扱いや、演奏を止める処理も試験しています。</p>
+<p>ここまでの記録には自動試験の成功があります。ただし、それだけでは実際のキーボードで期待どおりに使えるかを確かめたことにはなりませんでした。</p>
+<h2>記号キーで登録が進まなかった。</h2>
+<p>作り手が実機で試すと、記号キーで登録が進まないという報告が入りました。Codexは入力の受け取り方を補う修正と試験を行いましたが、続く再報告では問題が残っていました。再ビルドした端末でも認識されないこと、異なる二つの記号が同じものとして扱われることが伝えられています。</p>
+<p>開発は、一度の修正で終わっていません。入力の経路を整理して試験を追加した段階でも、実機で解消したという確認はまだありませんでした。</p>
+<figure><img style="width:100%;height:auto" src="assets/keyboard-input-cover.png" alt="記号キーの実機再報告、入力記録の提供、Codexによる見立ての変更を示す開発経緯の概念図。"><figcaption>10月24日の出来事を要約した概念図。実際のキーボード配列・入力記録・アプリ画面ではありません。</figcaption></figure>
+<h2>端末の記録で、最初の見立てを改めた。</h2>
+<p>そこで作り手が渡したのが、実際の端末から採取した入力の記録でした。Codexは、先に疑っていた設定の受け渡しは正常だと判断し、ShiftやOptionのような修飾キーを伴う入力の扱いへ、修正の焦点を移しました。</p>
+<p>変えたのは、入力を登録するところだけではありません。修飾キーを含めて区別して保存し、キーを離すときにも対応する入力を扱うよう変更しました。人が実機で確かめた現象と端末の記録を渡し、AIがその証拠に合わせて実装を選び直した場面です。実際の会話や依頼文の全文は、ここでは再現していません。</p>
+<h2>記録で確認できるのは、修正と試験まで。</h2>
+<p>変更後は、記録に相当する入力、保存した内容の復元、キーを離す順序などの試験が成功したことを確認できます。一方、この修正後の実機で問題が解消したか、演奏しやすくなったか、遅延がどう変わったかは、参照した記録からは確認できません。</p>
+<p>そのため、この開発を「AIが一度で直した」「キーボード演奏が快適になった」という成果には置き換えません。確認できる到達点は、実機での再報告を受けて見立てを改め、入力・保存・キーを離す処理を修正し、試験したところまでです。</p>
+<h2>別の入力機能を作るときへの提案。</h2>
+<p>文字入力を演奏などの操作へ使う場合、押したキーだけでなく、一緒に押したキーや離す順序も、試す操作として残しておくことを提案します。今回の記録では、そのような実機の具体的な情報が、最初に考えた原因を見直す根拠になりました。これは今後試せる工夫であり、すべての入力問題を解決する手順ではありません。</p>
+<aside class="source-note"><h2>記録と公開範囲</h2><p>1.1公開前の2026年10月24日の引き継ぎ記録、機能仕様、検証記録と対応する変更履歴を、公開用に要約しました。内部コード・生の診断ログ・機器識別子は掲載していません。2026年11月17日には公開App Storeの1.1で外付けコンピューターキーボードの割り当て機能が無料と案内されていることを確認しました。現在配信中のアプリでこの記事の現象が起きる、または解消していると検証した記事ではありません。</p></aside></div><aside class="product"><div><p class="eyebrow">TRY WHAT WE’RE BUILDING</p><h2>つくっているのは、指先の楽器。</h2><p>kalimpadをiPhone・iPadで。</p></div><a data-analytics-placement="product_badge" class="store-badge" href="https://apps.apple.com/app/id6818530043"><img src="../app-store-badge-ja.svg" width="163" height="60" alt="App Storeからダウンロード"></a></aside><p><a href="../dev-notes.html">← 開発ノート一覧へ</a></p></article></main>
+<footer><a href="../dev-notes.html">開発ノート</a><a href="../index.html">アプリ紹介</a><a href="../privacy-ja.html">プライバシー</a><span>© 2026 ai-org-labs</span></footer><div class="site-privacy-links"><a href="../site-privacy.html">Webサイトのプライバシー</a><button type="button" id="analytics-settings">アクセス解析の設定</button></div></body></html>
