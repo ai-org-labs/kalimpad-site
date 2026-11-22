@@ -1047,5 +1047,17 @@
     "order": 89,
     "width": 1254,
     "height": 1254
+  },
+  {
+    "id": "kalimpad-sound-choice-pro",
+    "title": "選ぶ楽しさ。作り込む楽しさ。",
+    "alt": "生成り色の正方形の選択図。選ぶ楽しさ。作り込む楽しさ。上の薄緑の欄は無料で11音色から選び演奏できること。下の紺の欄はProの買い切り購入で音色ごとの歪み・トーン・エフェクトの量を調整できることを示す。iPhone・iPadの楽器アプリkalimpad。機能の範囲を示す図で実際の設定画面ではない。",
+    "src": "ads/kalimpad-sound-choice-pro.webp",
+    "thumb": "ads/kalimpad-sound-choice-pro-thumb.webp",
+    "date": "2026-11-17",
+    "genre": "二段の音づくり選択マップ",
+    "order": 90,
+    "width": 1400,
+    "height": 1400
   }
 ]
