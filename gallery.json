@@ -1059,5 +1059,17 @@
     "order": 90,
     "width": 1400,
     "height": 1400
+  },
+  {
+    "id": "kalimpad-sidebar-expression",
+    "title": "弾きながら、音に表情を。",
+    "alt": "紺色の横長ポスター。弾きながら、音に表情を。音の高さを紫の曲線、音量を広がる水色の図形で表す。サイドバーで音の高さや音量を操作するkalimpad Proの機能。買い切りのアプリ内購入と明記。iPhone・iPadの楽器アプリ。実画面や音の測定結果ではない概念図。",
+    "src": "ads/kalimpad-sidebar-expression.webp",
+    "thumb": "ads/kalimpad-sidebar-expression-thumb.webp",
+    "date": "2026-11-17",
+    "genre": "軌道と大判文字の演奏コントロール概念図",
+    "order": 91,
+    "width": 1600,
+    "height": 1100
   }
 ]
