@@ -30,7 +30,7 @@ test('実図の抜粋と範囲が明示され、公開素材に内部経路を�
 });
 
 test('最新記事を一覧先頭に置き、和音記事の公開範囲と同意導線を維持する',()=>{
- const list=read('dev-notes.html'); assert.equal([...list.matchAll(/class="article-card" href="([^"]+)"/g)][0][1],'notes/keyboard-input.html');
+ const list=read('dev-notes.html'); assert.equal([...list.matchAll(/class="article-card" href="([^"]+)"/g)][0][1],'notes/touch-feedback.html');
  const article=read('notes/plucked-chords.html');
  for(const text of ['Codex','0.8秒','概念図','数値で比較','analytics-settings','../analytics.js','note_header']) assert.ok(article.includes(text));
  assert.ok(fs.existsSync(path.join(__dirname,'../notes/assets/plucked-chords-cover.png')));
@@ -38,3 +38,5 @@ test('最新記事を一覧先頭に置き、和音記事の公開範囲と同�
 });
 
 test("キーボード記事は修正後の限界と共通導線を保つ",()=>{const s=read("notes/keyboard-input.html"); for(const t of ["修正後の実機","確認できません","analytics-settings","note_header"]) assert.ok(s.includes(t));assert.ok(fs.existsSync("notes/assets/keyboard-input-cover.png"));});
+
+test('touch note retains consent and store paths',()=>{const s=read('notes/touch-feedback.html'); for(const t of ['analytics-settings','note_header','../analytics.js']) assert.ok(s.includes(t)); assert.doesNotMatch(s,/\/Users\/|HANDOFF.md|advertising.sqlite3/);});
