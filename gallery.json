@@ -1083,5 +1083,17 @@
     "order": 92,
     "width": 1024,
     "height": 1536
+  },
+  {
+    "id": "kalimpad-touch-feedback",
+    "title": "すき間を通る指に、どんな触感を返すか",
+    "alt": "すき間を通る指に、どんな触感を返すか。開発経緯を3段階で示す概念図。3方式を試作、実機で触って選び直す、通るたびに、軽く返す。実画面ではありません。",
+    "src": "ads/kalimpad-touch-feedback.webp",
+    "thumb": "ads/kalimpad-touch-feedback-thumb.webp",
+    "date": "2026-11-22",
+    "genre": "開発経緯の概念図",
+    "order": 93,
+    "width": 1400,
+    "height": 1400
   }
 ]
