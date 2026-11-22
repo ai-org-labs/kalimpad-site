@@ -1095,5 +1095,17 @@
     "order": 93,
     "width": 1400,
     "height": 1400
+  },
+  {
+    "id": "kalimpad-sound-casting",
+    "title": "今日の音、どれにする？",
+    "alt": "今日の音、どれにする？ カリンバ、オルゴール、シンセを可愛らしい楽器のイラストで表現した広告。スマートフォンを持つ人物と、11音色が無料で選べる案内。演奏イメージであり実画面ではありません。",
+    "src": "ads/kalimpad-sound-casting.webp",
+    "thumb": "ads/kalimpad-sound-casting-thumb.webp",
+    "date": "2026-11-22",
+    "genre": "縦長の人形劇場風イラスト",
+    "order": 94,
+    "width": 1122,
+    "height": 1402
   }
 ]
