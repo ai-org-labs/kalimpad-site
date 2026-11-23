@@ -1119,5 +1119,29 @@
     "order": 95,
     "width": 1536,
     "height": 1024
+  },
+  {
+    "id": "kalimpad-key-shift",
+    "title": "キーを変えて、弾いてみる。",
+    "alt": "キーを変えて、弾いてみる。赤い円のCから青い円のDへ矢印をつなぐ、キー変更の概念図。キー変更は無料。iPhone・iPadの楽器アプリkalimpad。実画面ではありません。",
+    "src": "ads/kalimpad-key-shift.webp",
+    "thumb": "ads/kalimpad-key-shift-thumb.webp",
+    "date": "2026-11-22",
+    "genre": "赤と青の大きな円を並べたキー変更の概念図",
+    "order": 96,
+    "width": 1400,
+    "height": 1400
+  },
+  {
+    "id": "kalimpad-comic-03",
+    "title": "ピケの番",
+    "alt": "4コマ漫画「おと、となり。」第3話「ピケの番」。杏色のほつが青いケースの端末を触って「ぽろん」、「これも！」。次に藤色のピケの半分上げた手に気づいて手を止める。「どうぞ。」と端末をピケに向ける。最後はピケが触れて「ぽろん」と鳴らし、小さく笑う。ほつは端末から手を離して聴き、緑色のタポは右で布を持って見守る。下部にkalimpadのある日常、演奏場面はイメージです。",
+    "src": "ads/kalimpad-comic-03.webp",
+    "thumb": "ads/kalimpad-comic-03-thumb.webp",
+    "date": "2026-11-21",
+    "genre": "オリジナル日常4コマ漫画",
+    "order": 97,
+    "width": 1024,
+    "height": 1536
   }
 ]
