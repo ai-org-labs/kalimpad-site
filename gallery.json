@@ -1107,5 +1107,17 @@
     "order": 94,
     "width": 1122,
     "height": 1402
+  },
+  {
+    "id": "kalimpad-guide-first-piece",
+    "title": "曲を弾く、はじめの一歩。",
+    "alt": "曲を弾く、はじめの一歩。タブレットに触れる人物と、挑戦する表情を描いた演奏イメージ。光るパッドを見ながら演奏でき、演奏ガイドは無料と案内。iPhone・iPadの楽器アプリkalimpad。",
+    "src": "ads/kalimpad-guide-first-piece.webp",
+    "thumb": "ads/kalimpad-guide-first-piece-thumb.webp",
+    "date": "2026-11-22",
+    "genre": "明るい黄と青の人物スポーツ新聞風広告",
+    "order": 95,
+    "width": 1536,
+    "height": 1024
   }
 ]
