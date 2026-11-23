@@ -1143,5 +1143,29 @@
     "order": 97,
     "width": 1024,
     "height": 1536
+  },
+  {
+    "id": "kalimpad-steady-pads",
+    "title": "音域を変えても、演奏面を落ち着かせる",
+    "alt": "音域を変えても、演奏面を落ち着かせる。描画層を消して作り直す変更前と、描画層を残して更新する変更後を並べた概念図。実画面の比較ではありません。",
+    "src": "ads/kalimpad-steady-pads.webp",
+    "thumb": "ads/kalimpad-steady-pads-thumb.webp",
+    "date": "2026-11-22",
+    "genre": "開発経緯の概念図",
+    "order": 98,
+    "width": 1600,
+    "height": 1100
+  },
+  {
+    "id": "kalimpad-morning-kalimba",
+    "title": "朝のひと息に、カリンバ。",
+    "alt": "朝食のテーブルで、セーター姿の女性がスマホに指を伸ばして笑うイラスト。朝のひと息に、カリンバ。kalimpad。iPhone・iPadで弾く楽器アプリ。カリンバ音色は無料。演奏場面はイメージです。端末の画面は描かれていません。",
+    "src": "ads/kalimpad-morning-kalimba.webp",
+    "thumb": "ads/kalimpad-morning-kalimba-thumb.webp",
+    "date": "2026-11-24",
+    "genre": "人物の手描き風生活イラスト",
+    "order": 99,
+    "width": 1254,
+    "height": 1254
   }
 ]
